@@ -189,7 +189,7 @@ Data should always be the last member of the struct.&lt;/p&gt;
     </item>
     
     <item>
-    <title>Multiple OpenGL shaders in one file</title>
+    <title>Multiple OpenGL shaders in a single file</title>
     <link>https://jsanchez.net/post/multiple-shaders-in-one-file/</link>
     <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
     
