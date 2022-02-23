@@ -49,7 +49,7 @@
     },
     "datePublished": "2022-02-22",
     "description": "Small guide showing how to integrate Dear Imgui in C++ unity builds/single translation unity builds.",
-    "wordCount":  551 ,
+    "wordCount":  564 ,
     "mainEntityOfPage": "True",
     "dateModified": "2022-02-22",
     "publisher": {
@@ -150,16 +150,16 @@
 mode graphical user interface made by
 <a href="https://twitter.com/ocornut">ocornut</a> and
 <a href="https://github.com/ocornut/imgui/graphs/contributors">contributors</a>. It
-provides just about every GUI widget you may need such as buttons, color
-pickers, graphs and so on. If that doesn&rsquo;t sound awesome, it&rsquo;s also
+provides just about every GUI widget your game/app may need such as buttons, color
+pickers, graphs and so on. If that&rsquo;s not enough, it&rsquo;s also
 fast and super easy to use. Here&rsquo;s a screenshot of someone&rsquo;s game
 engine using Dear ImGui.</p>
 <p><img loading="lazy" 
     src="https://cloud.githubusercontent.com/assets/8225057/20628927/33e14cac-b329-11e6-80f6-9524e93b048a.png" 
     alt="Test" 
      /></p>
-<p>Cool uh?. It&rsquo;s also easy to integrate into your project, as the
-project&rsquo;s readme says, it should take you less than 3 hours. But i
+<p>Cool uh?. It&rsquo;s also easy to integrate into your project. The
+project&rsquo;s documentation says it should take you less than 3 hours. But i
 personally build my projects using unity builds(also called single
 translation unit compilation). Dear ImGui can indeed be compiled and
 used in unity builds but i could not find any documentation that
@@ -176,11 +176,12 @@ else.</p>
     What are unity builds?
 </h2>
 <p>The standard way of building C/C++ projects is to build each .c/.cpp
-source code separately (each instance is called a translation unit)
-and link all of them at the end producing the executable. In unity
-builds you include every single .c/.cpp file in a single file using de
-#include &ldquo;file1.cpp&rdquo;. The preprocessor will run and create a single
-file that contains everything.</p>
+file separately (each instance is called a translation unit) and link
+all of them at the end producing the executable. In unity builds you
+include every single source code file in a single file thereby having
+a single translation unit at compile time. Instead of including
+headers, directly include C/C++ files. Once the preprocessor runs,
+there will be a single big file to compile.</p>
 <h2 id="how-does-the-default-dear-imgui-integration-works">
     <a href="#how-does-the-default-dear-imgui-integration-works" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">

@@ -5,7 +5,88 @@
     <description>Recent content on jsanchez.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jsanchez.net/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jsanchez.net/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+    <title>Integrating Dear ImGui in my projects</title>
+    <link>https://jsanchez.net/post/integrating_imgui_in_unity_builds/</link>
+    <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
+    <author>Jorge</author>
+    <guid>https://jsanchez.net/post/integrating_imgui_in_unity_builds/</guid>
+    <description>
+        &lt;p&gt;TODO: Save a copy of the image, and make hugo render that instead of pulling it from the internet&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/ocornut/imgui&#34;&gt;Dear Imgui&lt;/a&gt; is an awesome immediate
+mode graphical user interface made by
+&lt;a href=&#34;https://twitter.com/ocornut&#34;&gt;ocornut&lt;/a&gt; and
+&lt;a href=&#34;https://github.com/ocornut/imgui/graphs/contributors&#34;&gt;contributors&lt;/a&gt;. It
+provides just about every GUI widget your game/app may need such as buttons, color
+pickers, graphs and so on. If that&amp;rsquo;s not enough, it&amp;rsquo;s also
+fast and super easy to use. Here&amp;rsquo;s a screenshot of someone&amp;rsquo;s game
+engine using Dear ImGui.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; 
+    src=&#34;https://cloud.githubusercontent.com/assets/8225057/20628927/33e14cac-b329-11e6-80f6-9524e93b048a.png&#34; 
+    alt=&#34;Test&#34; 
+     /&gt;&lt;/p&gt;
+&lt;p&gt;Cool uh?. It&amp;rsquo;s also easy to integrate into your project. The
+project&amp;rsquo;s documentation says it should take you less than 3 hours. But i
+personally build my projects using unity builds(also called single
+translation unit compilation). Dear ImGui can indeed be compiled and
+used in unity builds but i could not find any documentation that
+explains how. So here&amp;rsquo;s how i did it, hopefully this helps someone
+else.&lt;/p&gt;
+&lt;h2 id=&#34;what-are-unity-builds&#34;&gt;
+    &lt;a href=&#34;#what-are-unity-builds&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    What are unity builds?
+&lt;/h2&gt;
+&lt;p&gt;The standard way of building C/C++ projects is to build each .c/.cpp
+file separately (each instance is called a translation unit) and link
+all of them at the end producing the executable. In unity builds you
+include every single source code file in a single file thereby having
+a single translation unit at compile time. Instead of including
+headers, directly include C/C++ files. Once the preprocessor runs,
+there will be a single big file to compile.&lt;/p&gt;
+&lt;h2 id=&#34;how-does-the-default-dear-imgui-integration-works&#34;&gt;
+    &lt;a href=&#34;#how-does-the-default-dear-imgui-integration-works&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    How does the default dear imgui integration works
+&lt;/h2&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam consectetur felis nisi, sit amet pharetra libero viverra eget. Morbi sed nibh massa. Suspendisse massa neque, auctor in vestibulum sit amet, dignissim pretium ante. Mauris consectetur, nisl id dictum porttitor, est nisl tempus sem, vitae feugiat lorem lorem ac libero. Aenean tellus neque, tristique ac quam id, porttitor convallis quam. Nullam eget risus venenatis, tempor eros non, vulputate odio. Phasellus faucibus nisi sed libero accumsan, ut tempor erat consectetur. Aliquam ultricies dolor massa, in blandit velit porttitor ac. Aenean suscipit sagittis vestibulum. Nunc feugiat tempor erat. Donec pulvinar in ipsum nec commodo. Nulla sed tellus consequat purus rhoncus porttitor.&lt;/p&gt;
+&lt;h2 id=&#34;problems-that-arise-in-unity-build&#34;&gt;
+    &lt;a href=&#34;#problems-that-arise-in-unity-build&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Problems that arise in unity build
+&lt;/h2&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam consectetur felis nisi, sit amet pharetra libero viverra eget. Morbi sed nibh massa. Suspendisse massa neque, auctor in vestibulum sit amet, dignissim pretium ante. Mauris consectetur, nisl id dictum porttitor, est nisl tempus sem, vitae feugiat lorem lorem ac libero. Aenean tellus neque, tristique ac quam id, porttitor convallis quam. Nullam eget risus venenatis, tempor eros non, vulputate odio. Phasellus faucibus nisi sed libero accumsan, ut tempor erat consectetur. Aliquam ultricies dolor massa, in blandit velit porttitor ac. Aenean suscipit sagittis vestibulum. Nunc feugiat tempor erat. Donec pulvinar in ipsum nec commodo. Nulla sed tellus consequat purus rhoncus porttitor.&lt;/p&gt;
+&lt;h2 id=&#34;solving-them&#34;&gt;
+    &lt;a href=&#34;#solving-them&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Solving them
+&lt;/h2&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam consectetur felis nisi, sit amet pharetra libero viverra eget. Morbi sed nibh massa. Suspendisse massa neque, auctor in vestibulum sit amet, dignissim pretium ante. Mauris consectetur, nisl id dictum porttitor, est nisl tempus sem, vitae feugiat lorem lorem ac libero. Aenean tellus neque, tristique ac quam id, porttitor convallis quam. Nullam eget risus venenatis, tempor eros non, vulputate odio. Phasellus faucibus nisi sed libero accumsan, ut tempor erat consectetur. Aliquam ultricies dolor massa, in blandit velit porttitor ac. Aenean suscipit sagittis vestibulum. Nunc feugiat tempor erat. Donec pulvinar in ipsum nec commodo. Nulla sed tellus consequat purus rhoncus porttitor.&lt;/p&gt;
+
+    </description>
+    </item>
+    
     <item>
     <title>Avoiding double allocation for structs and data</title>
     <link>https://jsanchez.net/post/avoiding-double-allocation-for-structs-and-data/</link>
@@ -185,102 +266,6 @@ Data should always be the last member of the struct.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-    </description>
-    </item>
-    
-    <item>
-    <title>Easy &amp; Fun: Circle vs Circle</title>
-    <link>https://jsanchez.net/post/testing/</link>
-    <pubDate>Fri, 26 Jun 2020 00:00:00 +0000</pubDate>
-    <author>Jorge</author>
-    <guid>https://jsanchez.net/post/testing/</guid>
-    <description>
-          &lt;script&gt;
-
-   window.onload = function()
-   {
-
-       FirstCanvas = document.getElementById(&#39;FirstCanvas&#39;);
-       FirstCanvasContext = FirstCanvas.getContext(&#39;2d&#39;);
-
-       SecondCanvas = document.getElementById(&#39;SecondCanvas&#39;);
-       SecondCanvasContext = SecondCanvas.getContext(&#39;2d&#39;);
-
-       FirstCanvasContext.fillStyle = &#39;white&#39;;
-       FirstCanvasContext.fillText(&#34;Click to continue&#34;, 350, 500);
-       FirstCanvasContext.fillRect(0, 0, 800, 600);
-       FirstCanvasContext.fillStyle = &#39;red&#39;;
-       FirstCanvasContext.fillRect(400 - 50, 300 - 50, 100, 100);
-
-       SecondCanvasContext.fillStyle = &#39;white&#39;;
-       SecondCanvasContext.fillText(&#34;Click to continue&#34;, 350, 500);
-       SecondCanvasContext.fillRect(0, 0, 800, 600);
-       SecondCanvasContext.fillStyle = &#39;red&#39;;
-       SecondCanvasContext.beginPath();
-       SecondCanvasContext.arc(800/2 - 10, 600/2 -10, 20, 0, Math.PI * 2, true);
-       SecondCanvasContext.fill();
-   }
-
-  &lt;/script&gt;
-&lt;h2 id=&#34;a-short-personal-story&#34;&gt;
-    &lt;a href=&#34;#a-short-personal-story&#34; class=&#34;anchor&#34;&gt;
-        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
-            &lt;path fill-rule=&#34;evenodd&#34;
-                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
-            &lt;/path&gt;
-        &lt;/svg&gt;
-    &lt;/a&gt;
-    A short personal story
-&lt;/h2&gt;
-&lt;p&gt;Ever since i can remember i have been fascinated by computers. When i
-was a little kid maybe 5 or 6 years old my father had a retail shop
-that sold and repaired electronics. One night i heard that a computer
-wizard was coming to setup the servers and the network of the shop. I
-stayed up late to watch this guy work. At that time it was common in
-personal computers to have a turbo button so you could change the
-clock speed of the pc and usually there was a little display in front
-of the computer that displayed the speed the computer was currently
-at. That night i wanted to see the top speed of the new server, so i
-walked towards it and pushed the turbo button. Wrong Button! i
-accidentaly reseted the server while some work was being done on
-it. The guy was not happy, my father scolded me and told me to go to
-sleep. That night something changed, i wanted to learn to do the same
-thing as this guy.&lt;/p&gt;
-&lt;p&gt;&lt;canvas id=&#34;FirstCanvas&#34; width=&#34;800&#34; height=&#34;600&#34; style=&#34;border-style: solid; border-width: 5px; border-color: red;&#34;&gt; &lt;/canvas&gt;&lt;/p&gt;
-&lt;h1 id=&#34;aca-hay-un-titulo&#34;&gt;
-    &lt;a href=&#34;#aca-hay-un-titulo&#34; class=&#34;anchor&#34;&gt;
-        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
-            &lt;path fill-rule=&#34;evenodd&#34;
-                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
-            &lt;/path&gt;
-        &lt;/svg&gt;
-    &lt;/a&gt;
-    Aca hay un titulo
-&lt;/h1&gt;
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor
-felis est, ut ultrices felis facilisis in. Ut molestie massa sapien,
-sed dictum tortor ultricies ut. Nullam mattis elementum odio eget
-varius. Ut finibus, justo eget gravida posuere, ante dolor tempor
-risus, vitae mattis turpis augue ut neque. Vestibulum non lorem at
-eros venenatis dapibus. Cras enim ante, vestibulum id massa viverra,
-rhoncus pellentesque ante. Suspendisse scelerisque, mauris sit amet
-tristique ullamcorper, elit tellus pulvinar leo, vel egestas orci
-tortor at tortor. Integer commodo dui vitae convallis lacinia.&lt;/p&gt;
-&lt;p&gt;Proin faucibus orci nisi, nec accumsan ex vulputate eu. Suspendisse et
-nunc nisl. Etiam ex nibh, consequat mollis congue eu, venenatis sit
-amet tellus. Nunc tristique elementum enim et egestas. Duis aliquet,
-justo at ultricies consequat, diam lacus aliquam urna, ut placerat
-mauris risus at augue. Morbi at pellentesque sapien. Nulla at justo
-tincidunt, malesuada turpis vitae, aliquam lorem. Morbi ut lacus eget
-dui rhoncus egestas at et arcu. Phasellus urna neque, elementum et
-suscipit id, maximus sed nisi. Praesent auctor orci at rutrum
-hendrerit. Quisque lobortis sodales tortor in varius. Pellentesque
-habitant morbi tristique senectus et netus et malesuada fames ac
-turpis egestas. Vestibulum tempus pulvinar lacus non eleifend. Cras
-venenatis, justo eu sodales lobortis, quam libero tincidunt felis,
-eget condimentum dolor tortor non diam.&lt;/p&gt;
-&lt;p&gt;&lt;canvas id=&#34;SecondCanvas&#34; width=&#34;800&#34; height=&#34;600&#34;&gt; &lt;/canvas&gt;&lt;/p&gt;
-
     </description>
     </item>
     
