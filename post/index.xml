@@ -18,6 +18,15 @@
     </item>
     
     <item>
+      <title>Easy &amp; Fun: Circle vs Circle</title>
+      <link>https://jsanchez.net/post/testing/</link>
+      <pubDate>Fri, 26 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://jsanchez.net/post/testing/</guid>
+      <description>window.onload = function(){FirstCanvas = document.getElementById(&#39;FirstCanvas&#39;);FirstCanvasContext = FirstCanvas.getContext(&#39;2d&#39;);SecondCanvas = document.getElementById(&#39;SecondCanvas&#39;);SecondCanvasContext = SecondCanvas.getContext(&#39;2d&#39;);FirstCanvasContext.fillStyle = &#39;white&#39;;FirstCanvasContext.fillText(&#34;Click to continue&#34;, 350, 500);FirstCanvasContext.fillRect(0, 0, 800, 600);FirstCanvasContext.fillStyle = &#39;red&#39;;FirstCanvasContext.fillRect(400 - 50, 300 - 50, 100, 100);SecondCanvasContext.fillStyle = &#39;white&#39;;SecondCanvasContext.fillText(&#34;Click to continue&#34;, 350, 500);SecondCanvasContext.fillRect(0, 0, 800, 600);SecondCanvasContext.fillStyle = &#39;red&#39;;SecondCanvasContext.beginPath();SecondCanvasContext.arc(800/2 - 10, 600/2 -10, 20, 0, Math.PI * 2, true);SecondCanvasContext.fill();}A short personal storyEver since i can remember i have been fascinated by computers.</description>
+    </item>
+    
+    <item>
       <title>Multiple OpenGL shaders in a single file</title>
       <link>https://jsanchez.net/post/multiple-shaders-in-one-file/</link>
       <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>

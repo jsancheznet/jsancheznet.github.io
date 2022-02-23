@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="dark">
+
+    <title>Easy &amp; Fun: Circle vs Circle | jsanchez.net</title>
+
+    
+    
+
+    <meta property="og:site_name" content="jsanchez.net" />
+    <meta property="og:title" content="Easy &amp; Fun: Circle vs Circle | jsanchez.net"/>
+    <meta itemprop="name" content="Easy &amp; Fun: Circle vs Circle | jsanchez.net" />
+    <meta name="twitter:title" content="Easy &amp; Fun: Circle vs Circle | jsanchez.net" />
+    <meta name="application-name" content="Easy &amp; Fun: Circle vs Circle | jsanchez.net" /><meta name="twitter:card" content="summary"/>
+
+    <meta name="description" content="Testing js inside markdown" />
+    <meta name="twitter:description" content="Testing js inside markdown "/>
+    <meta itemprop="description" content=" Testing js inside markdown "/>
+    <meta property="og:description" content=" Testing js inside markdown " />
+
+    
+
+<meta property="og:type" content="article" />
+<meta property="article:publisher" content="jsanchez" />
+<meta property="og:article:published_time" content=2020-06-26T00:00:00Z />
+<meta property="article:published_time" content=2020-06-26T00:00:00Z />
+
+
+  <meta property="og:article:author" content="Jorge" />
+  <meta property="article:author" content="Jorge" />
+  <meta name="author" content="Jorge" />
+
+
+
+
+<script defer type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Easy \u0026 Fun: Circle vs Circle",
+    "author": {
+      "@type": "Person",
+      "name": "jsanchez"
+    },
+    "datePublished": "2020-06-26",
+    "description": "Testing js inside markdown",
+    "wordCount":  468 ,
+    "mainEntityOfPage": "True",
+    "dateModified": "2020-06-26",
+    "publisher": {
+      "@type": "Organization",
+      "name": "jsanchez",
+      "logo": {
+        "@type": "imageObject",
+        "url": "https:\/\/jsanchez.net\/favicon.ico"
+      }
+    }
+  }
+</script>
+
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%90%B5%3C%2Ftext%3E%3C%2Fsvg%3E" type="image/svg+xml">
+    
+    <link rel="stylesheet" href="/sass/main.min.ab99ff095f832511e24ffb2fba2b51ad473b2f7e9301d674eba2c6c3a6e8bd81.css">
+    
+</head>
+
+    
+    <script>
+        (function() {
+            const colorSchemeKey = 'ThemeColorScheme';
+            localStorage.setItem(colorSchemeKey, "dark");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'ThemeColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.userColorScheme = 'dark';
+        } else {
+            document.documentElement.dataset.userColorScheme = 'light';
+        }
+    })();
+</script>
+
+
+    <body class="dark">
+        <nav class="navbar">
+    <div class="container">
+        <div class="flex">
+            <div>
+                <a class="brand" href="/">
+                    
+                    <span class="emoji">
+                         🐵 
+                    </span>
+                    
+                    
+                    jsanchez.net
+                    </a>
+            </div>
+            <div class="flex">
+                
+                <a href="/"></a>
+                
+                
+            </div>
+            </div>
+    </div>
+</nav>
+
+        <main>
+            
+<div class="container">
+    <article>
+        <header class="article-header">
+            <div class="thumb">
+                <div>
+                    <h1>Easy &amp; Fun: Circle vs Circle</h1>
+                    <div class="post-meta">
+                        <div>
+                            
+                            
+                            By Jorge | <time>June 26, 2020</time>
+                            | 3 minutes
+                        </div>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </article>
+
+    <div class="article-post">
+      <script>
+
+   window.onload = function()
+   {
+
+       FirstCanvas = document.getElementById('FirstCanvas');
+       FirstCanvasContext = FirstCanvas.getContext('2d');
+
+       SecondCanvas = document.getElementById('SecondCanvas');
+       SecondCanvasContext = SecondCanvas.getContext('2d');
+
+       FirstCanvasContext.fillStyle = 'white';
+       FirstCanvasContext.fillText("Click to continue", 350, 500);
+       FirstCanvasContext.fillRect(0, 0, 800, 600);
+       FirstCanvasContext.fillStyle = 'red';
+       FirstCanvasContext.fillRect(400 - 50, 300 - 50, 100, 100);
+
+       SecondCanvasContext.fillStyle = 'white';
+       SecondCanvasContext.fillText("Click to continue", 350, 500);
+       SecondCanvasContext.fillRect(0, 0, 800, 600);
+       SecondCanvasContext.fillStyle = 'red';
+       SecondCanvasContext.beginPath();
+       SecondCanvasContext.arc(800/2 - 10, 600/2 -10, 20, 0, Math.PI * 2, true);
+       SecondCanvasContext.fill();
+   }
+
+  </script>
+<h2 id="a-short-personal-story">
+    <a href="#a-short-personal-story" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    A short personal story
+</h2>
+<p>Ever since i can remember i have been fascinated by computers. When i
+was a little kid maybe 5 or 6 years old my father had a retail shop
+that sold and repaired electronics. One night i heard that a computer
+wizard was coming to setup the servers and the network of the shop. I
+stayed up late to watch this guy work. At that time it was common in
+personal computers to have a turbo button so you could change the
+clock speed of the pc and usually there was a little display in front
+of the computer that displayed the speed the computer was currently
+at. That night i wanted to see the top speed of the new server, so i
+walked towards it and pushed the turbo button. Wrong Button! i
+accidentaly reseted the server while some work was being done on
+it. The guy was not happy, my father scolded me and told me to go to
+sleep. That night something changed, i wanted to learn to do the same
+thing as this guy.</p>
+<p><canvas id="FirstCanvas" width="800" height="600" style="border-style: solid; border-width: 5px; border-color: red;"> </canvas></p>
+<h1 id="aca-hay-un-titulo">
+    <a href="#aca-hay-un-titulo" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Aca hay un titulo
+</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor
+felis est, ut ultrices felis facilisis in. Ut molestie massa sapien,
+sed dictum tortor ultricies ut. Nullam mattis elementum odio eget
+varius. Ut finibus, justo eget gravida posuere, ante dolor tempor
+risus, vitae mattis turpis augue ut neque. Vestibulum non lorem at
+eros venenatis dapibus. Cras enim ante, vestibulum id massa viverra,
+rhoncus pellentesque ante. Suspendisse scelerisque, mauris sit amet
+tristique ullamcorper, elit tellus pulvinar leo, vel egestas orci
+tortor at tortor. Integer commodo dui vitae convallis lacinia.</p>
+<p>Proin faucibus orci nisi, nec accumsan ex vulputate eu. Suspendisse et
+nunc nisl. Etiam ex nibh, consequat mollis congue eu, venenatis sit
+amet tellus. Nunc tristique elementum enim et egestas. Duis aliquet,
+justo at ultricies consequat, diam lacus aliquam urna, ut placerat
+mauris risus at augue. Morbi at pellentesque sapien. Nulla at justo
+tincidunt, malesuada turpis vitae, aliquam lorem. Morbi ut lacus eget
+dui rhoncus egestas at et arcu. Phasellus urna neque, elementum et
+suscipit id, maximus sed nisi. Praesent auctor orci at rutrum
+hendrerit. Quisque lobortis sodales tortor in varius. Pellentesque
+habitant morbi tristique senectus et netus et malesuada fames ac
+turpis egestas. Vestibulum tempus pulvinar lacus non eleifend. Cras
+venenatis, justo eu sodales lobortis, quam libero tincidunt felis,
+eget condimentum dolor tortor non diam.</p>
+<p><canvas id="SecondCanvas" width="800" height="600"> </canvas></p>
+
+    </div>
+</div>
+
+<div class="container">
+    
+    <nav class="flex container suggested">
+        
+        <a rel="prev" href="/post/multiple-shaders-in-one-file/" title="Previous post (older)">
+            <span>Previous</span>
+            Multiple OpenGL shaders in a single file
+            </a>
+        
+        
+        
+        <a rel="next" href="/post/avoiding-double-allocation-for-structs-and-data/" title="Next post (newer)">
+            <span>Next</span>
+            Avoiding double allocation for structs and data
+            </a> 
+        
+    </nav>
+    
+</div>
+ 
+<div class="container">
+    
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "blog-jsanchez-uy" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            })
+        }
+    })
+</script>
+
+</div>
+
+</main>
+
+
+        </main>
+        <footer class="footer flex">
+    <section class="container">
+        <nav class="footer-links">
+            
+            <a href="/index.xml">RSS</a>
+            
+        </nav>
+
+        
+    </section>
+    <script defer src="/ts/features.a534d05c446023fa2ae2a638f87cc2443ad8e49f6aaeb4d9f24ed61d53766712.js" 
+    data-enable-footnotes="true"
+    ></script>
+</footer>
+
+    </body>
+</html>

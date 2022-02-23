@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="dark">
+
+    <title>Integrating Dear ImGui in my projects | jsanchez.net</title>
+
+    
+    
+
+    <meta property="og:site_name" content="jsanchez.net" />
+    <meta property="og:title" content="Integrating Dear ImGui in my projects | jsanchez.net"/>
+    <meta itemprop="name" content="Integrating Dear ImGui in my projects | jsanchez.net" />
+    <meta name="twitter:title" content="Integrating Dear ImGui in my projects | jsanchez.net" />
+    <meta name="application-name" content="Integrating Dear ImGui in my projects | jsanchez.net" /><meta name="twitter:card" content="summary"/>
+
+    <meta name="description" content="Small guide showing how to integrate Dear Imgui in C&#43;&#43; unity builds/single translation unity builds." />
+    <meta name="twitter:description" content="Small guide showing how to integrate Dear Imgui in C&#43;&#43; unity builds/single translation unity builds. "/>
+    <meta itemprop="description" content=" Small guide showing how to integrate Dear Imgui in C&#43;&#43; unity builds/single translation unity builds. "/>
+    <meta property="og:description" content=" Small guide showing how to integrate Dear Imgui in C&#43;&#43; unity builds/single translation unity builds. " />
+
+    
+
+<meta property="og:type" content="article" />
+<meta property="article:publisher" content="jsanchez" />
+<meta property="og:article:published_time" content=2022-02-22T00:00:00Z />
+<meta property="article:published_time" content=2022-02-22T00:00:00Z />
+
+
+  <meta property="og:article:author" content="Jorge" />
+  <meta property="article:author" content="Jorge" />
+  <meta name="author" content="Jorge" />
+
+
+
+
+<script defer type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Integrating Dear ImGui in my projects",
+    "author": {
+      "@type": "Person",
+      "name": "jsanchez"
+    },
+    "datePublished": "2022-02-22",
+    "description": "Small guide showing how to integrate Dear Imgui in C++ unity builds/single translation unity builds.",
+    "wordCount":  551 ,
+    "mainEntityOfPage": "True",
+    "dateModified": "2022-02-22",
+    "publisher": {
+      "@type": "Organization",
+      "name": "jsanchez",
+      "logo": {
+        "@type": "imageObject",
+        "url": "https:\/\/jsanchez.net\/favicon.ico"
+      }
+    }
+  }
+</script>
+
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%90%B5%3C%2Ftext%3E%3C%2Fsvg%3E" type="image/svg+xml">
+    
+    <link rel="stylesheet" href="/sass/main.min.ab99ff095f832511e24ffb2fba2b51ad473b2f7e9301d674eba2c6c3a6e8bd81.css">
+    
+</head>
+
+    
+    <script>
+        (function() {
+            const colorSchemeKey = 'ThemeColorScheme';
+            localStorage.setItem(colorSchemeKey, "dark");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'ThemeColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.userColorScheme = 'dark';
+        } else {
+            document.documentElement.dataset.userColorScheme = 'light';
+        }
+    })();
+</script>
+
+
+    <body class="dark">
+        <nav class="navbar">
+    <div class="container">
+        <div class="flex">
+            <div>
+                <a class="brand" href="/">
+                    
+                    <span class="emoji">
+                         🐵 
+                    </span>
+                    
+                    
+                    jsanchez.net
+                    </a>
+            </div>
+            <div class="flex">
+                
+                <a href="/"></a>
+                
+                
+            </div>
+            </div>
+    </div>
+</nav>
+
+        <main>
+            
+<div class="container">
+    <article>
+        <header class="article-header">
+            <div class="thumb">
+                <div>
+                    <h1>Integrating Dear ImGui in my projects</h1>
+                    <div class="post-meta">
+                        <div>
+                            
+                            
+                            By Jorge | <time>February 22, 2022</time>
+                            | 3 minutes
+                        </div>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </article>
+
+    <div class="article-post">
+    <p>TODO: Save a copy of the image, and make hugo render that instead of pulling it from the internet</p>
+<p><a href="https://github.com/ocornut/imgui">Dear Imgui</a> is an awesome immediate
+mode graphical user interface made by
+<a href="https://twitter.com/ocornut">ocornut</a> and
+<a href="https://github.com/ocornut/imgui/graphs/contributors">contributors</a>. It
+provides just about every GUI widget you may need such as buttons, color
+pickers, graphs and so on. If that doesn&rsquo;t sound awesome, it&rsquo;s also
+fast and super easy to use. Here&rsquo;s a screenshot of someone&rsquo;s game
+engine using Dear ImGui.</p>
+<p><img loading="lazy" 
+    src="https://cloud.githubusercontent.com/assets/8225057/20628927/33e14cac-b329-11e6-80f6-9524e93b048a.png" 
+    alt="Test" 
+     /></p>
+<p>Cool uh?. It&rsquo;s also easy to integrate into your project, as the
+project&rsquo;s readme says, it should take you less than 3 hours. But i
+personally build my projects using unity builds(also called single
+translation unit compilation). Dear ImGui can indeed be compiled and
+used in unity builds but i could not find any documentation that
+explains how. So here&rsquo;s how i did it, hopefully this helps someone
+else.</p>
+<h2 id="what-are-unity-builds">
+    <a href="#what-are-unity-builds" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    What are unity builds?
+</h2>
+<p>The standard way of building C/C++ projects is to build each .c/.cpp
+source code separately (each instance is called a translation unit)
+and link all of them at the end producing the executable. In unity
+builds you include every single .c/.cpp file in a single file using de
+#include &ldquo;file1.cpp&rdquo;. The preprocessor will run and create a single
+file that contains everything.</p>
+<h2 id="how-does-the-default-dear-imgui-integration-works">
+    <a href="#how-does-the-default-dear-imgui-integration-works" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    How does the default dear imgui integration works
+</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam consectetur felis nisi, sit amet pharetra libero viverra eget. Morbi sed nibh massa. Suspendisse massa neque, auctor in vestibulum sit amet, dignissim pretium ante. Mauris consectetur, nisl id dictum porttitor, est nisl tempus sem, vitae feugiat lorem lorem ac libero. Aenean tellus neque, tristique ac quam id, porttitor convallis quam. Nullam eget risus venenatis, tempor eros non, vulputate odio. Phasellus faucibus nisi sed libero accumsan, ut tempor erat consectetur. Aliquam ultricies dolor massa, in blandit velit porttitor ac. Aenean suscipit sagittis vestibulum. Nunc feugiat tempor erat. Donec pulvinar in ipsum nec commodo. Nulla sed tellus consequat purus rhoncus porttitor.</p>
+<h2 id="problems-that-arise-in-unity-build">
+    <a href="#problems-that-arise-in-unity-build" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Problems that arise in unity build
+</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam consectetur felis nisi, sit amet pharetra libero viverra eget. Morbi sed nibh massa. Suspendisse massa neque, auctor in vestibulum sit amet, dignissim pretium ante. Mauris consectetur, nisl id dictum porttitor, est nisl tempus sem, vitae feugiat lorem lorem ac libero. Aenean tellus neque, tristique ac quam id, porttitor convallis quam. Nullam eget risus venenatis, tempor eros non, vulputate odio. Phasellus faucibus nisi sed libero accumsan, ut tempor erat consectetur. Aliquam ultricies dolor massa, in blandit velit porttitor ac. Aenean suscipit sagittis vestibulum. Nunc feugiat tempor erat. Donec pulvinar in ipsum nec commodo. Nulla sed tellus consequat purus rhoncus porttitor.</p>
+<h2 id="solving-them">
+    <a href="#solving-them" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Solving them
+</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam consectetur felis nisi, sit amet pharetra libero viverra eget. Morbi sed nibh massa. Suspendisse massa neque, auctor in vestibulum sit amet, dignissim pretium ante. Mauris consectetur, nisl id dictum porttitor, est nisl tempus sem, vitae feugiat lorem lorem ac libero. Aenean tellus neque, tristique ac quam id, porttitor convallis quam. Nullam eget risus venenatis, tempor eros non, vulputate odio. Phasellus faucibus nisi sed libero accumsan, ut tempor erat consectetur. Aliquam ultricies dolor massa, in blandit velit porttitor ac. Aenean suscipit sagittis vestibulum. Nunc feugiat tempor erat. Donec pulvinar in ipsum nec commodo. Nulla sed tellus consequat purus rhoncus porttitor.</p>
+
+    </div>
+</div>
+
+<div class="container">
+    
+    <nav class="flex container suggested">
+        
+        <a rel="prev" href="/post/avoiding-double-allocation-for-structs-and-data/" title="Previous post (older)">
+            <span>Previous</span>
+            Avoiding double allocation for structs and data
+            </a>
+        
+        
+        
+    </nav>
+    
+</div>
+ 
+<div class="container">
+    
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "blog-jsanchez-uy" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            })
+        }
+    })
+</script>
+
+</div>
+
+</main>
+
+
+        </main>
+        <footer class="footer flex">
+    <section class="container">
+        <nav class="footer-links">
+            
+            <a href="/index.xml">RSS</a>
+            
+        </nav>
+
+        
+    </section>
+    <script defer src="/ts/features.a534d05c446023fa2ae2a638f87cc2443ad8e49f6aaeb4d9f24ed61d53766712.js" 
+    data-enable-footnotes="true"
+    ></script>
+</footer>
+
+    </body>
+</html>
