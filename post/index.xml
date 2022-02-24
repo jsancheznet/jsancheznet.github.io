@@ -6,17 +6,7 @@
     <description>Recent content in Posts on jsanchez.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jsanchez.net/post/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Integrating Dear ImGui in my projects</title>
-      <link>https://jsanchez.net/post/integrating_imgui_in_unity_builds/</link>
-      <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://jsanchez.net/post/integrating_imgui_in_unity_builds/</guid>
-      <description>TODO: Save a copy of the image, and make hugo render that instead of pulling it from the internet
-Dear Imgui is an awesome immediate mode graphical user interface made by ocornut and contributors. It provides just about every GUI widget your game/app may need such as buttons, color pickers, graphs and so on. If that&amp;rsquo;s not enough, it&amp;rsquo;s also fast and super easy to use. Here&amp;rsquo;s a screenshot of someone&amp;rsquo;s game engine using Dear ImGui.</description>
-    </item>
-    
+    <lastBuildDate>Fri, 26 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://jsanchez.net/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Avoiding double allocation for structs and data</title>
       <link>https://jsanchez.net/post/avoiding-double-allocation-for-structs-and-data/</link>
