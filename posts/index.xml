@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on jsanchez.net</title>
+    <link>https://jsanchez.net/posts/</link>
+    <description>Recent content in Posts on jsanchez.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://jsanchez.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Avoiding double allocation for structs and data</title>
+      <link>https://jsanchez.net/posts/avoiding-double-allocation-for-structs-and-data/</link>
+      <pubDate>Fri, 26 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://jsanchez.net/posts/avoiding-double-allocation-for-structs-and-data/</guid>
+      <description>Let&amp;rsquo;s say you want to allocate a struct that contains a pointer to other data that also needs allocation. The natural way to do it is calling malloc twice, one for the container and one for the data.
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28  /* The natural way to allocate a struct and its data */ struct sample_type { float A; uint32_t B; uint8_t C; bool D; bool E; bool F; bool G; }; struct sample_struct { uint32_t Count; sample_type *Data; }; uint32_t Count = 5; sample_struct *Container = (sample_struct*)malloc(sizeof(sample_struct)); Container-&amp;gt;Count = Count; Container-&amp;gt;Data = (sample_type*)malloc(sizof(sample_type) * Count); // Do something to the data for(int i = 0; i &amp;lt; Container-&amp;gt;Count; i++) { Container-&amp;gt;Data[i] = {}; }   Something doesn&amp;rsquo;t feel right, these two allocations are going to be used together, one after the other but there is no guarantee they will be contiguous in memory, a cache miss is likely to happen everytime you access the data.</description>
+    </item>
+    
+    <item>
+      <title>Multiple OpenGL shaders in a single file</title>
+      <link>https://jsanchez.net/posts/multiple-shaders-in-one-file/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jsanchez.net/posts/multiple-shaders-in-one-file/</guid>
+      <description>If you have been using OpenGL for a while, you probably have a lot of shader files, maybe one for each programmable stage of the pipeline. At some point during development the directory that contains the shaders becomes a mess, managing and opening shader files in your editor becomes tedious. Luckily there&amp;rsquo;s a way to cram all the programmable shader stages in a single file, reducing the number of files at least by half and calm the neat freak inside.</description>
+    </item>
+    
+    <item>
+      <title>Gists/Snippets</title>
+      <link>https://jsanchez.net/posts/glsl-gists/</link>
+      <pubDate>Sat, 07 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jsanchez.net/posts/glsl-gists/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 11  // Normalize an input value to 0,1 range. f32 Normalize(f32 Input, f32 Minimum, f32 Maximum) { return (Input - Minimum) / (Maximum - Minimum); } // Map one range onto another. Ex: Map Value Between 0-1800 to -20, 20. f32 Remap(f32 Input, f32 InputStart, f32 InputEnd, f32 OutputStart, f32 OutputEnd) { return (Input - InputStart) / (InputEnd - InputStart) * (OutputEnd - OutputStart) + OutputStart; }   GLSL1 2 3 4 5 6 7 8  // Grayscale FragmentColor = texture(SampledTexture, UV); float Average = (0.</description>
+    </item>
+    
+    <item>
+      <title>Handling Hybrid GPU&#39;s in Windows</title>
+      <link>https://jsanchez.net/posts/handling-hybrid-gpus-in-windows/</link>
+      <pubDate>Sat, 07 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jsanchez.net/posts/handling-hybrid-gpus-in-windows/</guid>
+      <description>Hybrid GPU&amp;rsquo;s are everywhere these days and yet it is not obvious how to run your program using the discrete GPU.
+I can think of 5 ways on how to get this done:
+ Your software is popular enough that the GPU manufacturer includes an &amp;ldquo;application profile&amp;rdquo; for your software in their driver. This profile is basically the GPU configuration/settings for an executable. When your software has no application profile, the default graphic card depends on the global GPU settings but it is most likely the integrated gpu.</description>
+    </item>
+    
+    <item>
+      <title>Making multi-line macros behave as a functions</title>
+      <link>https://jsanchez.net/posts/multi-line-function-macro/</link>
+      <pubDate>Sat, 22 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jsanchez.net/posts/multi-line-function-macro/</guid>
+      <description>When you need a muli-line macro to have its own scope and behave as a regular function would, the naive way is to simply wrap the macro statements inside curly brackets. Now, time has passed and suddenly program compilation is failing, and as usual the compiler output is not helping. The naive macro implementation has come back to bite you.
+Here&amp;rsquo;s the naive implementation, let&amp;rsquo;s see how to fix it.</description>
+    </item>
+    
+  </channel>
+</rss>
