@@ -7,16 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="theme-color" content="dark">
 
-    <title>Integrating Dear ImGui in my projects | jsanchez.net</title>
+    <title>Integrating Dear ImGui in unity builds | jsanchez.net</title>
 
     
     
 
     <meta property="og:site_name" content="jsanchez.net" />
-    <meta property="og:title" content="Integrating Dear ImGui in my projects | jsanchez.net"/>
-    <meta itemprop="name" content="Integrating Dear ImGui in my projects | jsanchez.net" />
-    <meta name="twitter:title" content="Integrating Dear ImGui in my projects | jsanchez.net" />
-    <meta name="application-name" content="Integrating Dear ImGui in my projects | jsanchez.net" /><meta name="twitter:card" content="summary"/>
+    <meta property="og:title" content="Integrating Dear ImGui in unity builds | jsanchez.net"/>
+    <meta itemprop="name" content="Integrating Dear ImGui in unity builds | jsanchez.net" />
+    <meta name="twitter:title" content="Integrating Dear ImGui in unity builds | jsanchez.net" />
+    <meta name="application-name" content="Integrating Dear ImGui in unity builds | jsanchez.net" /><meta name="twitter:card" content="summary"/>
 
     <meta name="description" content="Small guide showing how to integrate Dear Imgui in C&#43;&#43; unity builds/single translation unity builds." />
     <meta name="twitter:description" content="Small guide showing how to integrate Dear Imgui in C&#43;&#43; unity builds/single translation unity builds. "/>
@@ -42,14 +42,14 @@
   {
     "@context": "http://schema.org",
     "@type": "Article",
-    "headline": "Integrating Dear ImGui in my projects",
+    "headline": "Integrating Dear ImGui in unity builds",
     "author": {
       "@type": "Person",
       "name": "jsanchez"
     },
     "datePublished": "2022-02-22",
     "description": "Small guide showing how to integrate Dear Imgui in C++ unity builds/single translation unity builds.",
-    "wordCount":  564 ,
+    "wordCount":  683 ,
     "mainEntityOfPage": "True",
     "dateModified": "2022-02-22",
     "publisher": {
@@ -127,13 +127,13 @@
         <header class="article-header">
             <div class="thumb">
                 <div>
-                    <h1>Integrating Dear ImGui in my projects</h1>
+                    <h1>Integrating Dear ImGui in unity builds</h1>
                     <div class="post-meta">
                         <div>
                             
                             
                             By Jorge | <time>February 22, 2022</time>
-                            | 3 minutes
+                            | 4 minutes
                         </div>
                         <div class="tags">
                             
@@ -145,26 +145,27 @@
     </article>
 
     <div class="article-post">
-    <p>TODO: Save a copy of the image, and make hugo render that instead of pulling it from the internet</p>
-<p><a href="https://github.com/ocornut/imgui">Dear Imgui</a> is an awesome immediate
-mode graphical user interface made by
-<a href="https://twitter.com/ocornut">ocornut</a> and
-<a href="https://github.com/ocornut/imgui/graphs/contributors">contributors</a>. It
-provides just about every GUI widget your game/app may need such as buttons, color
-pickers, graphs and so on. If that&rsquo;s not enough, it&rsquo;s also
-fast and super easy to use. Here&rsquo;s a screenshot of someone&rsquo;s game
-engine using Dear ImGui.</p>
+    <p><a href="https://github.com/ocornut/imgui">Dear Imgui</a> is an awesome immediate
+mode graphical user interface (GUI) made by
+<a href="https://twitter.com/ocornut">ocornut</a>. It provides just about every
+widget you might need, buttons, color pickers, plots and many, many
+more. It&rsquo;s also fast and super easy to
+use.</p>
+<p>Here&rsquo;s a screenshot of someone&rsquo;s game using Dear ImGui.</p>
 <p><img loading="lazy" 
-    src="https://cloud.githubusercontent.com/assets/8225057/20628927/33e14cac-b329-11e6-80f6-9524e93b048a.png" 
-    alt="Test" 
-     /></p>
-<p>Cool uh?. It&rsquo;s also easy to integrate into your project. The
-project&rsquo;s documentation says it should take you less than 3 hours. But i
-personally build my projects using unity builds(also called single
-translation unit compilation). Dear ImGui can indeed be compiled and
-used in unity builds but i could not find any documentation that
-explains how. So here&rsquo;s how i did it, hopefully this helps someone
-else.</p>
+    src="/images/post_integrating_imgui_image1.png" 
+    alt="Example dear imgui" 
+     
+    width=1920 
+    height="1080"  /></p>
+<p>Cool uh?. It&rsquo;s easy to integrate into your project. The official
+documentation says integration should take you less than 3
+hours. That&rsquo;s a lot of features and awesomeness for such a short
+amount of time.</p>
+<p>I personally build my projects using unity builds(also called single
+translation unit compilation). I could not find any guide on how to
+setup dear imgui for this type of build system.</p>
+<p>So here&rsquo;s how i did it.</p>
 <h2 id="what-are-unity-builds">
     <a href="#what-are-unity-builds" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -175,46 +176,163 @@ else.</p>
     </a>
     What are unity builds?
 </h2>
-<p>The standard way of building C/C++ projects is to build each .c/.cpp
-file separately (each instance is called a translation unit) and link
-all of them at the end producing the executable. In unity builds you
-include every single source code file in a single file thereby having
-a single translation unit at compile time. Instead of including
-headers, directly include C/C++ files. Once the preprocessor runs,
-there will be a single big file to compile.</p>
-<h2 id="how-does-the-default-dear-imgui-integration-works">
-    <a href="#how-does-the-default-dear-imgui-integration-works" class="anchor">
+<p>The standard way of building C/C++ applications is to build each
+.c/.cpp file separately (each instance is called a translation unit)
+and link all of them at the linker stage producing the executable.</p>
+<p>Unity build&rsquo;s basic idea is to include every .c/.cpp source file in a
+single file, and after the preprocessor runs you have just one huge
+file to compile. Unity builds also have faster compilation time, even
+while rebuilding the whole project each time. I have seen codebases
+bigger than 150000 lines compile in a second. really.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="cp">#include</span> <span class="cpf">&#34;my_other_file.cpp&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;my_other_file2.cpp&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;my_other_file3.cpp&#34;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// My program...
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="go">jsanchez@scarlet:~$ cl main.cpp
+</span></code></pre></td></tr></table>
+</div>
+</div><p>If you are not compiling your code like this, you don&rsquo;t need to follow
+this guide. Head over to the official <a href="https://github.com/ocornut/imgui#integration">integration
+guide</a>.</p>
+<h2 id="copying-files-to-your-project">
+    <a href="#copying-files-to-your-project" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
             </path>
         </svg>
     </a>
-    How does the default dear imgui integration works
+    Copying files to your project
 </h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam consectetur felis nisi, sit amet pharetra libero viverra eget. Morbi sed nibh massa. Suspendisse massa neque, auctor in vestibulum sit amet, dignissim pretium ante. Mauris consectetur, nisl id dictum porttitor, est nisl tempus sem, vitae feugiat lorem lorem ac libero. Aenean tellus neque, tristique ac quam id, porttitor convallis quam. Nullam eget risus venenatis, tempor eros non, vulputate odio. Phasellus faucibus nisi sed libero accumsan, ut tempor erat consectetur. Aliquam ultricies dolor massa, in blandit velit porttitor ac. Aenean suscipit sagittis vestibulum. Nunc feugiat tempor erat. Donec pulvinar in ipsum nec commodo. Nulla sed tellus consequat purus rhoncus porttitor.</p>
-<h2 id="problems-that-arise-in-unity-build">
-    <a href="#problems-that-arise-in-unity-build" class="anchor">
+<p>Start by downloading <a href="https://github.com/ocornut/imgui/archive/refs/heads/master.zip">Dear
+ImGui</a>. We
+are going to select a few source code files from the zip and copy them
+to our project, feel free to extract it wherever you prefer.</p>
+<p>ImGui is meant to be used on many operating systems, alongside many
+platform libraries and every major rendering api. In order to do its
+job it needs to read keyboard/mouse/gamepad input, upload
+textures/buffers to the gpu and render. There&rsquo;s a lot of glue code to
+be done here. Luckily there are many &ldquo;backends&rdquo; ready for you to use.</p>
+<p>In my case i&rsquo;m using <a href="https://www.libsdl.org/">libSDL</a> for my platform
+code and <a href="https://www.khronos.org/opengl/">OpenGL 3.3</a> as my rendering
+api. So i need to use the two following backends <code>imgui_impl_sdl</code> and <code>imgui_ imgui_impl_opengl3</code>. You can find all
+available backends inside the backends directory.</p>
+<p>Now, create a folder inside your project to hold the Dear ImGui
+files. Copy the following files from the root directory of the Dear
+ImGui zip file.</p>
+<pre tabindex="0"><code>imconfig.h
+imgui.h
+imgui.cpp
+imgui_draw.cpp
+imgui_demo.cpp
+imgui_internal.h
+imgui_tables.cpp
+imgui_widgets.cpp
+imstb_rectpack.h
+imstb_textedit.h
+imstb_truetype.h
+</code></pre><p>Also copy the following files from the backends directory. If you
+are not using libSDL and OpenGL you will need to replace the following
+files with whatever files you need.</p>
+<pre tabindex="0"><code>imgui_impl_opengl3.cpp
+imgui_impl_opengl3.h
+imgui_impl_opengl3_loader.h
+imgui_impl_sdl.h
+imgui_impl_sdl.cpp
+</code></pre><p>Remember to add the new directory holding this files to the project&rsquo;s
+include path.</p>
+<p>We are now ready to open our text editor, and because we are using unity builds:</p>
+<p>Instead of doing this.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="cp">#include</span> <span class="cpf">&#34;imgui.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;imgui_impl_sdl.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;imgui_impl_opengl3.h&#34;</span><span class="cp">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>We do this!</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="cp">#include</span> <span class="cpf">&#34;imgui.cpp&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;imgui_tables.cpp&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;imgui_widgets.cpp&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;imgui_draw.cpp&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;imgui_demo.cpp&#34; // You don&#39;t need this file, i use it as gui reference</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;imgui_impl_opengl3.cpp&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;imgui_impl_sdl.cpp&#34;</span><span class="cp">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>We are almost ready to use Dear ImGui. There&rsquo;s just one more problem.</p>
+<h2 id="opengl-loader-clash">
+    <a href="#opengl-loader-clash" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
             </path>
         </svg>
     </a>
-    Problems that arise in unity build
+    OpenGL loader clash
 </h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam consectetur felis nisi, sit amet pharetra libero viverra eget. Morbi sed nibh massa. Suspendisse massa neque, auctor in vestibulum sit amet, dignissim pretium ante. Mauris consectetur, nisl id dictum porttitor, est nisl tempus sem, vitae feugiat lorem lorem ac libero. Aenean tellus neque, tristique ac quam id, porttitor convallis quam. Nullam eget risus venenatis, tempor eros non, vulputate odio. Phasellus faucibus nisi sed libero accumsan, ut tempor erat consectetur. Aliquam ultricies dolor massa, in blandit velit porttitor ac. Aenean suscipit sagittis vestibulum. Nunc feugiat tempor erat. Donec pulvinar in ipsum nec commodo. Nulla sed tellus consequat purus rhoncus porttitor.</p>
-<h2 id="solving-them">
-    <a href="#solving-them" class="anchor">
-        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
-            <path fill-rule="evenodd"
-                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
-            </path>
-        </svg>
-    </a>
-    Solving them
-</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam consectetur felis nisi, sit amet pharetra libero viverra eget. Morbi sed nibh massa. Suspendisse massa neque, auctor in vestibulum sit amet, dignissim pretium ante. Mauris consectetur, nisl id dictum porttitor, est nisl tempus sem, vitae feugiat lorem lorem ac libero. Aenean tellus neque, tristique ac quam id, porttitor convallis quam. Nullam eget risus venenatis, tempor eros non, vulputate odio. Phasellus faucibus nisi sed libero accumsan, ut tempor erat consectetur. Aliquam ultricies dolor massa, in blandit velit porttitor ac. Aenean suscipit sagittis vestibulum. Nunc feugiat tempor erat. Donec pulvinar in ipsum nec commodo. Nulla sed tellus consequat purus rhoncus porttitor.</p>
+<p>OpenGL is generally implemented in the video driver, and before using
+it you need to query the driver for function pointers. ImGui has it&rsquo;s
+own loader but it&rsquo;s not a replacement for a full opengl loader like
+<a href="https://glad.dav1d.de/">glad</a>. Since you now have two loaders, your
+code will not compile because there will be multiple function pointer
+redefinitions.</p>
+<p>To solve this #define <code>IMGUI_IMPL_OPENGL_LOADER_CUSTOM</code> before you
+include your OpenGL loader.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="cp">#define IMGUI_IMPL_OPENGL_LOADER_CUSTOM
+</span><span class="cp">#include</span> <span class="cpf">&#34;glad.c&#34;</span><span class="cp">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>You are now ready to write some code. You need to write some minimal
+boilerplate code to get ImGui up and running. I recommend checking the
+examples directory inside ImGui&rsquo;s zip file and running ImGui&rsquo;s example
+demo window to get an idea of what can be done. I hope this helps.</p>
+<p>See you next time!</p>
 
     </div>
 </div>
