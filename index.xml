@@ -13,12 +13,11 @@
     <author>Jorge</author>
     <guid>https://jsanchez.net/post/integrating_imgui_in_unity_builds/</guid>
     <description>
-        &lt;p&gt;&lt;a href=&#34;https://github.com/ocornut/imgui&#34;&gt;Dear Imgui&lt;/a&gt; is an awesome immediate
-mode graphical user interface (GUI) made by
+        &lt;p&gt;&lt;a href=&#34;https://github.com/ocornut/imgui&#34;&gt;Dear Imgui&lt;/a&gt; is an awesome C/C++
+immediate mode graphical user interface (GUI) made by
 &lt;a href=&#34;https://twitter.com/ocornut&#34;&gt;ocornut&lt;/a&gt;. It provides just about every
 widget you might need, buttons, color pickers, plots and many, many
-more. It&amp;rsquo;s also fast and super easy to
-use.&lt;/p&gt;
+more. It&amp;rsquo;s also fast and super easy to use.&lt;/p&gt;
 &lt;p&gt;Here&amp;rsquo;s a screenshot of someone&amp;rsquo;s game using Dear ImGui.&lt;/p&gt;
 &lt;p&gt;&lt;img loading=&#34;lazy&#34; 
     src=&#34;https://jsanchez.net/images/post_integrating_imgui_image1.png&#34; 

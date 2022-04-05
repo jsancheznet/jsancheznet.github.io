@@ -13,7 +13,7 @@
       <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://jsanchez.net/post/integrating_imgui_in_unity_builds/</guid>
-      <description>Dear Imgui is an awesome immediate mode graphical user interface (GUI) made by ocornut. It provides just about every widget you might need, buttons, color pickers, plots and many, many more. It&amp;rsquo;s also fast and super easy to use.
+      <description>Dear Imgui is an awesome C/C++ immediate mode graphical user interface (GUI) made by ocornut. It provides just about every widget you might need, buttons, color pickers, plots and many, many more. It&amp;rsquo;s also fast and super easy to use.
 Here&amp;rsquo;s a screenshot of someone&amp;rsquo;s game using Dear ImGui.
 Cool uh?. It&amp;rsquo;s easy to integrate into your project. The official documentation says integration should take you less than 3 hours. That&amp;rsquo;s a lot of features and awesomeness for such a short amount of time.</description>
     </item>
