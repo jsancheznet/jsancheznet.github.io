@@ -98,8 +98,6 @@ function CalculateMousePosition(Canvas, Event)
     var MouseX = Event.clientX - Rect.left;
     var MouseY = Event.clientY - Rect.top;
 
-    console.log(&#34;MouseX: &#34; + MouseX + &#34; MouseY: &#34; + MouseY);
-
     return { x: MouseX, y: MouseY };
 }
 
@@ -156,10 +154,6 @@ function Preview_HandleMouseMove(Event)
 
 function PreviewCanvasLoop()
 {
-    // Testing structs in structs
-    // var Test = {Position: {x: 10, y: 20}, Name: &#34;Testing&#34;};
-    // console.log(Test.Name + &#34; &#34; + Test.Position.x + &#34; &#34; + Test.Position.y);
-
     // Setup
     var Canvas = document.getElementById(&#39;PreviewCanvas&#39;);
     var Context = Canvas.getContext(&#39;2d&#39;);
