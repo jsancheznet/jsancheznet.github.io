@@ -49,7 +49,7 @@
     },
     "datePublished": "2022-04-05",
     "description": "Simplest collision detection algorithm",
-    "wordCount":  1296 ,
+    "wordCount":  1275 ,
     "mainEntityOfPage": "True",
     "dateModified": "2022-04-05",
     "publisher": {
@@ -133,7 +133,7 @@
                             
                             
                             By Jorge | <time>April 05, 2022</time>
-                            | 7 minutes
+                            | 6 minutes
                         </div>
                         <div class="tags">
                             
@@ -401,17 +401,15 @@ window.onload = function()
 detecting the intersection of two or more objects&rdquo;. In real life you
 cannot go through objects but in a computer simulation objects can
 overlap and go through each other. In order to resemble reality we
-need a way to detect when objects are overlapping and do something
-about it when they are.</p>
+need a way to detect when objects are overlapping.</p>
 <p>Imagine two billiard balls, one of them is moving towards the other.
 In the real world they collide and each ball goes in a different
-direction. When programming a simulation we need to check every
-frame/iteration if they are colliding, and when they are do something
-about so they are not.</p>
+direction. When programming a simulation we need to check every frame
+for collision, and when a collision is found resolve it.</p>
 <p>Collision detection is a broad and complex problem, and if that wasn&rsquo;t
 enough it is also coupled with simulations and physics.</p>
 <p>In this article I will only talk about collision detection of two or
-more circles in 2 dimensions(although the same algorithm works for 3d
+more circles in 2 dimensions(although the same algorithm works for 3D
 spheres), and to make it a little more fun I will explain one of the
 many ways of making things interact besides checking if they are
 colliding or not.</p>
@@ -427,12 +425,12 @@ colliding or not.</p>
     </a>
     Prerequisites
 </h2>
-<p>Every article requires some knowledge from the reader and as much as I
-would like to explain everything, i just don&rsquo;t have the time for
-it. None of what i&rsquo;m about to explain/use is hard or complex. You can
+<p>I have to draw the knowledge required line somewhere, and this is it.
+Nothing of what i&rsquo;m about to explain/use is hard or complex. You can
 learn it in a few minutes. The internet is full of guides and <a href="https://www.mathsisfun.com/algebra/vectors.html">this
 one</a> will do the job
 just fine.</p>
+<p>These are the things you need to know:</p>
 <ul>
 <li>What is a circle&rsquo;s radius</li>
 <li>What is a vector</li>
@@ -470,7 +468,7 @@ start by defining vector and circle structs.</p>
 <span class="p">}</span> <span class="n">circle</span><span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>Now let&rsquo;s define the functions we are going to need.</p>
+</div><p>Now let&rsquo;s define some functions we will need.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -649,7 +647,7 @@ that we just need to add the movement to the red circle.</p>
     <span class="p">{</span>
 	<span class="kt">float</span> <span class="n">RadiiSum</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">Radius</span> <span class="o">+</span> <span class="n">B</span><span class="o">-&gt;</span><span class="n">Radius</span><span class="p">;</span>
 	<span class="kt">float</span> <span class="n">MTD</span> <span class="o">=</span> <span class="n">Abs</span><span class="p">(</span><span class="n">Distance</span> <span class="o">-</span> <span class="n">RadiiSum</span><span class="p">);</span>
-	<span class="n">vec2</span> <span class="n">Direction</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">Subtract</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">));</span>
+	<span class="n">vec2</span> <span class="n">Direction</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">Subtract</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">Center</span><span class="p">,</span> <span class="n">B</span><span class="o">-&gt;</span><span class="n">Center</span><span class="p">));</span>
 	<span class="n">B</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">+=</span> <span class="n">Direction</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">MTV</span><span class="p">;</span>
 	<span class="n">B</span><span class="o">-&gt;</span><span class="n">Y</span> <span class="o">+=</span> <span class="n">Direction</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">MTV</span><span class="p">;</span>
     <span class="p">}</span>
@@ -660,8 +658,7 @@ that we just need to add the movement to the red circle.</p>
 something, i recommend doing sketches on pen and paper, that usually
 helps me.</p>
 <p>I&rsquo;m happy you read this whole thing, thank you, you are <em>awesome</em>.</p>
-<p>Until next time,</p>
-<p>Jorge.</p>
+<p>Until next time.</p>
 
     </div>
 </div>

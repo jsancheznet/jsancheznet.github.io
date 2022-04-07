@@ -269,17 +269,15 @@ window.onload = function()
 detecting the intersection of two or more objects&amp;rdquo;. In real life you
 cannot go through objects but in a computer simulation objects can
 overlap and go through each other. In order to resemble reality we
-need a way to detect when objects are overlapping and do something
-about it when they are.&lt;/p&gt;
+need a way to detect when objects are overlapping.&lt;/p&gt;
 &lt;p&gt;Imagine two billiard balls, one of them is moving towards the other.
 In the real world they collide and each ball goes in a different
-direction. When programming a simulation we need to check every
-frame/iteration if they are colliding, and when they are do something
-about so they are not.&lt;/p&gt;
+direction. When programming a simulation we need to check every frame
+for collision, and when a collision is found resolve it.&lt;/p&gt;
 &lt;p&gt;Collision detection is a broad and complex problem, and if that wasn&amp;rsquo;t
 enough it is also coupled with simulations and physics.&lt;/p&gt;
 &lt;p&gt;In this article I will only talk about collision detection of two or
-more circles in 2 dimensions(although the same algorithm works for 3d
+more circles in 2 dimensions(although the same algorithm works for 3D
 spheres), and to make it a little more fun I will explain one of the
 many ways of making things interact besides checking if they are
 colliding or not.&lt;/p&gt;
@@ -295,12 +293,12 @@ colliding or not.&lt;/p&gt;
     &lt;/a&gt;
     Prerequisites
 &lt;/h2&gt;
-&lt;p&gt;Every article requires some knowledge from the reader and as much as I
-would like to explain everything, i just don&amp;rsquo;t have the time for
-it. None of what i&amp;rsquo;m about to explain/use is hard or complex. You can
+&lt;p&gt;I have to draw the knowledge required line somewhere, and this is it.
+Nothing of what i&amp;rsquo;m about to explain/use is hard or complex. You can
 learn it in a few minutes. The internet is full of guides and &lt;a href=&#34;https://www.mathsisfun.com/algebra/vectors.html&#34;&gt;this
 one&lt;/a&gt; will do the job
 just fine.&lt;/p&gt;
+&lt;p&gt;These are the things you need to know:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;What is a circle&amp;rsquo;s radius&lt;/li&gt;
 &lt;li&gt;What is a vector&lt;/li&gt;
@@ -338,7 +336,7 @@ start by defining vector and circle structs.&lt;/p&gt;
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;circle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;Now let&amp;rsquo;s define the functions we are going to need.&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;Now let&amp;rsquo;s define some functions we will need.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -517,7 +515,7 @@ that we just need to add the movement to the red circle.&lt;/p&gt;
     &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 	&lt;span class=&#34;kt&#34;&gt;float&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RadiiSum&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Radius&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;B&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Radius&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 	&lt;span class=&#34;kt&#34;&gt;float&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MTD&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Abs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Distance&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RadiiSum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-	&lt;span class=&#34;n&#34;&gt;vec2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Direction&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Normalize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Subtract&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;B&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+	&lt;span class=&#34;n&#34;&gt;vec2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Direction&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Normalize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Subtract&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Center&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;B&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Center&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
 	&lt;span class=&#34;n&#34;&gt;B&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Direction&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MTV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 	&lt;span class=&#34;n&#34;&gt;B&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Direction&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MTV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
     &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
@@ -528,8 +526,7 @@ that we just need to add the movement to the red circle.&lt;/p&gt;
 something, i recommend doing sketches on pen and paper, that usually
 helps me.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m happy you read this whole thing, thank you, you are &lt;em&gt;awesome&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Until next time,&lt;/p&gt;
-&lt;p&gt;Jorge.&lt;/p&gt;
+&lt;p&gt;Until next time.&lt;/p&gt;
 
     </description>
     </item>
