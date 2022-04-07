@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="dark">
+
+    <title>Collision Detection: Circle vs Circle | jsanchez.net</title>
+
+    
+    
+
+    <meta property="og:site_name" content="jsanchez.net" />
+    <meta property="og:title" content="Collision Detection: Circle vs Circle | jsanchez.net"/>
+    <meta itemprop="name" content="Collision Detection: Circle vs Circle | jsanchez.net" />
+    <meta name="twitter:title" content="Collision Detection: Circle vs Circle | jsanchez.net" />
+    <meta name="application-name" content="Collision Detection: Circle vs Circle | jsanchez.net" /><meta name="twitter:card" content="summary"/>
+
+    <meta name="description" content="Simplest collision detection algorithm" />
+    <meta name="twitter:description" content="Simplest collision detection algorithm "/>
+    <meta itemprop="description" content=" Simplest collision detection algorithm "/>
+    <meta property="og:description" content=" Simplest collision detection algorithm " />
+
+    
+
+<meta property="og:type" content="article" />
+<meta property="article:publisher" content="jsanchez" />
+<meta property="og:article:published_time" content=2022-04-05T00:00:00Z />
+<meta property="article:published_time" content=2022-04-05T00:00:00Z />
+
+
+  <meta property="og:article:author" content="Jorge" />
+  <meta property="article:author" content="Jorge" />
+  <meta name="author" content="Jorge" />
+
+
+
+
+<script defer type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Collision Detection: Circle vs Circle",
+    "author": {
+      "@type": "Person",
+      "name": "jsanchez"
+    },
+    "datePublished": "2022-04-05",
+    "description": "Simplest collision detection algorithm",
+    "wordCount":  1296 ,
+    "mainEntityOfPage": "True",
+    "dateModified": "2022-04-05",
+    "publisher": {
+      "@type": "Organization",
+      "name": "jsanchez",
+      "logo": {
+        "@type": "imageObject",
+        "url": "https:\/\/jsanchez.net\/favicon.ico"
+      }
+    }
+  }
+</script>
+
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%90%B5%3C%2Ftext%3E%3C%2Fsvg%3E" type="image/svg+xml">
+    
+    <link rel="stylesheet" href="/sass/main.min.ab99ff095f832511e24ffb2fba2b51ad473b2f7e9301d674eba2c6c3a6e8bd81.css">
+    
+</head>
+
+    
+    <script>
+        (function() {
+            const colorSchemeKey = 'ThemeColorScheme';
+            localStorage.setItem(colorSchemeKey, "dark");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'ThemeColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.userColorScheme = 'dark';
+        } else {
+            document.documentElement.dataset.userColorScheme = 'light';
+        }
+    })();
+</script>
+
+
+    <body class="dark">
+        <nav class="navbar">
+    <div class="container">
+        <div class="flex">
+            <div>
+                <a class="brand" href="/">
+                    
+                    <span class="emoji">
+                         🐵 
+                    </span>
+                    
+                    
+                    jsanchez.net
+                    </a>
+            </div>
+            <div class="flex">
+                
+                <a href="/"></a>
+                
+                
+            </div>
+            </div>
+    </div>
+</nav>
+
+        <main>
+            
+<div class="container">
+    <article>
+        <header class="article-header">
+            <div class="thumb">
+                <div>
+                    <h1>Collision Detection: Circle vs Circle</h1>
+                    <div class="post-meta">
+                        <div>
+                            
+                            
+                            By Jorge | <time>April 05, 2022</time>
+                            | 7 minutes
+                        </div>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </article>
+
+    <div class="article-post">
+    <script>
+/*
+
+    Forgive me for the awful code, this was my first time writing
+    javascript and i'm not sure what it can do or how it works so this is
+    as janky as it gets.
+
+    - Complaint #1
+        - F#$% dynamic typing, mistakes are so annoying to find.
+    - Complaint #2
+	- F#$% writing code embedded in markdown
+
+*/
+
+//
+// Colors
+//
+var Color_EerieBlack = "#1F2022";
+var Color_White = "#FFFFFF";
+var Color_OrangeYellowCrayola = "#FFD479";
+var Color_CadetBlueCrayola = "#B3B9C5";
+var Color_OrangeRed = "#F86624";
+var Color_RoseMadder = "#DB2B39";
+var Color_UnitedNationsBlue = "#4A8FE7";
+var Color_WebsiteGrey = "#1F2022"
+
+// Default canvas size
+var CanvasWidth = 800;
+var CanvasHeight = 600;
+
+// Canvas objects for the different canvas id
+var PreviewCanvas;
+var Canvas2;
+
+// Circles/Objects for the preview canvas (The first one)
+var BlueCircle = { x: CanvasWidth / 2, y: CanvasHeight / 2, Radius: 40, Color: Color_UnitedNationsBlue};
+var DynamicCircle = {x: CanvasWidth / 2 + 220, y: CanvasHeight / 2, Radius: 40, Color: Color_RoseMadder};
+var StaticCircle = {x: CanvasWidth / 2 - 220, y: CanvasHeight / 2, Radius: 40, Color: Color_CadetBlueCrayola};
+
+// Circles/Objects for the second canvas (distance between centers canvas)
+var BlueCircle2 = { x: CanvasWidth / 2, y: CanvasHeight / 2 - 100, Radius: 40, Color: Color_UnitedNationsBlue};
+var GrayCircle2 = {x: CanvasWidth / 2, y: CanvasHeight / 2, Radius: 40, Color: Color_CadetBlueCrayola};
+var LineColor2 = Color_WebsiteGrey;
+var Distance2 = 0;
+
+
+// Math helpers
+function Magnitude(V)
+{
+    return Math.sqrt(V.x * V.x + V.y * V.y);
+}
+
+function Normalize(V)
+{
+    var Length = Magnitude(V);
+    var Result = {x: V.x / Length, y: V.y / Length};
+    return Result;
+}
+
+function Subtract(A, B)
+{
+    return {x: A.x - B.x, y: A.y - B.y};
+}
+
+function ClearCanvas(Context, Color)
+{
+    Context.fillStyle = 'white';
+    Context.fillRect(0, 0, CanvasWidth, CanvasHeight);
+}
+
+function DrawCircle(Context, Circle)
+{
+    Context.fillStyle = Circle.Color;
+    Context.beginPath();
+    Context.arc(Circle.x, Circle.y, Circle.Radius, 0, Math.PI * 2, true);
+    Context.fill();
+}
+
+function CalculateMousePosition(Canvas, Event)
+{
+    var Rect = Canvas.getBoundingClientRect();
+    var Root = document.documentElement;
+    var MouseX = Event.clientX - Rect.left;
+    var MouseY = Event.clientY - Rect.top;
+
+    console.log("MouseX: " + MouseX + " MouseY: " + MouseY);
+
+    return { x: MouseX, y: MouseY };
+}
+
+function Preview_HandleMouseClick(Event)
+{
+    BlueCircle.x = CanvasWidth / 2;
+    BlueCircle.y = CanvasHeight / 2;
+
+    DynamicCircle.x = CanvasWidth / 2 + 220;
+    DynamicCircle.y = CanvasHeight / 2;
+
+    StaticCircle.x = CanvasWidth / 2 - 220;
+    StaticCircle.y = CanvasHeight / 2;
+}
+
+function Preview_HandleMouseMove(Event)
+{
+    // Move the blue circle to mouse position
+    var MousePosition = CalculateMousePosition(PreviewCanvas, Event);
+    BlueCircle.x = MousePosition.x;
+    BlueCircle.y = MousePosition.y;
+
+    // Check for collision with the static circle
+    var dx = StaticCircle.x - BlueCircle.x;
+    var dy = StaticCircle.y - BlueCircle.y;
+    var Distance = Math.sqrt(dx * dx + dy * dy);
+    if(Distance < BlueCircle.Radius + StaticCircle.Radius)
+    {
+	BlueCircle.Color = "#F86624";
+    }
+    else
+    {
+	BlueCircle.Color = "#4A8FE7";
+    }
+
+    // Check for collision with the dynamic circle
+    var dx = DynamicCircle.x - BlueCircle.x;
+    var dy = DynamicCircle.y - BlueCircle.y;
+    var Distance = Math.sqrt(dx * dx + dy * dy);
+    if(Distance < BlueCircle.Radius + DynamicCircle.Radius)
+    {
+	var RadiiSum = BlueCircle.Radius + DynamicCircle.Radius;
+	var MTVLength = Math.abs(Distance - RadiiSum);
+
+	var A = {x: DynamicCircle.x, y: DynamicCircle.y};
+	var B = {x: BlueCircle.x, y: BlueCircle.y};
+	var SubtractTest = Subtract(A, B);
+	var Direction = Normalize(Subtract(A, B));
+
+	DynamicCircle.x += Direction.x * MTVLength;
+	DynamicCircle.y += Direction.y * MTVLength;
+    }
+}
+
+function PreviewCanvasLoop()
+{
+    // Testing structs in structs
+    // var Test = {Position: {x: 10, y: 20}, Name: "Testing"};
+    // console.log(Test.Name + " " + Test.Position.x + " " + Test.Position.y);
+
+    // Setup
+    var Canvas = document.getElementById('PreviewCanvas');
+    var Context = Canvas.getContext('2d');
+
+    // Update
+
+    // Draw
+    ClearCanvas(Context, 'white');
+
+    Context.fillStyle = Color_WebsiteGrey;
+    Context.font = '20px Roboto'
+    Context.fillText("press left mouse button to reset", 250, 570, 450);
+    Context.fillText("Try moving the blue circle around and collide with the other circles", 110, 30, 600);
+
+    DrawCircle(Context, StaticCircle);
+    DrawCircle(Context, DynamicCircle);
+    DrawCircle(Context, BlueCircle);
+}
+
+function Canvas2Loop()
+{
+    // Setup
+    var Canvas = document.getElementById('DistanceBetweenCircles');
+    var Context = Canvas.getContext('2d');
+
+    // Update
+
+    // Draw
+    ClearCanvas(Context, 'white');
+
+    Context.fillStyle = Color_WebsiteGrey;
+    Context.font = '20px Roboto';
+    Context.fillText("Distance: " + Distance2.toFixed(2), 10, 550, 450);
+    Context.fillText("Radii Sum: " + (BlueCircle2.Radius + GrayCircle2.Radius), 10, 570, 450);
+
+    DrawCircle(Context, GrayCircle2);
+    DrawCircle(Context, BlueCircle2);
+
+    // draw a red line
+    Context.strokeStyle = LineColor2;
+    Context.lineWidth = 3;
+    Context.beginPath();
+    Context.moveTo(GrayCircle2.x, GrayCircle2.y);
+    Context.lineTo(BlueCircle2.x, BlueCircle2.y);
+    Context.stroke();
+}
+
+function Canvas2_MouseClick()
+{
+
+}
+
+function Canvas2_MouseMove(Event)
+{
+    // Move the blue circle to mouse position
+    var MousePosition = CalculateMousePosition(Canvas2, Event);
+    BlueCircle2.x = MousePosition.x;
+    BlueCircle2.y = MousePosition.y;
+
+    // Check for collision with the static circle
+    var dx = GrayCircle2.x - BlueCircle2.x;
+    var dy = GrayCircle2.y - BlueCircle2.y;
+    var Distance = Math.sqrt(dx * dx + dy * dy);
+    Distance2 = Distance;
+    if(Distance < BlueCircle2.Radius + GrayCircle2.Radius)
+    {
+	// BlueCircle.Color = "#F86624";
+	LineColor2 = Color_OrangeRed;
+    }
+    else
+    {
+	LineColor2 = Color_WebsiteGrey;
+    }
+
+}
+
+window.onload = function()
+{
+    // Set all the canvas to execute the loop of each at 120 fps
+    var FPS = 120;
+    window.setInterval(PreviewCanvasLoop, 1000 / FPS);
+    window.setInterval(Canvas2Loop, 1000 / FPS);
+
+    PreviewCanvas = document.getElementById('PreviewCanvas');
+    PreviewCanvas.addEventListener('mousedown', Preview_HandleMouseClick);
+    PreviewCanvas.addEventListener('mousemove', Preview_HandleMouseMove);
+
+    Canvas2 = document.getElementById('DistanceBetweenCircles');
+    Canvas2.addEventListener('mousedown', Canvas2_MouseClick);
+    Canvas2.addEventListener('mousemove', Canvas2_MouseMove);
+
+    DistanceBetweenCircles;
+}
+
+</script>
+<h2 id="what-is-collision-detection">
+    <a href="#what-is-collision-detection" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    What is collision detection?
+</h2>
+<p>Wikipedia defines collision detection as &ldquo;the computational problem of
+detecting the intersection of two or more objects&rdquo;. In real life you
+cannot go through objects but in a computer simulation objects can
+overlap and go through each other. In order to resemble reality we
+need a way to detect when objects are overlapping and do something
+about it when they are.</p>
+<p>Imagine two billiard balls, one of them is moving towards the other.
+In the real world they collide and each ball goes in a different
+direction. When programming a simulation we need to check every
+frame/iteration if they are colliding, and when they are do something
+about so they are not.</p>
+<p>Collision detection is a broad and complex problem, and if that wasn&rsquo;t
+enough it is also coupled with simulations and physics.</p>
+<p>In this article I will only talk about collision detection of two or
+more circles in 2 dimensions(although the same algorithm works for 3d
+spheres), and to make it a little more fun I will explain one of the
+many ways of making things interact besides checking if they are
+colliding or not.</p>
+<p>Here&rsquo;s a preview of what we will be implementing.</p>
+<p><canvas id="PreviewCanvas" width="800" height="600"> </canvas></p>
+<h2 id="prerequisites">
+    <a href="#prerequisites" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Prerequisites
+</h2>
+<p>Every article requires some knowledge from the reader and as much as I
+would like to explain everything, i just don&rsquo;t have the time for
+it. None of what i&rsquo;m about to explain/use is hard or complex. You can
+learn it in a few minutes. The internet is full of guides and <a href="https://www.mathsisfun.com/algebra/vectors.html">this
+one</a> will do the job
+just fine.</p>
+<ul>
+<li>What is a circle&rsquo;s radius</li>
+<li>What is a vector</li>
+<li>Subtracting two vectors</li>
+<li>Magnitude of a vector</li>
+<li>Normalizing a vector</li>
+<li>Scaling a vector</li>
+</ul>
+<p>I will be programming in C since it&rsquo;s my favourite language, feel free
+to translate the code to your language and style of your choice. Let&rsquo;s
+start by defining vector and circle structs.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">vec2</span>
+<span class="p">{</span>
+    <span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">vec2</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">circle</span>
+<span class="p">{</span>
+    <span class="n">vec2</span> <span class="n">Center</span><span class="p">;</span> <span class="c1">// Center are the coordinates of the circle center
+</span><span class="c1"></span>    <span class="kt">float</span> <span class="n">Radius</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">circle</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Now let&rsquo;s define the functions we are going to need.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="n">vec2</span> <span class="nf">Subtract</span><span class="p">(</span><span class="n">vec2</span> <span class="n">A</span><span class="p">,</span> <span class="n">vec2</span> <span class="n">B</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">vec2</span> <span class="n">Result</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+
+    <span class="n">Result</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">B</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+    <span class="n">Result</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">B</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">Result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">float</span> <span class="nf">Magnitude</span><span class="p">(</span><span class="n">vec2</span> <span class="n">A</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">sqrtf</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">A</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">A</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">A</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">vec2</span> <span class="nf">Normalize</span><span class="p">(</span><span class="n">vec2</span> <span class="n">A</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">vec2</span> <span class="n">Result</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+
+    <span class="kt">float</span> <span class="n">Length</span> <span class="o">=</span> <span class="n">Magnitude</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+    <span class="n">Result</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">x</span> <span class="o">/</span> <span class="n">Length</span><span class="p">;</span>
+    <span class="n">Result</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">y</span> <span class="o">/</span> <span class="n">Length</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">Result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="checking-if-two-circles-collide">
+    <a href="#checking-if-two-circles-collide" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Checking if two circles collide
+</h2>
+<p>Checking if two circles collide is really easy. If the distance
+between the two circle&rsquo;s center is less than the sum of their radii,
+they are colliding. Play around with the following example and you
+should get the idea. The black line represents the distance between
+the two circles, and the radii sum is just the sum of both circle&rsquo;s
+radii.</p>
+<p><canvas id="DistanceBetweenCircles" width="800" height="600"> </canvas></p>
+<h3 id="the-code">
+    <a href="#the-code" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    The code
+</h3>
+<p>The following function returns just a boolean, wether the input
+circles are colliding or not.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="kt">bool</span> <span class="nf">Collide</span><span class="p">(</span><span class="n">circle</span> <span class="n">A</span><span class="p">,</span> <span class="n">circle</span> <span class="n">B</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">vec2</span> <span class="n">Difference</span> <span class="o">=</span> <span class="n">Subtract</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">Center</span><span class="p">,</span> <span class="n">B</span><span class="p">.</span><span class="n">Center</span><span class="p">);</span>
+    <span class="kt">float</span> <span class="n">Distance</span>  <span class="o">=</span> <span class="n">Magnitude</span><span class="p">(</span><span class="n">Difference</span><span class="p">);</span>
+    <span class="kt">float</span> <span class="n">RadiiSum</span>  <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">Radius</span> <span class="o">+</span> <span class="n">B</span><span class="p">.</span><span class="n">Radius</span><span class="p">;</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">Distance</span> <span class="o">&lt;</span> <span class="n">RadiiSum</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+	<span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="basic-collision-interaction">
+    <a href="#basic-collision-interaction" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Basic collision interaction
+</h2>
+<p>Here we are going to do the red and blue circle interaction seen on the first section.</p>
+<p>In order to move the circles apart we need what is called the &ldquo;minimum
+translation vector&rdquo;, in other words it&rsquo;s how much the circles are
+overlapping. With this length, we can simply move both circles apart
+or just one as i did with the red one.</p>
+<p>To get the minimum translation vector we subtract the distance from
+the radiisum and take the absolute value of the result. After that we
+need to get the normalized direction vector of the distance. After
+that we just need to add the movement to the red circle.</p>
+<p>Math in words makes everyone dizzy, and i&rsquo;m not good at explaining. Code is a more elegant medium.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="kt">void</span> <span class="nf">Simulate</span><span class="p">(</span><span class="n">circle</span> <span class="n">A</span><span class="p">,</span> <span class="n">circle</span> <span class="o">*</span><span class="n">B</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Be aware that circle B is a pointer, this is because we are
+</span><span class="c1"></span>    <span class="c1">// going to update it&#39;s position. B is the same as the red circle
+</span><span class="c1"></span>    <span class="c1">// in the previous demo window.
+</span><span class="c1"></span>
+    <span class="c1">// Abs -&gt; Absolute value
+</span><span class="c1"></span>    <span class="c1">// MTD -&gt; Minimum translation distance
+</span><span class="c1"></span>
+    <span class="k">if</span><span class="p">(</span><span class="n">Collide</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="o">*</span><span class="n">B</span><span class="p">))</span>
+    <span class="p">{</span>
+	<span class="kt">float</span> <span class="n">RadiiSum</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">Radius</span> <span class="o">+</span> <span class="n">B</span><span class="o">-&gt;</span><span class="n">Radius</span><span class="p">;</span>
+	<span class="kt">float</span> <span class="n">MTD</span> <span class="o">=</span> <span class="n">Abs</span><span class="p">(</span><span class="n">Distance</span> <span class="o">-</span> <span class="n">RadiiSum</span><span class="p">);</span>
+	<span class="n">vec2</span> <span class="n">Direction</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">Subtract</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">));</span>
+	<span class="n">B</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">+=</span> <span class="n">Direction</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">MTV</span><span class="p">;</span>
+	<span class="n">B</span><span class="o">-&gt;</span><span class="n">Y</span> <span class="o">+=</span> <span class="n">Direction</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">MTV</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>This last section is a bit more complicated, if you don&rsquo;t understand
+something, i recommend doing sketches on pen and paper, that usually
+helps me.</p>
+<p>I&rsquo;m happy you read this whole thing, thank you, you are <em>awesome</em>.</p>
+<p>Until next time,</p>
+<p>Jorge.</p>
+
+    </div>
+</div>
+
+<div class="container">
+    
+    <nav class="flex container suggested">
+        
+        <a rel="prev" href="/post/integrating_imgui_in_unity_builds/" title="Previous post (older)">
+            <span>Previous</span>
+            Integrating Dear ImGui in unity builds
+            </a>
+        
+        
+        
+    </nav>
+    
+</div>
+ 
+<div class="container">
+    
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "blog-jsanchez-uy" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            })
+        }
+    })
+</script>
+
+</div>
+
+</main>
+
+
+        </main>
+        <footer class="footer flex">
+    <section class="container">
+        <nav class="footer-links">
+            
+            <a href="/index.xml">RSS</a>
+            
+        </nav>
+
+        
+    </section>
+    <script defer src="/ts/features.a534d05c446023fa2ae2a638f87cc2443ad8e49f6aaeb4d9f24ed61d53766712.js" 
+    data-enable-footnotes="true"
+    ></script>
+</footer>
+
+    </body>
+</html>

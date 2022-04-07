@@ -6,7 +6,16 @@
     <description>Recent content in Posts on jsanchez.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jsanchez.net/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 05 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jsanchez.net/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Collision Detection: Circle vs Circle</title>
+      <link>https://jsanchez.net/post/collision_circle_circle/</link>
+      <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jsanchez.net/post/collision_circle_circle/</guid>
+      <description>/*Forgive me for the awful code, this was my first time writingjavascript and i&#39;m not sure what it can do or how it works so this isas janky as it gets.- Complaint #1- F#$% dynamic typing, mistakes are so annoying to find.- Complaint #2- F#$% writing code embedded in markdown*///// Colors//var Color_EerieBlack = &#34;#1F2022&#34;;var Color_White = &#34;</description>
+    </item>
+    
     <item>
       <title>Integrating Dear ImGui in unity builds</title>
       <link>https://jsanchez.net/post/integrating_imgui_in_unity_builds/</link>
