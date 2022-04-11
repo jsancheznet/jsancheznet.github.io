@@ -635,8 +635,8 @@ that we just need to add the movement to the red circle.</p>
 	<span class="kt">float</span> <span class="n">RadiiSum</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">Radius</span> <span class="o">+</span> <span class="n">B</span><span class="o">-&gt;</span><span class="n">Radius</span><span class="p">;</span>
 	<span class="kt">float</span> <span class="n">MTD</span> <span class="o">=</span> <span class="n">Abs</span><span class="p">(</span><span class="n">Distance</span> <span class="o">-</span> <span class="n">RadiiSum</span><span class="p">);</span>
 	<span class="n">vec2</span> <span class="n">Direction</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">Subtract</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">Center</span><span class="p">,</span> <span class="n">B</span><span class="o">-&gt;</span><span class="n">Center</span><span class="p">));</span>
-	<span class="n">B</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">+=</span> <span class="n">Direction</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">MTV</span><span class="p">;</span>
-	<span class="n">B</span><span class="o">-&gt;</span><span class="n">Y</span> <span class="o">+=</span> <span class="n">Direction</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">MTV</span><span class="p">;</span>
+	<span class="n">B</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">+=</span> <span class="n">Direction</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">MTD</span><span class="p">;</span>
+	<span class="n">B</span><span class="o">-&gt;</span><span class="n">Y</span> <span class="o">+=</span> <span class="n">Direction</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">MTD</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
