@@ -8,7 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 12 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jsanchez.net/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>In Progress: Toasty</title>
+      <title>Simple web server</title>
+      <link>https://jsanchez.net/projects/simple_web_server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jsanchez.net/projects/simple_web_server/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Toasty</title>
       <link>https://jsanchez.net/projects/nito/</link>
       <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
       
