@@ -22,7 +22,7 @@ if (!doNotTrack) {
 </script>
 
     
-<script type="application/javascript">
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -40,10 +40,10 @@ if (!doNotTrack) {
     <meta name="twitter:title" content="Handling Hybrid GPU&#39;s in Windows | jsanchez.net" />
     <meta name="application-name" content="Handling Hybrid GPU&#39;s in Windows | jsanchez.net" /><meta name="twitter:card" content="summary"/>
 
-    <meta name="description" content="" />
-    <meta name="twitter:description" content=""/>
-    <meta itemprop="description" content=""/>
-    <meta property="og:description" content="" />
+    <meta name="description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer" />
+    <meta name="twitter:description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer"/>
+    <meta itemprop="description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer"/>
+    <meta property="og:description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer" />
 
     
 
@@ -212,16 +212,16 @@ if (!doNotTrack) {
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="cp">#ifdef _WIN32
-</span><span class="cp"></span><span class="k">extern</span> <span class="s">&#34;C&#34;</span>
-<span class="p">{</span>
-    <span class="c1">// nVidia
-</span><span class="c1"></span>    <span class="kr">__declspec</span><span class="p">(</span> <span class="n">dllexport</span> <span class="p">)</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">int</span> <span class="n">NvOptimusEnablement</span> <span class="o">=</span> <span class="mh">0x00000001</span><span class="p">;</span>
-    <span class="c1">// AMD
-</span><span class="c1"></span>    <span class="kr">__declspec</span><span class="p">(</span> <span class="n">dllexport</span> <span class="p">)</span> <span class="kt">int</span> <span class="n">AmdPowerXpressRequestHighPerformance</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="cp">#endif
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="cp">#ifdef _WIN32
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">extern</span> <span class="s">&#34;C&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// nVidia
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kr">__declspec</span><span class="p">(</span> <span class="n">dllexport</span> <span class="p">)</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">int</span> <span class="n">NvOptimusEnablement</span> <span class="o">=</span> <span class="mh">0x00000001</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// AMD
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kr">__declspec</span><span class="p">(</span> <span class="n">dllexport</span> <span class="p">)</span> <span class="kt">int</span> <span class="n">AmdPowerXpressRequestHighPerformance</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#endif
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>I have only tested the code on nVidia Optimus since it&rsquo;s the only thing i have.</p>
 <p>If you would like to know more, you should read the following manuals for Hybrid GPU&rsquo;s, they are <em>really</em> <em>really</em> short (4-5 pages).</p>
@@ -255,8 +255,8 @@ if (!doNotTrack) {
     
     <div class="disqus-container">
     <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
+<script>
+    window.disqus_config = function () {
     
     
     
@@ -302,7 +302,7 @@ if (!doNotTrack) {
 
         
     </section>
-    <script defer src="/ts/features.a534d05c446023fa2ae2a638f87cc2443ad8e49f6aaeb4d9f24ed61d53766712.js" 
+    <script defer src="/ts/features.f658accd96ff946aea04e7fca44a794f9632d32718aaf69be3f0f434b3ac6118.js" 
     data-enable-footnotes="true"
     ></script>
 </footer>

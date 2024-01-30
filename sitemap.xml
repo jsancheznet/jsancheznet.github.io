@@ -2,12 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://jsanchez.net/projects/simple_web_server/</loc>
+    <loc>https://jsanchez.net/projects/action_roguelike/</loc>
+    <lastmod>2023-11-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jsanchez.net/projects/glow/</loc>
   </url><url>
     <loc>https://jsanchez.net/projects/nito/</loc>
     <lastmod>2020-11-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jsanchez.net/projects/glow/</loc>
   </url><url>
     <loc>https://jsanchez.net/projects/jsanchez_math/</loc>
     <lastmod>2021-12-12T00:00:00+00:00</lastmod>
@@ -18,13 +19,18 @@
     <loc>https://jsanchez.net/projects/pong/</loc>
     <lastmod>2020-11-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jsanchez.net/projects/bin2header/</loc>
-  </url><url>
     <loc>https://jsanchez.net/projects/gold_diggers/</loc>
   </url><url>
+    <loc>https://jsanchez.net/projects/bin2header/</loc>
+  </url><url>
+    <loc>https://jsanchez.net/projects/simple_web_server/</loc>
+    <lastmod>2023-11-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://jsanchez.net/</loc>
-    <lastmod>2022-04-05T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2023-11-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jsanchez.net/projects/</loc>
+    <lastmod>2023-11-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jsanchez.net/post/collision_circle_circle/</loc>
     <lastmod>2022-04-05T00:00:00+00:00</lastmod>
@@ -34,9 +40,6 @@
   </url><url>
     <loc>https://jsanchez.net/post/integrating_imgui_in_unity_builds/</loc>
     <lastmod>2022-02-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jsanchez.net/projects/</loc>
-    <lastmod>2021-12-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jsanchez.net/post/avoiding-double-allocation-for-structs-and-data/</loc>
     <lastmod>2020-06-26T00:00:00+00:00</lastmod>

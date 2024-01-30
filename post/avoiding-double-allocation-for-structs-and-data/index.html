@@ -22,7 +22,7 @@ if (!doNotTrack) {
 </script>
 
     
-<script type="application/javascript">
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -40,10 +40,10 @@ if (!doNotTrack) {
     <meta name="twitter:title" content="Avoiding double allocation for structs and data | jsanchez.net" />
     <meta name="application-name" content="Avoiding double allocation for structs and data | jsanchez.net" /><meta name="twitter:card" content="summary"/>
 
-    <meta name="description" content="" />
-    <meta name="twitter:description" content=""/>
-    <meta itemprop="description" content=""/>
-    <meta property="og:description" content="" />
+    <meta name="description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer" />
+    <meta name="twitter:description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer"/>
+    <meta itemprop="description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer"/>
+    <meta property="og:description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer" />
 
     
 
@@ -53,9 +53,9 @@ if (!doNotTrack) {
 <meta property="article:published_time" content=2020-06-26T00:00:00Z />
 
 
-  <meta property="og:article:author" content="Jorge" />
-  <meta property="article:author" content="Jorge" />
-  <meta name="author" content="Jorge" />
+  <meta property="og:article:author" content="Jsanchez" />
+  <meta property="article:author" content="Jsanchez" />
+  <meta name="author" content="Jsanchez" />
 
 
 
@@ -179,7 +179,7 @@ if (!doNotTrack) {
                         <div>
                             
                             
-                            By Jorge | <time>June 26, 2020</time>
+                            By Jsanchez | <time>June 26, 2020</time>
                             | 2 minutes
                         </div>
                         <div class="tags">
@@ -227,35 +227,35 @@ calling malloc twice, one for the container and one for the data.</p>
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="cm">/* The natural way to allocate a struct and its data */</span>
-<span class="k">struct</span> <span class="nc">sample_type</span>
-<span class="p">{</span>
-    <span class="kt">float</span> <span class="n">A</span><span class="p">;</span>
-    <span class="kt">uint32_t</span> <span class="n">B</span><span class="p">;</span>
-    <span class="kt">uint8_t</span> <span class="n">C</span><span class="p">;</span>
-    <span class="kt">bool</span> <span class="n">D</span><span class="p">;</span>
-    <span class="kt">bool</span> <span class="n">E</span><span class="p">;</span>
-    <span class="kt">bool</span> <span class="n">F</span><span class="p">;</span>
-    <span class="kt">bool</span> <span class="n">G</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">struct</span> <span class="nc">sample_struct</span>
-<span class="p">{</span>
-    <span class="kt">uint32_t</span> <span class="n">Count</span><span class="p">;</span>
-    <span class="n">sample_type</span> <span class="o">*</span><span class="n">Data</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="kt">uint32_t</span> <span class="n">Count</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-<span class="n">sample_struct</span> <span class="o">*</span><span class="n">Container</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_struct</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">sample_struct</span><span class="p">));</span>
-<span class="n">Container</span><span class="o">-&gt;</span><span class="n">Count</span> <span class="o">=</span> <span class="n">Count</span><span class="p">;</span>
-<span class="n">Container</span><span class="o">-&gt;</span><span class="n">Data</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_type</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">sizof</span><span class="p">(</span><span class="n">sample_type</span><span class="p">)</span> <span class="o">*</span> <span class="n">Count</span><span class="p">);</span>
-
-<span class="c1">// Do something to the data
-</span><span class="c1"></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">Container</span><span class="o">-&gt;</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">Container</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{};</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="cm">/* The natural way to allocate a struct and its data */</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">sample_type</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">A</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint32_t</span> <span class="n">B</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint8_t</span> <span class="n">C</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">D</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">E</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">F</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">G</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">sample_struct</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint32_t</span> <span class="n">Count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sample_type</span> <span class="o">*</span><span class="n">Data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">uint32_t</span> <span class="n">Count</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sample_struct</span> <span class="o">*</span><span class="n">Container</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_struct</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">sample_struct</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="n">Container</span><span class="o">-&gt;</span><span class="n">Count</span> <span class="o">=</span> <span class="n">Count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">Container</span><span class="o">-&gt;</span><span class="n">Data</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_type</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">sizof</span><span class="p">(</span><span class="n">sample_type</span><span class="p">)</span> <span class="o">*</span> <span class="n">Count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Do something to the data
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">Container</span><span class="o">-&gt;</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Container</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Something doesn&rsquo;t feel right, these two allocations are going to be
 used together, one after the other but there is no guarantee they will
@@ -296,36 +296,36 @@ its data.</p>
 </span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="cm">/* Using a single allocation */</span>
-
-<span class="k">struct</span> <span class="nc">sample_type</span>
-<span class="p">{</span>
-    <span class="kt">float</span> <span class="n">A</span><span class="p">;</span>
-    <span class="kt">uint32_t</span> <span class="n">B</span><span class="p">;</span>
-    <span class="kt">uint8_t</span> <span class="n">C</span><span class="p">;</span>
-    <span class="kt">bool</span> <span class="n">D</span><span class="p">;</span>
-    <span class="kt">bool</span> <span class="n">E</span><span class="p">;</span>
-    <span class="kt">bool</span> <span class="n">F</span><span class="p">;</span>
-    <span class="kt">bool</span> <span class="n">G</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">struct</span> <span class="nc">sample_struct</span>
-<span class="p">{</span>
-    <span class="kt">uint32_t</span> <span class="n">Count</span><span class="p">;</span>
-    <span class="n">sample_type</span> <span class="o">*</span><span class="n">Data</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="kt">uint32_t</span> <span class="n">Count</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-<span class="n">sample_struct</span> <span class="o">*</span><span class="n">Container</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_struct</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">sample_struct</span><span class="p">)</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">sample_type</span><span class="p">)</span> <span class="o">*</span> <span class="n">Count</span><span class="p">);</span>
-<span class="n">Container</span><span class="o">-&gt;</span><span class="n">Count</span> <span class="o">=</span> <span class="n">Count</span><span class="p">;</span>
-<span class="n">Container</span><span class="o">-&gt;</span><span class="n">Data</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_type</span><span class="o">*</span><span class="p">)(</span><span class="n">Container</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-
-<span class="c1">// Do something to the data
-</span><span class="c1"></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">Container</span><span class="o">-&gt;</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">Container</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{};</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cm">/* Using a single allocation */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">sample_type</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">A</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint32_t</span> <span class="n">B</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint8_t</span> <span class="n">C</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">D</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">E</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">F</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">G</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">sample_struct</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint32_t</span> <span class="n">Count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sample_type</span> <span class="o">*</span><span class="n">Data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">uint32_t</span> <span class="n">Count</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sample_struct</span> <span class="o">*</span><span class="n">Container</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_struct</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">sample_struct</span><span class="p">)</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">sample_type</span><span class="p">)</span> <span class="o">*</span> <span class="n">Count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Container</span><span class="o">-&gt;</span><span class="n">Count</span> <span class="o">=</span> <span class="n">Count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">Container</span><span class="o">-&gt;</span><span class="n">Data</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_type</span><span class="o">*</span><span class="p">)(</span><span class="n">Container</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Do something to the data
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">Container</span><span class="o">-&gt;</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Container</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>If you ask me the second version is better, a single call to malloc
 and things that belong together are adjacent in memory.</p>
@@ -348,20 +348,20 @@ Data should always be the last member of the struct.</p>
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="k">struct</span> <span class="nc">sample_struct</span>
-<span class="p">{</span>
-    <span class="kt">uint32_t</span> <span class="n">Count</span><span class="p">;</span>
-    <span class="n">sample_type</span> <span class="o">*</span><span class="n">Data</span><span class="p">;</span>
-    <span class="kt">float</span> <span class="n">Other</span><span class="p">;</span> <span class="c1">// WRONG, writing to this variable will overwrite values in the Data array and vice versa.
-</span><span class="c1"></span><span class="p">};</span>
-
-<span class="k">struct</span> <span class="nc">sample_struct</span>
-<span class="p">{</span>
-    <span class="kt">uint32_t</span> <span class="n">Count</span><span class="p">;</span>
-    <span class="kt">float</span> <span class="n">Other</span><span class="p">;</span> <span class="c1">// CORRECT, Remember to add struct members before the Data array.
-</span><span class="c1"></span>    <span class="n">sample_type</span> <span class="o">*</span><span class="n">Data</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">sample_struct</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint32_t</span> <span class="n">Count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sample_type</span> <span class="o">*</span><span class="n">Data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">Other</span><span class="p">;</span> <span class="c1">// WRONG, writing to this variable will overwrite values in the Data array and vice versa.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">sample_struct</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint32_t</span> <span class="n">Count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">Other</span><span class="p">;</span> <span class="c1">// CORRECT, Remember to add struct members before the Data array.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">sample_type</span> <span class="o">*</span><span class="n">Data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -391,8 +391,8 @@ Data should always be the last member of the struct.</p>
     
     <div class="disqus-container">
     <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
+<script>
+    window.disqus_config = function () {
     
     
     
@@ -438,7 +438,7 @@ Data should always be the last member of the struct.</p>
 
         
     </section>
-    <script defer src="/ts/features.a534d05c446023fa2ae2a638f87cc2443ad8e49f6aaeb4d9f24ed61d53766712.js" 
+    <script defer src="/ts/features.f658accd96ff946aea04e7fca44a794f9632d32718aaf69be3f0f434b3ac6118.js" 
     data-enable-footnotes="true"
     ></script>
 </footer>

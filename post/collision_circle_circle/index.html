@@ -22,7 +22,7 @@ if (!doNotTrack) {
 </script>
 
     
-<script type="application/javascript">
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -71,7 +71,7 @@ if (!doNotTrack) {
     },
     "datePublished": "2022-04-05",
     "description": "Simplest collision detection algorithm",
-    "wordCount":  1264 ,
+    "wordCount":  832 ,
     "mainEntityOfPage": "True",
     "dateModified": "2022-04-05",
     "publisher": {
@@ -180,7 +180,7 @@ if (!doNotTrack) {
                             
                             
                             By Jorge | <time>April 05, 2022</time>
-                            | 6 minutes
+                            | 4 minutes
                         </div>
                         <div class="tags">
                             
@@ -492,17 +492,17 @@ start by defining vector and circle structs.</p>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">vec2</span>
-<span class="p">{</span>
-    <span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">vec2</span><span class="p">;</span>
-
-<span class="k">typedef</span> <span class="k">struct</span> <span class="n">circle</span>
-<span class="p">{</span>
-    <span class="n">vec2</span> <span class="n">Center</span><span class="p">;</span> <span class="c1">// Center are the coordinates of the circle center
-</span><span class="c1"></span>    <span class="kt">float</span> <span class="n">Radius</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">circle</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">vec2</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="n">vec2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">circle</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vec2</span> <span class="n">Center</span><span class="p">;</span> <span class="c1">// Center are the coordinates of the circle center
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">float</span> <span class="n">Radius</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="n">circle</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Now let&rsquo;s define some functions we will need.</p>
 <div class="highlight"><div class="chroma">
@@ -534,32 +534,32 @@ start by defining vector and circle structs.</p>
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="n">vec2</span> <span class="nf">Subtract</span><span class="p">(</span><span class="n">vec2</span> <span class="n">A</span><span class="p">,</span> <span class="n">vec2</span> <span class="n">B</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">vec2</span> <span class="n">Result</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
-
-    <span class="n">Result</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">B</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
-    <span class="n">Result</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">B</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
-
-    <span class="k">return</span> <span class="n">Result</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">float</span> <span class="nf">Magnitude</span><span class="p">(</span><span class="n">vec2</span> <span class="n">A</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="n">sqrtf</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">A</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">A</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">A</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="n">vec2</span> <span class="nf">Normalize</span><span class="p">(</span><span class="n">vec2</span> <span class="n">A</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">vec2</span> <span class="n">Result</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
-
-    <span class="kt">float</span> <span class="n">Length</span> <span class="o">=</span> <span class="n">Magnitude</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
-    <span class="n">Result</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">x</span> <span class="o">/</span> <span class="n">Length</span><span class="p">;</span>
-    <span class="n">Result</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">y</span> <span class="o">/</span> <span class="n">Length</span><span class="p">;</span>
-
-    <span class="k">return</span> <span class="n">Result</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="n">vec2</span> <span class="nf">Subtract</span><span class="p">(</span><span class="n">vec2</span> <span class="n">A</span><span class="p">,</span> <span class="n">vec2</span> <span class="n">B</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vec2</span> <span class="n">Result</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Result</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">B</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Result</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">B</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">float</span> <span class="nf">Magnitude</span><span class="p">(</span><span class="n">vec2</span> <span class="n">A</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nf">sqrtf</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">A</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">A</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">A</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">vec2</span> <span class="nf">Normalize</span><span class="p">(</span><span class="n">vec2</span> <span class="n">A</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vec2</span> <span class="n">Result</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">Length</span> <span class="o">=</span> <span class="nf">Magnitude</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Result</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">x</span> <span class="o">/</span> <span class="n">Length</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Result</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">y</span> <span class="o">/</span> <span class="n">Length</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="checking-if-two-circles-collide">
     <a href="#checking-if-two-circles-collide" class="anchor">
@@ -607,26 +607,24 @@ circles are colliding or not.</p>
 </span><span class="lnt">13
 </span><span class="lnt">14
 </span><span class="lnt">15
-</span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="kt">bool</span> <span class="nf">Collide</span><span class="p">(</span><span class="n">circle</span> <span class="n">A</span><span class="p">,</span> <span class="n">circle</span> <span class="n">B</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">vec2</span> <span class="n">Difference</span> <span class="o">=</span> <span class="n">Subtract</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">Center</span><span class="p">,</span> <span class="n">B</span><span class="p">.</span><span class="n">Center</span><span class="p">);</span>
-    <span class="kt">float</span> <span class="n">Distance</span>  <span class="o">=</span> <span class="n">Magnitude</span><span class="p">(</span><span class="n">Difference</span><span class="p">);</span>
-    <span class="kt">float</span> <span class="n">RadiiSum</span>  <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">Radius</span> <span class="o">+</span> <span class="n">B</span><span class="p">.</span><span class="n">Radius</span><span class="p">;</span>
-
-    <span class="k">if</span><span class="p">(</span><span class="n">Distance</span> <span class="o">&lt;</span> <span class="n">RadiiSum</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">else</span>
-    <span class="p">{</span>
-	<span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">bool</span> <span class="nf">Collide</span><span class="p">(</span><span class="n">circle</span> <span class="n">A</span><span class="p">,</span> <span class="n">circle</span> <span class="n">B</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vec2</span> <span class="n">Difference</span> <span class="o">=</span> <span class="nf">Subtract</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">Center</span><span class="p">,</span> <span class="n">B</span><span class="p">.</span><span class="n">Center</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">Distance</span>  <span class="o">=</span> <span class="nf">Magnitude</span><span class="p">(</span><span class="n">Difference</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">RadiiSum</span>  <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">Radius</span> <span class="o">+</span> <span class="n">B</span><span class="p">.</span><span class="n">Radius</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">Distance</span> <span class="o">&lt;</span> <span class="n">RadiiSum</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="basic-collision-interaction">
     <a href="#basic-collision-interaction" class="anchor">
@@ -669,24 +667,24 @@ that we just need to add the movement to the red circle.</p>
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="kt">void</span> <span class="nf">Simulate</span><span class="p">(</span><span class="n">circle</span> <span class="n">A</span><span class="p">,</span> <span class="n">circle</span> <span class="o">*</span><span class="n">B</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="c1">// Be aware that circle B is a pointer, this is because we are
-</span><span class="c1"></span>    <span class="c1">// going to update it&#39;s position. B is the same as the red circle
-</span><span class="c1"></span>    <span class="c1">// in the previous demo window.
-</span><span class="c1"></span>
-    <span class="c1">// Abs -&gt; Absolute value
-</span><span class="c1"></span>    <span class="c1">// MTD -&gt; Minimum translation distance
-</span><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="n">Collide</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="o">*</span><span class="n">B</span><span class="p">))</span>
-    <span class="p">{</span>
-	<span class="kt">float</span> <span class="n">RadiiSum</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">Radius</span> <span class="o">+</span> <span class="n">B</span><span class="o">-&gt;</span><span class="n">Radius</span><span class="p">;</span>
-	<span class="kt">float</span> <span class="n">MTD</span> <span class="o">=</span> <span class="n">Abs</span><span class="p">(</span><span class="n">Distance</span> <span class="o">-</span> <span class="n">RadiiSum</span><span class="p">);</span>
-	<span class="n">vec2</span> <span class="n">Direction</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">Subtract</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">Center</span><span class="p">,</span> <span class="n">B</span><span class="o">-&gt;</span><span class="n">Center</span><span class="p">));</span>
-	<span class="n">B</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">+=</span> <span class="n">Direction</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">MTD</span><span class="p">;</span>
-	<span class="n">B</span><span class="o">-&gt;</span><span class="n">Y</span> <span class="o">+=</span> <span class="n">Direction</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">MTD</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">Simulate</span><span class="p">(</span><span class="n">circle</span> <span class="n">A</span><span class="p">,</span> <span class="n">circle</span> <span class="o">*</span><span class="n">B</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Be aware that circle B is a pointer, this is because we are
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// going to update it&#39;s position. B is the same as the red circle
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// in the previous demo window.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Abs -&gt; Absolute value
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// MTD -&gt; Minimum translation distance
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="nf">Collide</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="o">*</span><span class="n">B</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">float</span> <span class="n">RadiiSum</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">Radius</span> <span class="o">+</span> <span class="n">B</span><span class="o">-&gt;</span><span class="n">Radius</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">float</span> <span class="n">MTD</span> <span class="o">=</span> <span class="nf">Abs</span><span class="p">(</span><span class="n">Distance</span> <span class="o">-</span> <span class="n">RadiiSum</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">vec2</span> <span class="n">Direction</span> <span class="o">=</span> <span class="nf">Normalize</span><span class="p">(</span><span class="nf">Subtract</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">Center</span><span class="p">,</span> <span class="n">B</span><span class="o">-&gt;</span><span class="n">Center</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">	<span class="n">B</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">+=</span> <span class="n">Direction</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">MTD</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">B</span><span class="o">-&gt;</span><span class="n">Y</span> <span class="o">+=</span> <span class="n">Direction</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">MTD</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>This last section is a bit more complicated, if you don&rsquo;t understand
 something, i recommend doing sketches on pen and paper, that usually
@@ -716,8 +714,8 @@ helps me.</p>
     
     <div class="disqus-container">
     <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
+<script>
+    window.disqus_config = function () {
     
     
     
@@ -763,7 +761,7 @@ helps me.</p>
 
         
     </section>
-    <script defer src="/ts/features.a534d05c446023fa2ae2a638f87cc2443ad8e49f6aaeb4d9f24ed61d53766712.js" 
+    <script defer src="/ts/features.f658accd96ff946aea04e7fca44a794f9632d32718aaf69be3f0f434b3ac6118.js" 
     data-enable-footnotes="true"
     ></script>
 </footer>

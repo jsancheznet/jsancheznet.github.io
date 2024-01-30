@@ -6,75 +6,56 @@
     <description>Recent content in Posts on jsanchez.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 05 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jsanchez.net/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 05 Apr 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jsanchez.net/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Collision Detection: Circle vs Circle</title>
       <link>https://jsanchez.net/post/collision_circle_circle/</link>
       <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://jsanchez.net/post/collision_circle_circle/</guid>
-      <description>/*Forgive me for the awful code, this was my first time writingjavascript and i&#39;m not sure what it can do or how it works so this isas janky as it gets.- Complaint #1- F#$% dynamic typing, mistakes are so annoying to find.- Complaint #2- F#$% writing code embedded in markdown*///// Colors//var Color_EerieBlack = &#34;#1F2022&#34;;var Color_White = &#34;</description>
+      <description>What is collision detection?&#xD;Wikipedia defines collision detection as &amp;ldquo;the computational problem of detecting the intersection of two or more objects&amp;rdquo;. In real life you cannot go through objects but in a computer simulation objects can overlap and go through each other. In order to resemble reality we need a way to detect when objects are overlapping.&#xA;Imagine two billiard balls, one of them is moving towards the other. In the real world they collide and each ball goes in a different direction.</description>
     </item>
-    
     <item>
       <title>Integrating Dear ImGui in unity builds</title>
       <link>https://jsanchez.net/post/integrating_imgui_in_unity_builds/</link>
       <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://jsanchez.net/post/integrating_imgui_in_unity_builds/</guid>
-      <description>Dear Imgui is an awesome C/C++ immediate mode graphical user interface (GUI) made by ocornut. It provides just about every widget you might need, buttons, color pickers, plots and many, many more. It&amp;rsquo;s also fast and super easy to use.
-Here&amp;rsquo;s a screenshot of someone&amp;rsquo;s game using Dear ImGui.
-Cool uh?. It&amp;rsquo;s easy to integrate into your project. The official documentation says integration should take you less than 3 hours. That&amp;rsquo;s a lot of features and awesomeness for such a short amount of time.</description>
+      <description>Dear Imgui is an awesome C/C++ immediate mode graphical user interface (GUI) made by ocornut. It provides just about every widget you might need, buttons, color pickers, plots and many, many more. It&amp;rsquo;s also fast and super easy to use.&#xA;Here&amp;rsquo;s a screenshot of someone&amp;rsquo;s game using Dear ImGui.&#xA;Cool uh?. It&amp;rsquo;s easy to integrate into your project. The official documentation says integration should take you less than 3 hours. That&amp;rsquo;s a lot of features and awesomeness for such a short amount of time.</description>
     </item>
-    
     <item>
       <title>Avoiding double allocation for structs and data</title>
       <link>https://jsanchez.net/post/avoiding-double-allocation-for-structs-and-data/</link>
       <pubDate>Fri, 26 Jun 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://jsanchez.net/post/avoiding-double-allocation-for-structs-and-data/</guid>
-      <description>Let&amp;rsquo;s say you want to allocate a struct that contains a pointer to other data that also needs allocation. The natural way to do it is calling malloc twice, one for the container and one for the data.
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28  /* The natural way to allocate a struct and its data */ struct sample_type { float A; uint32_t B; uint8_t C; bool D; bool E; bool F; bool G; }; struct sample_struct { uint32_t Count; sample_type *Data; }; uint32_t Count = 5; sample_struct *Container = (sample_struct*)malloc(sizeof(sample_struct)); Container-&amp;gt;Count = Count; Container-&amp;gt;Data = (sample_type*)malloc(sizof(sample_type) * Count); // Do something to the data for(int i = 0; i &amp;lt; Container-&amp;gt;Count; i++) { Container-&amp;gt;Data[i] = {}; }   Something doesn&amp;rsquo;t feel right, these two allocations are going to be used together, one after the other but there is no guarantee they will be contiguous in memory, a cache miss is likely to happen everytime you access the data.</description>
+      <description>Let&amp;rsquo;s say you want to allocate a struct that contains a pointer to other data that also needs allocation. The natural way to do it is calling malloc twice, one for the container and one for the data.&#xA;1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 /* The natural way to allocate a struct and its data */ struct sample_type { float A; uint32_t B; uint8_t C; bool D; bool E; bool F; bool G; }; struct sample_struct { uint32_t Count; sample_type *Data; }; uint32_t Count = 5; sample_struct *Container = (sample_struct*)malloc(sizeof(sample_struct)); Container-&amp;gt;Count = Count; Container-&amp;gt;Data = (sample_type*)malloc(sizof(sample_type) * Count); // Do something to the data for(int i = 0; i &amp;lt; Container-&amp;gt;Count; i++) { Container-&amp;gt;Data[i] = {}; } Something doesn&amp;rsquo;t feel right, these two allocations are going to be used together, one after the other but there is no guarantee they will be contiguous in memory, a cache miss is likely to happen everytime you access the data.</description>
     </item>
-    
     <item>
       <title>Multiple OpenGL shaders in a single file</title>
       <link>https://jsanchez.net/post/multiple-shaders-in-one-file/</link>
       <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://jsanchez.net/post/multiple-shaders-in-one-file/</guid>
       <description>If you have been using OpenGL for a while, you probably have a lot of shader files, maybe one for each programmable stage of the pipeline. At some point during development the directory that contains the shaders becomes a mess, managing and opening shader files in your editor becomes tedious. Luckily there&amp;rsquo;s a way to cram all the programmable shader stages in a single file, reducing the number of files at least by half and calm the neat freak inside.</description>
     </item>
-    
     <item>
       <title>Gists/Snippets</title>
       <link>https://jsanchez.net/post/glsl-gists/</link>
       <pubDate>Sat, 07 Dec 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://jsanchez.net/post/glsl-gists/</guid>
-      <description>1 2 3 4 5 6 7 8 9 10 11  // Normalize an input value to 0,1 range. f32 Normalize(f32 Input, f32 Minimum, f32 Maximum) { return (Input - Minimum) / (Maximum - Minimum); } // Map one range onto another. Ex: Map Value Between 0-1800 to -20, 20. f32 Remap(f32 Input, f32 InputStart, f32 InputEnd, f32 OutputStart, f32 OutputEnd) { return (Input - InputStart) / (InputEnd - InputStart) * (OutputEnd - OutputStart) + OutputStart; }   GLSL1 2 3 4 5 6 7 8  // Grayscale FragmentColor = texture(SampledTexture, UV); float Average = (0.</description>
+      <description>1 2 3 4 5 6 7 8 9 10 11 // Normalize an input value to 0,1 range. f32 Normalize(f32 Input, f32 Minimum, f32 Maximum) { return (Input - Minimum) / (Maximum - Minimum); } // Map one range onto another. Ex: Map Value Between 0-1800 to -20, 20. f32 Remap(f32 Input, f32 InputStart, f32 InputEnd, f32 OutputStart, f32 OutputEnd) { return (Input - InputStart) / (InputEnd - InputStart) * (OutputEnd - OutputStart) + OutputStart; } GLSL&#xD;1 2 3 4 5 6 7 8 // Grayscale FragmentColor = texture(SampledTexture, UV); float Average = (0.</description>
     </item>
-    
     <item>
       <title>Handling Hybrid GPU&#39;s in Windows</title>
       <link>https://jsanchez.net/post/handling-hybrid-gpus-in-windows/</link>
       <pubDate>Sat, 07 Dec 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://jsanchez.net/post/handling-hybrid-gpus-in-windows/</guid>
-      <description>Hybrid GPU&amp;rsquo;s are everywhere these days and yet it is not obvious how to run your program using the discrete GPU.
-I can think of 5 ways on how to get this done:
- Your software is popular enough that the GPU manufacturer includes an &amp;ldquo;application profile&amp;rdquo; for your software in their driver. This profile is basically the GPU configuration/settings for an executable. When your software has no application profile, the default graphic card depends on the global GPU settings but it is most likely the integrated gpu.</description>
+      <description>Hybrid GPU&amp;rsquo;s are everywhere these days and yet it is not obvious how to run your program using the discrete GPU.&#xA;I can think of 5 ways on how to get this done:&#xA;Your software is popular enough that the GPU manufacturer includes an &amp;ldquo;application profile&amp;rdquo; for your software in their driver. This profile is basically the GPU configuration/settings for an executable. When your software has no application profile, the default graphic card depends on the global GPU settings but it is most likely the integrated gpu.</description>
     </item>
-    
     <item>
       <title>Making multi-line macros behave as a functions</title>
       <link>https://jsanchez.net/post/multi-line-function-macro/</link>
       <pubDate>Sat, 22 Jun 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://jsanchez.net/post/multi-line-function-macro/</guid>
-      <description>When you need a muli-line macro to have its own scope and behave as a regular function would, the naive way is to simply wrap the macro statements inside curly brackets. Now, time has passed and suddenly program compilation is failing, and as usual the compiler output is not helping. The naive macro implementation has come back to bite you.
-Here&amp;rsquo;s the naive implementation, let&amp;rsquo;s see how to fix it.</description>
+      <description>When you need a muli-line macro to have its own scope and behave as a regular function would, the naive way is to simply wrap the macro statements inside curly brackets. Now, time has passed and suddenly program compilation is failing, and as usual the compiler output is not helping. The naive macro implementation has come back to bite you.&#xA;Here&amp;rsquo;s the naive implementation, let&amp;rsquo;s see how to fix it.</description>
     </item>
-    
   </channel>
 </rss>

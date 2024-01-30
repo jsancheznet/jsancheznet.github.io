@@ -22,7 +22,7 @@ if (!doNotTrack) {
 </script>
 
     
-<script type="application/javascript">
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -71,7 +71,7 @@ if (!doNotTrack) {
     },
     "datePublished": "2022-02-22",
     "description": "Small guide showing how to integrate Dear Imgui in C++ unity builds/single translation unity builds.",
-    "wordCount":  684 ,
+    "wordCount":  694 ,
     "mainEntityOfPage": "True",
     "dateModified": "2022-02-22",
     "publisher": {
@@ -242,23 +242,23 @@ bigger than 150000 lines compile in a second. really.</p>
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="cp">#include</span> <span class="cpf">&#34;my_other_file.cpp&#34;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&#34;my_other_file2.cpp&#34;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&#34;my_other_file3.cpp&#34;</span><span class="cp">
-</span><span class="cp"></span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="c1">// My program...
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;my_other_file.cpp&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;my_other_file2.cpp&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;my_other_file3.cpp&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// My program...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="go">jsanchez@scarlet:~$ cl main.cpp
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">jsanchez@scarlet:~$ cl main.cpp
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>If you are not compiling your code like this, you don&rsquo;t need to follow
 this guide. Head over to the official <a href="https://github.com/ocornut/imgui#integration">integration
@@ -319,10 +319,10 @@ include path.</p>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="cp">#include</span> <span class="cpf">&#34;imgui.h&#34;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&#34;imgui_impl_sdl.h&#34;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&#34;imgui_impl_opengl3.h&#34;</span><span class="cp">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;imgui.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;imgui_impl_sdl.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;imgui_impl_opengl3.h&#34;</span><span class="cp">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>We do this!</p>
 <div class="highlight"><div class="chroma">
@@ -336,14 +336,14 @@ include path.</p>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="cp">#include</span> <span class="cpf">&#34;imgui.cpp&#34;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&#34;imgui_tables.cpp&#34;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&#34;imgui_widgets.cpp&#34;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&#34;imgui_draw.cpp&#34;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&#34;imgui_demo.cpp&#34; // You don&#39;t need this file, i use it as gui reference</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&#34;imgui_impl_opengl3.cpp&#34;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&#34;imgui_impl_sdl.cpp&#34;</span><span class="cp">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;imgui.cpp&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;imgui_tables.cpp&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;imgui_widgets.cpp&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;imgui_draw.cpp&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;imgui_demo.cpp&#34;</span><span class="cp"> </span><span class="c1">// You don&#39;t need this file, i use it as gui reference
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&#34;imgui_impl_opengl3.cpp&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;imgui_impl_sdl.cpp&#34;</span><span class="cp">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>We are almost ready to use Dear ImGui. There&rsquo;s just one more problem.</p>
 <h2 id="opengl-loader-clash">
@@ -370,9 +370,9 @@ include your OpenGL loader.</p>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="cp">#define IMGUI_IMPL_OPENGL_LOADER_CUSTOM
-</span><span class="cp">#include</span> <span class="cpf">&#34;glad.c&#34;</span><span class="cp">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="cp">#define IMGUI_IMPL_OPENGL_LOADER_CUSTOM
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;glad.c&#34;</span><span class="cp">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>You are now ready to write some code. You need to write some minimal
 boilerplate code to get ImGui up and running. I recommend checking the
@@ -407,8 +407,8 @@ demo window to get an idea of what can be done. I hope this helps.</p>
     
     <div class="disqus-container">
     <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
+<script>
+    window.disqus_config = function () {
     
     
     
@@ -454,7 +454,7 @@ demo window to get an idea of what can be done. I hope this helps.</p>
 
         
     </section>
-    <script defer src="/ts/features.a534d05c446023fa2ae2a638f87cc2443ad8e49f6aaeb4d9f24ed61d53766712.js" 
+    <script defer src="/ts/features.f658accd96ff946aea04e7fca44a794f9632d32718aaf69be3f0f434b3ac6118.js" 
     data-enable-footnotes="true"
     ></script>
 </footer>

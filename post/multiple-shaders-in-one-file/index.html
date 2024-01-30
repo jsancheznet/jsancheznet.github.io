@@ -22,7 +22,7 @@ if (!doNotTrack) {
 </script>
 
     
-<script type="application/javascript">
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -40,10 +40,10 @@ if (!doNotTrack) {
     <meta name="twitter:title" content="Multiple OpenGL shaders in a single file | jsanchez.net" />
     <meta name="application-name" content="Multiple OpenGL shaders in a single file | jsanchez.net" /><meta name="twitter:card" content="summary"/>
 
-    <meta name="description" content="" />
-    <meta name="twitter:description" content=""/>
-    <meta itemprop="description" content=""/>
-    <meta property="og:description" content="" />
+    <meta name="description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer" />
+    <meta name="twitter:description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer"/>
+    <meta itemprop="description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer"/>
+    <meta property="og:description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer" />
 
     
 
@@ -235,34 +235,34 @@ files at least by half and calm the neat freak inside.</p>
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-glsl" data-lang="glsl"><span class="cp">#ifdef VERTEX_SHADER</span>
-
-<span class="n">layout</span><span class="p">(</span><span class="n">location</span> <span class="o">=</span> <span class="mo">0</span><span class="p">)</span> <span class="k">in</span> <span class="k">vec3</span> <span class="n">Vertices</span><span class="p">;</span>
-<span class="n">layout</span><span class="p">(</span><span class="n">location</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">in</span> <span class="k">vec3</span> <span class="n">Normals</span><span class="p">;</span>
-
-<span class="k">uniform</span> <span class="n">mat4</span> <span class="n">Model</span><span class="p">;</span>
-<span class="k">uniform</span> <span class="n">mat4</span> <span class="n">View</span><span class="p">;</span>
-<span class="k">uniform</span> <span class="n">mat4</span> <span class="n">Projection</span><span class="p">;</span>
-
-<span class="k">void</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">gl_Position</span> <span class="o">=</span> <span class="n">Projection</span> <span class="o">*</span> <span class="n">View</span> <span class="o">*</span> <span class="n">Model</span> <span class="o">*</span> <span class="k">vec4</span><span class="p">(</span><span class="n">Vertices</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="cp">#endif</span>
-
-<span class="cp">#ifdef FRAGMENT_SHADER</span>
-
-<span class="k">uniform</span> <span class="k">vec3</span> <span class="n">Color</span><span class="p">;</span>
-<span class="k">out</span> <span class="k">vec4</span> <span class="n">FragColor</span><span class="p">;</span>
-
-<span class="k">void</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-   <span class="n">FragColor</span> <span class="o">=</span> <span class="k">vec4</span><span class="p">(</span><span class="n">Color</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="cp">#endif</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-glsl" data-lang="glsl"><span class="line"><span class="cl"><span class="cp">#ifdef VERTEX_SHADER</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">layout</span><span class="p">(</span><span class="n">location</span> <span class="o">=</span> <span class="mo">0</span><span class="p">)</span> <span class="k">in</span> <span class="k">vec3</span> <span class="n">Vertices</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">layout</span><span class="p">(</span><span class="n">location</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">in</span> <span class="k">vec3</span> <span class="n">Normals</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">uniform</span> <span class="n">mat4</span> <span class="n">Model</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">uniform</span> <span class="n">mat4</span> <span class="n">View</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">uniform</span> <span class="n">mat4</span> <span class="n">Projection</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">void</span> <span class="n">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">gl_Position</span> <span class="o">=</span> <span class="n">Projection</span> <span class="o">*</span> <span class="n">View</span> <span class="o">*</span> <span class="n">Model</span> <span class="o">*</span> <span class="k">vec4</span><span class="p">(</span><span class="n">Vertices</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#endif</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#ifdef FRAGMENT_SHADER</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">uniform</span> <span class="k">vec3</span> <span class="n">Color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">out</span> <span class="k">vec4</span> <span class="n">FragColor</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">void</span> <span class="n">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="n">FragColor</span> <span class="o">=</span> <span class="k">vec4</span><span class="p">(</span><span class="n">Color</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#endif</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Shader compilation looks something like this:</p>
 <div class="highlight"><div class="chroma">
@@ -290,28 +290,28 @@ files at least by half and calm the neat freak inside.</p>
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="kt">char</span> <span class="o">*</span><span class="n">SourceFile</span> <span class="o">=</span> <span class="n">ReadTextFile</span><span class="p">(</span><span class="s">&#34;MyShader.glsl&#34;</span><span class="p">);</span>
-
-<span class="c1">// Compile Vertex Shader
-</span><span class="c1"></span><span class="n">u32</span> <span class="n">VertexShaderObject</span> <span class="o">=</span> <span class="n">glCreateShader</span><span class="p">(</span><span class="n">GL_VERTEX_SHADER</span><span class="p">);</span>
-<span class="kt">char</span> <span class="o">*</span><span class="n">VertexSource</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#34;#version 330 core</span><span class="se">\n</span><span class="s">#define VERTEX_SHADER</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">SourceFile</span><span class="p">};</span>
-<span class="n">glShaderSource</span><span class="p">(</span><span class="n">VertexShaderObject</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">VertexSource</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
-<span class="n">glCompileShader</span><span class="p">(</span><span class="n">VertexShaderObject</span><span class="p">);</span>
-
-<span class="c1">// Compile Fragment Shader
-</span><span class="c1"></span><span class="n">u32</span> <span class="n">FragmentShaderObject</span> <span class="o">=</span> <span class="n">glCreateShader</span><span class="p">(</span><span class="n">GL_FRAGMENT_SHADER</span><span class="p">);</span>
-<span class="kt">char</span> <span class="o">*</span><span class="n">FragmentSource</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#34;#version 330 core</span><span class="se">\n</span><span class="s">#define FRAGMENT_SHADER</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">SourceFile</span><span class="p">};</span>
-<span class="n">glShaderSource</span><span class="p">(</span><span class="n">FragmentShaderObject</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">FragmentSource</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
-<span class="n">glCompileShader</span><span class="p">(</span><span class="n">FragmentShaderObject</span><span class="p">);</span>
-
-<span class="c1">// Compile other shader stages
-</span><span class="c1"></span>
-<span class="c1">// Link program
-</span><span class="c1"></span><span class="n">u32</span> <span class="n">FinalProgram</span> <span class="o">=</span> <span class="n">glCreateProgram</span><span class="p">();</span>
-<span class="n">glAttachShader</span><span class="p">(</span><span class="n">FinalProgram</span><span class="p">,</span> <span class="n">VertexShaderObject</span><span class="p">);</span>
-<span class="n">glAttachShader</span><span class="p">(</span><span class="n">FinalProgram</span><span class="p">,</span> <span class="n">FragmentShaderObject</span><span class="p">);</span>
-<span class="n">glLinkProgram</span><span class="p">(</span><span class="n">Result</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="n">SourceFile</span> <span class="o">=</span> <span class="n">ReadTextFile</span><span class="p">(</span><span class="s">&#34;MyShader.glsl&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Compile Vertex Shader
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">u32</span> <span class="n">VertexShaderObject</span> <span class="o">=</span> <span class="n">glCreateShader</span><span class="p">(</span><span class="n">GL_VERTEX_SHADER</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="n">VertexSource</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#34;#version 330 core</span><span class="se">\n</span><span class="s">#define VERTEX_SHADER</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">SourceFile</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">glShaderSource</span><span class="p">(</span><span class="n">VertexShaderObject</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">VertexSource</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">glCompileShader</span><span class="p">(</span><span class="n">VertexShaderObject</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Compile Fragment Shader
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">u32</span> <span class="n">FragmentShaderObject</span> <span class="o">=</span> <span class="n">glCreateShader</span><span class="p">(</span><span class="n">GL_FRAGMENT_SHADER</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="n">FragmentSource</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#34;#version 330 core</span><span class="se">\n</span><span class="s">#define FRAGMENT_SHADER</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">SourceFile</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">glShaderSource</span><span class="p">(</span><span class="n">FragmentShaderObject</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">FragmentSource</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">glCompileShader</span><span class="p">(</span><span class="n">FragmentShaderObject</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Compile other shader stages
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Link program
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">u32</span> <span class="n">FinalProgram</span> <span class="o">=</span> <span class="n">glCreateProgram</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">glAttachShader</span><span class="p">(</span><span class="n">FinalProgram</span><span class="p">,</span> <span class="n">VertexShaderObject</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">glAttachShader</span><span class="p">(</span><span class="n">FinalProgram</span><span class="p">,</span> <span class="n">FragmentShaderObject</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">glLinkProgram</span><span class="p">(</span><span class="n">Result</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Notice that before calling glShaderSource we create an array of two
 pointers to char, the first one contains glsl&rsquo;s #version preprocessor
@@ -352,8 +352,8 @@ string to our newly created array.</p>
     
     <div class="disqus-container">
     <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
+<script>
+    window.disqus_config = function () {
     
     
     
@@ -399,7 +399,7 @@ string to our newly created array.</p>
 
         
     </section>
-    <script defer src="/ts/features.a534d05c446023fa2ae2a638f87cc2443ad8e49f6aaeb4d9f24ed61d53766712.js" 
+    <script defer src="/ts/features.f658accd96ff946aea04e7fca44a794f9632d32718aaf69be3f0f434b3ac6118.js" 
     data-enable-footnotes="true"
     ></script>
 </footer>

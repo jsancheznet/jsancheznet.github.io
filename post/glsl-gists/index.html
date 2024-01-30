@@ -22,7 +22,7 @@ if (!doNotTrack) {
 </script>
 
     
-<script type="application/javascript">
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -40,10 +40,10 @@ if (!doNotTrack) {
     <meta name="twitter:title" content="Gists/Snippets | jsanchez.net" />
     <meta name="application-name" content="Gists/Snippets | jsanchez.net" /><meta name="twitter:card" content="summary"/>
 
-    <meta name="description" content="" />
-    <meta name="twitter:description" content=""/>
-    <meta itemprop="description" content=""/>
-    <meta property="og:description" content="" />
+    <meta name="description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer" />
+    <meta name="twitter:description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer"/>
+    <meta itemprop="description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer"/>
+    <meta property="og:description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer" />
 
     
 
@@ -205,18 +205,18 @@ if (!doNotTrack) {
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="c1">// Normalize an input value to 0,1 range.
-</span><span class="c1"></span><span class="n">f32</span> <span class="nf">Normalize</span><span class="p">(</span><span class="n">f32</span> <span class="n">Input</span><span class="p">,</span> <span class="n">f32</span> <span class="n">Minimum</span><span class="p">,</span> <span class="n">f32</span> <span class="n">Maximum</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">Input</span> <span class="o">-</span> <span class="n">Minimum</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">Maximum</span> <span class="o">-</span> <span class="n">Minimum</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="c1">// Map one range onto another. Ex: Map Value Between 0-1800 to -20, 20.
-</span><span class="c1"></span><span class="n">f32</span> <span class="nf">Remap</span><span class="p">(</span><span class="n">f32</span> <span class="n">Input</span><span class="p">,</span> <span class="n">f32</span> <span class="n">InputStart</span><span class="p">,</span> <span class="n">f32</span> <span class="n">InputEnd</span><span class="p">,</span> <span class="n">f32</span> <span class="n">OutputStart</span><span class="p">,</span> <span class="n">f32</span> <span class="n">OutputEnd</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">Input</span> <span class="o">-</span> <span class="n">InputStart</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">InputEnd</span> <span class="o">-</span> <span class="n">InputStart</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">OutputEnd</span> <span class="o">-</span> <span class="n">OutputStart</span><span class="p">)</span> <span class="o">+</span> <span class="n">OutputStart</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="c1">// Normalize an input value to 0,1 range.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">f32</span> <span class="nf">Normalize</span><span class="p">(</span><span class="n">f32</span> <span class="n">Input</span><span class="p">,</span> <span class="n">f32</span> <span class="n">Minimum</span><span class="p">,</span> <span class="n">f32</span> <span class="n">Maximum</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">Input</span> <span class="o">-</span> <span class="n">Minimum</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">Maximum</span> <span class="o">-</span> <span class="n">Minimum</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Map one range onto another. Ex: Map Value Between 0-1800 to -20, 20.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">f32</span> <span class="nf">Remap</span><span class="p">(</span><span class="n">f32</span> <span class="n">Input</span><span class="p">,</span> <span class="n">f32</span> <span class="n">InputStart</span><span class="p">,</span> <span class="n">f32</span> <span class="n">InputEnd</span><span class="p">,</span> <span class="n">f32</span> <span class="n">OutputStart</span><span class="p">,</span> <span class="n">f32</span> <span class="n">OutputEnd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">Input</span> <span class="o">-</span> <span class="n">InputStart</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">InputEnd</span> <span class="o">-</span> <span class="n">InputStart</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">OutputEnd</span> <span class="o">-</span> <span class="n">OutputStart</span><span class="p">)</span> <span class="o">+</span> <span class="n">OutputStart</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="glsl">
     <a href="#glsl" class="anchor">
@@ -240,15 +240,15 @@ if (!doNotTrack) {
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-glsl" data-lang="glsl"><span class="c1">// Grayscale</span>
-<span class="n">FragmentColor</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">SampledTexture</span><span class="p">,</span> <span class="n">UV</span><span class="p">);</span>
-<span class="k">float</span> <span class="n">Average</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.2126</span> <span class="o">*</span> <span class="n">FragmentColor</span><span class="p">.</span><span class="n">r</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.7152</span> <span class="o">*</span> <span class="n">FragmentColor</span><span class="p">.</span><span class="n">g</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.0722</span> <span class="o">*</span> <span class="n">FragmentColor</span><span class="p">.</span><span class="n">b</span><span class="p">);</span>
-<span class="n">FragmentColor</span> <span class="o">=</span> <span class="k">vec4</span><span class="p">(</span><span class="n">Average</span><span class="p">,</span> <span class="n">Average</span><span class="p">,</span> <span class="n">Average</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
-
-<span class="c1">// Gamma Correction</span>
-<span class="k">const</span> <span class="k">float</span> <span class="n">Gamma</span> <span class="o">=</span> <span class="mf">2.2</span><span class="p">;</span>
-<span class="n">FragmentColor</span> <span class="o">=</span> <span class="n">pow</span><span class="p">(</span><span class="n">FragmentColor</span><span class="p">,</span> <span class="k">vec3</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">Gamma</span><span class="p">));</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-glsl" data-lang="glsl"><span class="line"><span class="cl"><span class="c1">// Grayscale</span>
+</span></span><span class="line"><span class="cl"><span class="n">FragmentColor</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">SampledTexture</span><span class="p">,</span> <span class="n">UV</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">float</span> <span class="n">Average</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.2126</span> <span class="o">*</span> <span class="n">FragmentColor</span><span class="p">.</span><span class="n">r</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.7152</span> <span class="o">*</span> <span class="n">FragmentColor</span><span class="p">.</span><span class="n">g</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.0722</span> <span class="o">*</span> <span class="n">FragmentColor</span><span class="p">.</span><span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">FragmentColor</span> <span class="o">=</span> <span class="k">vec4</span><span class="p">(</span><span class="n">Average</span><span class="p">,</span> <span class="n">Average</span><span class="p">,</span> <span class="n">Average</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Gamma Correction</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="k">float</span> <span class="n">Gamma</span> <span class="o">=</span> <span class="mf">2.2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">FragmentColor</span> <span class="o">=</span> <span class="n">pow</span><span class="p">(</span><span class="n">FragmentColor</span><span class="p">,</span> <span class="k">vec3</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">Gamma</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -278,8 +278,8 @@ if (!doNotTrack) {
     
     <div class="disqus-container">
     <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
+<script>
+    window.disqus_config = function () {
     
     
     
@@ -325,7 +325,7 @@ if (!doNotTrack) {
 
         
     </section>
-    <script defer src="/ts/features.a534d05c446023fa2ae2a638f87cc2443ad8e49f6aaeb4d9f24ed61d53766712.js" 
+    <script defer src="/ts/features.f658accd96ff946aea04e7fca44a794f9632d32718aaf69be3f0f434b3ac6118.js" 
     data-enable-footnotes="true"
     ></script>
 </footer>
