@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>jsanchez.net</title>
+    <title>Jorge Sánchez</title>
     <link>https://jsanchez.net/</link>
-    <description>Recent content on jsanchez.net</description>
+    <description>Recent content on Jorge Sánchez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 06 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://jsanchez.net/index.xml" rel="self" type="application/rss+xml" />
