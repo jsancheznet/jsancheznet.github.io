@@ -13,14 +13,14 @@
     
     <guid>https://jsanchez.net/post/tom_looman_course_notes/</guid>
     <description>
-        &lt;p&gt;These are my notes for Tom Looman&amp;rsquo;s course &lt;a href=&#34;https://courses.tomlooman.com/p/unrealengine-cpp?coupon_code=COMMUNITY15&#34;&gt;Professional Game
+        &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;THIS IS A WORK IN PROGRESS, I&amp;#39;M TRANSCRIBING NOTES
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;These are my notes for Tom Looman&amp;rsquo;s course &lt;a href=&#34;https://courses.tomlooman.com/p/unrealengine-cpp?coupon_code=COMMUNITY15&#34;&gt;Professional Game
 Development in C++ and Unreal
 Engine&lt;/a&gt;. These
 notes mainly consist of things i did not know or understand at the
 time and things i did not want to forget. This is mainly for myself,
 but I hope someone else will find the useful.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;TODO CREATE THE TABLE OF CONTENTS
-&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
+&lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;#Names-and-Naming&#34;&gt;Names and Naming&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#example2&#34;&gt;Example2&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#third-example&#34;&gt;Third Example&lt;/a&gt;&lt;/li&gt;
