@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="theme-color" content="dark">
 
-    <title>Tom Looman Notes | Jorge Sánchez</title>
+    <title>Tom Looman Notes A | Jorge Sánchez</title>
 
     
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GW6Q2Z6045"></script>
@@ -35,10 +35,10 @@ if (!doNotTrack) {
 
 
     <meta property="og:site_name" content="jsanchez.net" />
-    <meta property="og:title" content="Tom Looman Notes | Jorge Sánchez"/>
-    <meta itemprop="name" content="Tom Looman Notes | Jorge Sánchez" />
-    <meta name="twitter:title" content="Tom Looman Notes | Jorge Sánchez" />
-    <meta name="application-name" content="Tom Looman Notes | Jorge Sánchez" /><meta name="twitter:card" content="summary"/>
+    <meta property="og:title" content="Tom Looman Notes A | Jorge Sánchez"/>
+    <meta itemprop="name" content="Tom Looman Notes A | Jorge Sánchez" />
+    <meta name="twitter:title" content="Tom Looman Notes A | Jorge Sánchez" />
+    <meta name="application-name" content="Tom Looman Notes A | Jorge Sánchez" /><meta name="twitter:card" content="summary"/>
 
     <meta name="description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer" />
     <meta name="twitter:description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer"/>
@@ -60,14 +60,14 @@ if (!doNotTrack) {
   {
     "@context": "http://schema.org",
     "@type": "Article",
-    "headline": "Tom Looman Notes",
+    "headline": "Tom Looman Notes A",
     "author": {
       "@type": "Person",
       "name": "jsanchez"
     },
     "datePublished": "2024-03-20",
     "description": "",
-    "wordCount":  619 ,
+    "wordCount":  664 ,
     "mainEntityOfPage": "True",
     "dateModified": "2024-03-20",
     "publisher": {
@@ -170,7 +170,7 @@ if (!doNotTrack) {
         <header class="article-header">
             <div class="thumb">
                 <div>
-                    <h1>Tom Looman Notes</h1>
+                    <h1>Tom Looman Notes A</h1>
                     <div class="post-meta">
                         <div>
                             
@@ -178,7 +178,7 @@ if (!doNotTrack) {
                               
                             
                             By jsanchez | <time>March 20, 2024</time>
-                            | 3 minutes
+                            | 4 minutes
                         </div>
                         <div class="tags">
                             
@@ -198,10 +198,45 @@ notes mainly consist of things i did not know or understand at the
 time and things i did not want to forget. This is mainly for myself,
 but I hope someone else will find the useful.</p>
 <ol>
-<li><a href="#Names-and-Naming">Names and Naming</a></li>
-<li><a href="#example2">Example2</a></li>
-<li><a href="#third-example">Third Example</a></li>
-<li><a href="#fourth-examplehttpwwwfourthexamplecom">Fourth Example</a></li>
+<li><a href="#about-unreal-engine">About Unreal Engine</a>
+<ol>
+<li><a href="#coordinate-system">Coordinate System</a></li>
+<li><a href="#transforms">Transforms</a></li>
+<li><a href="#control-rotation">Control Rotation</a></li>
+</ol>
+</li>
+<li><a href="#names-and-naming">Names and Naming</a>
+<ol>
+<li><a href="#prefix-source-filenames">Prefix source filenames</a></li>
+<li><a href="#unreal-engine-prefixes">Unreal Engine&rsquo;s Prefixes</a></li>
+</ol>
+</li>
+<li><a href="#editor-tips">Editor Tips</a>
+<ol>
+<li><a href="#resetting-variables-to-their-default-state">Resetting variables to default state</a></li>
+</ol>
+</li>
+<li><a href="#c++-tips">C++ Tips</a>
+<ol>
+<li><a href="#whenever-possible-forward-declare">Forward declare</a></li>
+<li><a href="#stepping-into-engine-code">Stepping into engine code</a></li>
+<li><a href="#casting">Casting</a></li>
+<li><a href="#asserts">Asserts</a></li>
+<li><a href="#aactorpostinitializecomponents">AActor::PostInitializeComponents</a></li>
+</ol>
+</li>
+<li><a href="#blueprint-tips">Blueprint Tips</a>
+<ol>
+<li><a href="#how-to-know-what-classnamespace-does-a-node-belong-to">How to know what class/namespace does a node belong to</a></li>
+<li><a href="#variables-or-functions-not-appearing-in-the-editor">Variables or Functions not appearing in the editor</a></li>
+</ol>
+</li>
+<li><a href="#development-tips">Development Tips</a>
+<ol>
+<li><a href="#use-debug-shapes">Use Debug Shapes</a></li>
+</ol>
+</li>
+<li><a href="#interfaces">Interfaces</a></li>
 </ol>
 <h2 id="about-unreal-engine">
     <a href="#about-unreal-engine" class="anchor">
@@ -263,15 +298,15 @@ might be that the controller is overwriting it.</p>
     </a>
     Names and Naming
 </h2>
-<h3 id="add-a-prefix-to-your-source-file-names">
-    <a href="#add-a-prefix-to-your-source-file-names" class="anchor">
+<h3 id="prefix-source-filenames">
+    <a href="#prefix-source-filenames" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
             </path>
         </svg>
     </a>
-    Add a prefix to your source file names
+    Prefix Source Filenames
 </h3>
 <p>It is customary to add a prefix to all your source code files. This
 makes files easily distinguishable from engine files and other
@@ -350,15 +385,15 @@ files should be &ldquo;RPGMyCharacter.h/cpp&rdquo;.</p>
     </a>
     C&#43;&#43; Tips
 </h2>
-<h3 id="whenever-possible-forward-declare-do-not-include">
-    <a href="#whenever-possible-forward-declare-do-not-include" class="anchor">
+<h3 id="whenever-possible-forward-declare">
+    <a href="#whenever-possible-forward-declare" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
             </path>
         </svg>
     </a>
-    Whenever possible, forward declare, do not include
+    Whenever possible, forward declare
 </h3>
 <p>Try to not include headers in C++ class definitions. It is better to
 forward declare them for faster compilation times. Including headers
@@ -416,15 +451,15 @@ will result in huge translation units.</p>
     AActor::PostInitializeComponents
 </h3>
 <p>This function runs before BeginPlay. It&rsquo;s a good place to bind to component events, like: &ldquo;OnComponentHit&rdquo;.</p>
-<h2 id="blueprints-tips">
-    <a href="#blueprints-tips" class="anchor">
+<h2 id="blueprint-tips">
+    <a href="#blueprint-tips" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
             </path>
         </svg>
     </a>
-    Blueprints Tips
+    Blueprint Tips
 </h2>
 <h3 id="how-to-know-what-classnamespace-does-a-node-belong-to">
     <a href="#how-to-know-what-classnamespace-does-a-node-belong-to" class="anchor">
