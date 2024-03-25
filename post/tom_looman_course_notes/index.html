@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="theme-color" content="dark">
 
-    <title>Tom Looman Notes A | Jorge Sánchez</title>
+    <title>Tom Looman Notes | Jorge Sánchez</title>
 
     
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GW6Q2Z6045"></script>
@@ -35,10 +35,10 @@ if (!doNotTrack) {
 
 
     <meta property="og:site_name" content="jsanchez.net" />
-    <meta property="og:title" content="Tom Looman Notes A | Jorge Sánchez"/>
-    <meta itemprop="name" content="Tom Looman Notes A | Jorge Sánchez" />
-    <meta name="twitter:title" content="Tom Looman Notes A | Jorge Sánchez" />
-    <meta name="application-name" content="Tom Looman Notes A | Jorge Sánchez" /><meta name="twitter:card" content="summary"/>
+    <meta property="og:title" content="Tom Looman Notes | Jorge Sánchez"/>
+    <meta itemprop="name" content="Tom Looman Notes | Jorge Sánchez" />
+    <meta name="twitter:title" content="Tom Looman Notes | Jorge Sánchez" />
+    <meta name="application-name" content="Tom Looman Notes | Jorge Sánchez" /><meta name="twitter:card" content="summary"/>
 
     <meta name="description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer" />
     <meta name="twitter:description" content="Personal website of Jorge Sánchez, Game developer and C/&#43;&#43; Programmer"/>
@@ -60,14 +60,14 @@ if (!doNotTrack) {
   {
     "@context": "http://schema.org",
     "@type": "Article",
-    "headline": "Tom Looman Notes A",
+    "headline": "Tom Looman Notes",
     "author": {
       "@type": "Person",
       "name": "jsanchez"
     },
     "datePublished": "2024-03-20",
     "description": "",
-    "wordCount":  664 ,
+    "wordCount":  858 ,
     "mainEntityOfPage": "True",
     "dateModified": "2024-03-20",
     "publisher": {
@@ -170,7 +170,7 @@ if (!doNotTrack) {
         <header class="article-header">
             <div class="thumb">
                 <div>
-                    <h1>Tom Looman Notes A</h1>
+                    <h1>Tom Looman Notes</h1>
                     <div class="post-meta">
                         <div>
                             
@@ -178,7 +178,7 @@ if (!doNotTrack) {
                               
                             
                             By jsanchez | <time>March 20, 2024</time>
-                            | 4 minutes
+                            | 5 minutes
                         </div>
                         <div class="tags">
                             
@@ -221,6 +221,7 @@ but I hope someone else will find the useful.</p>
 <li><a href="#whenever-possible-forward-declare">Forward declare</a></li>
 <li><a href="#stepping-into-engine-code">Stepping into engine code</a></li>
 <li><a href="#casting">Casting</a></li>
+<li><a href="#static-class">Static Class</a></li>
 <li><a href="#asserts">Asserts</a></li>
 <li><a href="#aactorpostinitializecomponents">AActor::PostInitializeComponents</a></li>
 </ol>
@@ -236,7 +237,22 @@ but I hope someone else will find the useful.</p>
 <li><a href="#use-debug-shapes">Use Debug Shapes</a></li>
 </ol>
 </li>
+<li><a href="#math-tips">Math Tips</a>
+<ol>
+<li><a href="#how-to-find-a-point-in-space-where-we-are-looking">How to find a point in space where we are looking</a></li>
+</ol>
+</li>
 <li><a href="#interfaces">Interfaces</a></li>
+<li><a href="#umg">UMG</a>
+<ol>
+<li><a href="#umg-tips">UMG Tips</a>
+<ol>
+<li><a href="#add-widget-to-another-widget">Add widget to another widget</a></li>
+<li><a href="#add-boxes-as-parent-to-align-them">Add Boxes as parent to align them</a></li>
+</ol>
+</li>
+</ol>
+</li>
 </ol>
 <h2 id="about-unreal-engine">
     <a href="#about-unreal-engine" class="anchor">
@@ -428,6 +444,26 @@ will result in huge translation units.</p>
 <pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">ClassToCastTo</span> <span class="o">*</span><span class="n">MyPtr</span> <span class="o">=</span> <span class="n">Cast</span><span class="o">&lt;</span><span class="n">ClassToCastTo</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Pointer</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><h3 id="static-class">
+    <a href="#static-class" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Static Class
+</h3>
+<p>When you need a variable to hold a class type, the following returns the class type.
+It&rsquo;s used in functions like: GetComponentByClass</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">ClassName</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
 </div><h3 id="asserts">
     <a href="#asserts" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -529,6 +565,38 @@ to mouse over it and looking at it&rsquo;s target.</p>
 </span></span><span class="line"><span class="cl"><span class="n">DrawDebugCrosshairs</span><span class="p">(...);</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><h2 id="math-tips">
+    <a href="#math-tips" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Math Tips
+</h2>
+<h3 id="how-to-find-a-point-in-space-where-we-are-looking">
+    <a href="#how-to-find-a-point-in-space-where-we-are-looking" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    How to find a point in space where we are looking
+</h3>
+<p>In order to find a point in space where we are looking, or where a rotator is pointing.</p>
+<p>You need to get it&rsquo;s rotator, transform it to a vector, add the actor&rsquo;s location and scale the rotation vector.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="c1">// GetRotation.Vector is the same thing as GetDirection(), Actor.GetDirection * 1000.0f;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">FVector</span> <span class="n">Point</span> <span class="o">=</span> <span class="n">Actor</span><span class="p">.</span><span class="n">GetLocation</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="n">Actor</span><span class="p">.</span><span class="n">GetRotation</span><span class="p">().</span><span class="n">Vector</span> <span class="o">*</span> <span class="mf">1000.0f</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
 </div><h2 id="interfaces">
     <a href="#interfaces" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -584,7 +652,51 @@ to mouse over it and looking at it&rsquo;s target.</p>
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Execute_MyInterfaceFunction</span><span class="p">();</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div>
+</div><h2 id="umg">
+    <a href="#umg" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    UMG
+</h2>
+<h3 id="umg-tips">
+    <a href="#umg-tips" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    UMG Tips
+</h3>
+<h4 id="add-widget-to-another-widget">
+    <a href="#add-widget-to-another-widget" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Add widget to another widget
+</h4>
+<p>You can add other widget to a widget. For example you could have a HUD
+widget, and health could be another widget. This allows us to separate
+things and make blueprints more modular.</p>
+<h4 id="add-boxed-as-parent-to-align-them">
+    <a href="#add-boxed-as-parent-to-align-them" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Add boxed as parent to align them
+</h4>
+<p>You can add Boxes and set the box as parent of other widget to make them auto aligned.</p>
+
     </div>
 </div>
 
