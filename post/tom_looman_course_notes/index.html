@@ -67,7 +67,7 @@ if (!doNotTrack) {
     },
     "datePublished": "2024-03-20",
     "description": "",
-    "wordCount":  858 ,
+    "wordCount":  1395 ,
     "mainEntityOfPage": "True",
     "dateModified": "2024-03-20",
     "publisher": {
@@ -178,7 +178,7 @@ if (!doNotTrack) {
                               
                             
                             By jsanchez | <time>March 20, 2024</time>
-                            | 5 minutes
+                            | 7 minutes
                         </div>
                         <div class="tags">
                             
@@ -230,11 +230,14 @@ but I hope someone else will find the useful.</p>
 <ol>
 <li><a href="#how-to-know-what-classnamespace-does-a-node-belong-to">How to know what class/namespace does a node belong to</a></li>
 <li><a href="#variables-or-functions-not-appearing-in-the-editor">Variables or Functions not appearing in the editor</a></li>
+<li><a href="#get-default-values-of-a-class">Get default values of a class</a></li>
 </ol>
 </li>
 <li><a href="#development-tips">Development Tips</a>
 <ol>
 <li><a href="#use-debug-shapes">Use Debug Shapes</a></li>
+<li><a href="#get-component-by-class">Get Component By Class</a></li>
+<li><a href="#teleporting-actors">Teleporting Actors</a></li>
 </ol>
 </li>
 <li><a href="#math-tips">Math Tips</a>
@@ -249,8 +252,32 @@ but I hope someone else will find the useful.</p>
 <ol>
 <li><a href="#add-widget-to-another-widget">Add widget to another widget</a></li>
 <li><a href="#add-boxes-as-parent-to-align-them">Add Boxes as parent to align them</a></li>
+<li><a href="#bind">Bind</a></li>
+<li><a href="#get-players-character-from-umg">Get Player Pawn</a></li>
+<li><a href="#constructbeginplay">Construct/BeginPlay</a></li>
+<li><a href="#dont-call-widget-functions-from-outside">Don&rsquo;t call widget functions from outside</a></li>
+<li><a href="#use-preconstruct-to-set-values">Use PreConstruct to set values</a></li>
 </ol>
 </li>
+</ol>
+</li>
+<li><a href="#materials">Materials</a>
+<ol>
+<li><a href="#material-instances">Material Instances</a></li>
+<li><a href="#material-functions">Material Functions</a></li>
+<li><a href="#builtin-functions">Builtin Functions</a></li>
+<li><a href="#debuggingvisualizing-scalar-values">Debugging/Visualizing Scalar Values</a></li>
+<li><a href="#using-materials-in-umg">Using Materials in UMG</a></li>
+</ol>
+</li>
+<li><a href="#sound">Sound</a>
+<ol>
+<li><a href="#sound-cues">Sound Cues</a></li>
+</ol>
+</li>
+<li>[Shortcuts]
+<ol>
+<li><a href="#asset-searching">Asset Searching</a></li>
 </ol>
 </li>
 </ol>
@@ -520,6 +547,17 @@ to mouse over it and looking at it&rsquo;s target.</p>
     Variables or Functions not appearing in the editor
 </h3>
 <p>Sometimes variables or functions won&rsquo;t appear in the blueprint editor, most likely you forgot to add a property specifier. Check your C++ code.</p>
+<h3 id="get-default-values-of-a-class">
+    <a href="#get-default-values-of-a-class" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Get Default Values of a Class
+</h3>
+<p>To get a class default values, you can use the node &ldquo;GetClassDefaults&rdquo;</p>
 <h2 id="development-tips">
     <a href="#development-tips" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -565,7 +603,33 @@ to mouse over it and looking at it&rsquo;s target.</p>
 </span></span><span class="line"><span class="cl"><span class="n">DrawDebugCrosshairs</span><span class="p">(...);</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="math-tips">
+</div><h3 id="get-component-by-class">
+    <a href="#get-component-by-class" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Get Component By Class
+</h3>
+<p>Use GetComponentByClass to find a specific component. This is faster
+than casting to player and accessing the component from player. This
+also has less error of invalid pointer, casting might fail.</p>
+<h3 id="teleporting-actors">
+    <a href="#teleporting-actors" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Teleporting Actors
+</h3>
+<p>Always use the actor builtin function TeleportTo when teleporting
+actors. It covers a lot of edge cases when teleporting an actor, such
+as collision detection &amp; resolution.</p>
+<h2 id="math-tips">
     <a href="#math-tips" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
@@ -696,6 +760,203 @@ things and make blueprints more modular.</p>
     Add boxed as parent to align them
 </h4>
 <p>You can add Boxes and set the box as parent of other widget to make them auto aligned.</p>
+<h4 id="bind">
+    <a href="#bind" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Bind
+</h4>
+<p>You can click on bind button to add a function that runs every frame
+and updates the value of something. This is not recommended since
+running everyfame is very expensive. Prefer using delegates to update
+values on change/update.</p>
+<h4 id="get-players-character-from-umg">
+    <a href="#get-players-character-from-umg" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Get player&amp;rsquo;s character from UMG
+</h4>
+<p>use GetOwningPlayerPawn to get the player&rsquo;s character</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">GetOwningPlayerPawn</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="constructbeginplay">
+    <a href="#constructbeginplay" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Construct/BeginPlay
+</h4>
+<p>Construct is the BeginPlay of UMG objects. This is a good place to bind to the needed delegates!</p>
+<h4 id="dont-call-widget-functions-from-outside">
+    <a href="#dont-call-widget-functions-from-outside" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Don&amp;rsquo;t call widget functions from outside
+</h4>
+<p>Don&rsquo;t create functions inside widgets and call them from actors. Make
+the UI separate from game code to avoid mantainance nightmares. Never
+call widgets functions from outside.</p>
+<h4 id="use-preconstruct-to-set-values">
+    <a href="#use-preconstruct-to-set-values" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Use PreConstruct to set values
+</h4>
+<p>Set things such as colors and values in the pre construct event.</p>
+<h2 id="materials">
+    <a href="#materials" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Materials
+</h2>
+<p>Materials are just shaders that are programmed using unreal&rsquo;s nodes
+instead of glsl/hlsl. Materials are the blueprint/classes and material
+instances are the instances of materials.</p>
+<p>Such as with glsl uniform variables, you can set input and parameters
+to a material.</p>
+<h3 id="material-instances">
+    <a href="#material-instances" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Material Instances
+</h3>
+<p>Material instances cannot add/edit behaviours. Only variables exposed
+by a material are editable.</p>
+<h3 id="material-functions">
+    <a href="#material-functions" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Material Functions
+</h3>
+<p>You can create material functions. These functions are able to be
+reutilized inside other materials.</p>
+<p>Material functions can have Input, search for the input node.</p>
+<p>When creating a material function, be sure to check the &ldquo;Expose to
+library&rdquo; checkbox. If you don&rsquo;t do this, the function won&rsquo;t appear in
+the material function list.</p>
+<p>Material Functions can have multiple outputs!</p>
+<h3 id="builtin-functions">
+    <a href="#builtin-functions" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Builtin Functions
+</h3>
+<p>There are a lot of complex functions already implemented for you in
+the material editor. I recommend having a look at them before
+implementing something inside a material, there&rsquo;s a chance that what
+you want is already implemented and the solution might be to add a
+single node.</p>
+<h3 id="debuggingvisualizing-scalar-values">
+    <a href="#debuggingvisualizing-scalar-values" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Debugging/Visualizing Scalar Values
+</h3>
+<p>One way of visualizing scalar values is to use the node
+&ldquo;DebugScalarValues&rdquo;. It prints a scalar value onto the mesh active in
+the material. It&rsquo;s a good way of debugging values inside a
+shader/material.</p>
+<h3 id="using-materials-in-umg">
+    <a href="#using-materials-in-umg" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Using Materials in UMG
+</h3>
+<p>In order to use a material in UMG/User Interfaces, we need to set the Material Domain to &ldquo;User Interace&rdquo;</p>
+<h2 id="sound">
+    <a href="#sound" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Sound
+</h2>
+<h3 id="sound-cues">
+    <a href="#sound-cues" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Sound Cues
+</h3>
+<p>Sound Cues are the programmable audio assets. As with all thing in
+unreal you can program the sound using it&rsquo;s specific nodes. Maybe add
+a reverb or something else&hellip;</p>
+<h2 id="shortcuts">
+    <a href="#shortcuts" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Shortcuts
+</h2>
+<h3 id="asset-searching">
+    <a href="#asset-searching" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Asset Searching
+</h3>
+<p>Ctrl+P opens a window to search for assets. It&rsquo;s really fast since as
+soon as you press the shortcut you can start typing.</p>
 
     </div>
 </div>
