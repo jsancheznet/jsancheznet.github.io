@@ -67,7 +67,7 @@ if (!doNotTrack) {
     },
     "datePublished": "2024-03-20",
     "description": "",
-    "wordCount":  1395 ,
+    "wordCount":  2069 ,
     "mainEntityOfPage": "True",
     "dateModified": "2024-03-20",
     "publisher": {
@@ -178,7 +178,7 @@ if (!doNotTrack) {
                               
                             
                             By jsanchez | <time>March 20, 2024</time>
-                            | 7 minutes
+                            | 10 minutes
                         </div>
                         <div class="tags">
                             
@@ -205,10 +205,10 @@ but I hope someone else will find the useful.</p>
 <li><a href="#control-rotation">Control Rotation</a></li>
 </ol>
 </li>
-<li><a href="#names-and-naming">Names and Naming</a>
+<li><a href="#naming-conventions">Naming Conventions</a>
 <ol>
-<li><a href="#prefix-source-filenames">Prefix source filenames</a></li>
 <li><a href="#unreal-engine-prefixes">Unreal Engine&rsquo;s Prefixes</a></li>
+<li><a href="#source-files">Source Files</a></li>
 </ol>
 </li>
 <li><a href="#editor-tips">Editor Tips</a>
@@ -216,14 +216,16 @@ but I hope someone else will find the useful.</p>
 <li><a href="#resetting-variables-to-their-default-state">Resetting variables to default state</a></li>
 </ol>
 </li>
-<li><a href="#c++-tips">C++ Tips</a>
+<li><a href="#c-tips">C++ Tips</a>
 <ol>
 <li><a href="#whenever-possible-forward-declare">Forward declare</a></li>
+<li><a href="#order-your-code">Order your code</a></li>
 <li><a href="#stepping-into-engine-code">Stepping into engine code</a></li>
 <li><a href="#casting">Casting</a></li>
 <li><a href="#static-class">Static Class</a></li>
 <li><a href="#asserts">Asserts</a></li>
 <li><a href="#aactorpostinitializecomponents">AActor::PostInitializeComponents</a></li>
+<li><a href="#const-ufunction">Const UFUNCTION</a></li>
 </ol>
 </li>
 <li><a href="#blueprint-tips">Blueprint Tips</a>
@@ -257,6 +259,9 @@ but I hope someone else will find the useful.</p>
 <li><a href="#constructbeginplay">Construct/BeginPlay</a></li>
 <li><a href="#dont-call-widget-functions-from-outside">Don&rsquo;t call widget functions from outside</a></li>
 <li><a href="#use-preconstruct-to-set-values">Use PreConstruct to set values</a></li>
+<li><a href="#make-a-widget-have-input-parameters-on-creation">Make a widget have input parameters on creation</a></li>
+<li><a href="#world-position-to-screen-coordinates">World position to Screen Coordinates</a></li>
+<li><a href="#removing-a-widget-from-screen">Removing a widget from screen</a></li>
 </ol>
 </li>
 </ol>
@@ -275,9 +280,23 @@ but I hope someone else will find the useful.</p>
 <li><a href="#sound-cues">Sound Cues</a></li>
 </ol>
 </li>
-<li>[Shortcuts]
+<li><a href="#shortcuts">Shortcuts</a>
 <ol>
 <li><a href="#asset-searching">Asset Searching</a></li>
+<li><a href="#move-around-in-pie-without-stopping-the-simulation">Move in PIE without stopping the simulation</a></li>
+</ol>
+</li>
+<li><a href="#anim-blueprints">Anim Blueprints</a></li>
+<li><a href="#ai">AI</a>
+<ol>
+<li><a href="#debugging-tips">Debugging Tips</a></li>
+<li><a href="#navmesh">Navmesh</a></li>
+<li><a href="#aicontroller">AIController</a></li>
+<li><a href="#blackboard-component">Blackboard Component</a></li>
+<li><a href="#btservices">BTServices</a></li>
+<li><a href="#bttasks">BTTasks</a></li>
+<li><a href="#decorators">Decorators</a></li>
+<li><a href="#eqs">EQS</a></li>
 </ol>
 </li>
 </ol>
@@ -331,31 +350,16 @@ controlling. Setting the pawn rotation will do nothing if it is being
 controlled by a controller. You will need to set the controller
 rotation instead. So if your pawn is having problems rotating, it
 might be that the controller is overwriting it.</p>
-<h2 id="names-and-naming">
-    <a href="#names-and-naming" class="anchor">
+<h2 id="naming-conventions">
+    <a href="#naming-conventions" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
             </path>
         </svg>
     </a>
-    Names and Naming
+    Naming Conventions
 </h2>
-<h3 id="prefix-source-filenames">
-    <a href="#prefix-source-filenames" class="anchor">
-        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
-            <path fill-rule="evenodd"
-                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
-            </path>
-        </svg>
-    </a>
-    Prefix Source Filenames
-</h3>
-<p>It is customary to add a prefix to all your source code files. This
-makes files easily distinguishable from engine files and other
-projects.</p>
-<p>For example we could choose the prefix &lsquo;RPG&rsquo; for a project and our source
-files should be &ldquo;RPGMyCharacter.h/cpp&rdquo;.</p>
 <h3 id="unreal-engine-prefixes">
     <a href="#unreal-engine-prefixes" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -397,6 +401,21 @@ files should be &ldquo;RPGMyCharacter.h/cpp&rdquo;.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="source-files">
+    <a href="#source-files" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Source Files
+</h3>
+<p>It is customary to add a prefix to all your source code files. This
+makes files easily distinguishable from engine files and other
+projects.</p>
+<p>For example we could choose the prefix &lsquo;RPG&rsquo; for a project and our source
+files should be &ldquo;RPGMyCharacter.h/cpp&rdquo;.</p>
 <h2 id="editor-tips">
     <a href="#editor-tips" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -441,6 +460,20 @@ files should be &ldquo;RPGMyCharacter.h/cpp&rdquo;.</p>
 <p>Try to not include headers in C++ class definitions. It is better to
 forward declare them for faster compilation times. Including headers
 will result in huge translation units.</p>
+<h3 id="order-your-code">
+    <a href="#order-your-code" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Order your code
+</h3>
+<p>It&rsquo;s a good idea to order your C++ implementations in the order they
+are executed. Example, constructor should be near the top, BeginPlay
+should be after the constructor and PostInitializeComponents should be
+before BeginPlay. This will make your code easier to navigate.</p>
 <h3 id="stepping-into-engine-code">
     <a href="#stepping-into-engine-code" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -514,6 +547,17 @@ It&rsquo;s used in functions like: GetComponentByClass</p>
     AActor::PostInitializeComponents
 </h3>
 <p>This function runs before BeginPlay. It&rsquo;s a good place to bind to component events, like: &ldquo;OnComponentHit&rdquo;.</p>
+<h3 id="const-ufunction">
+    <a href="#const-ufunction" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Const UFUNCTION
+</h3>
+<p>Setting a UFUNCTION to const will make it appear as a green node with no execution pin inside blueprints.</p>
 <h2 id="blueprint-tips">
     <a href="#blueprint-tips" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -828,6 +872,42 @@ call widgets functions from outside.</p>
     Use PreConstruct to set values
 </h4>
 <p>Set things such as colors and values in the pre construct event.</p>
+<h3 id="make-a-widget-have-input-parameters-on-creation">
+    <a href="#make-a-widget-have-input-parameters-on-creation" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Make a widget have input parameters on creation
+</h3>
+<p>Checking &ldquo;Expose on spawn&rdquo; to a variable makes that variable be an
+input to the CreateWidget node. This way we can set variables when a
+widget is being created.</p>
+<h3 id="world-position-to-screen-position">
+    <a href="#world-position-to-screen-position" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    World Position to Screen Position
+</h3>
+<p>The node &ldquo;ProjectWorldToScreen&rdquo; transforms a position in world coordinates to screen coordinates.</p>
+<p>If the screen coordinate seems weirdly off, try dividing ScreenPosition/GetViewPortScale.</p>
+<h3 id="removing-a-widget-from-screen">
+    <a href="#removing-a-widget-from-screen" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Removing a widget from screen
+</h3>
+<p>To remove a widget from screen we need to call the function &ldquo;RemoveFromParent&rdquo;.</p>
 <h2 id="materials">
     <a href="#materials" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -957,6 +1037,178 @@ a reverb or something else&hellip;</p>
 </h3>
 <p>Ctrl+P opens a window to search for assets. It&rsquo;s really fast since as
 soon as you press the shortcut you can start typing.</p>
+<h3 id="move-around-in-pie-without-stopping-the-simulation">
+    <a href="#move-around-in-pie-without-stopping-the-simulation" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Move around in PIE without stopping the simulation
+</h3>
+<p>Press F8 while playing in editor to be able to move around without
+stopping the simulation. Press F8 again to go back to your camera
+view.</p>
+<h2 id="anim-blueprints">
+    <a href="#anim-blueprints" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Anim Blueprints
+</h2>
+<p>The event graph run every frame! To be more specific, the &ldquo;Event
+Blueprint Update Animation&rdquo; runs every frame.</p>
+<p>The event graph inside an animation blueprint is able to set variables
+which are to be used inside the animation graphs to set the correct
+pose.</p>
+<h2 id="ai-tips">
+    <a href="#ai-tips" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    AI Tips
+</h2>
+<h3 id="debugging-tips">
+    <a href="#debugging-tips" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Debugging Tips
+</h3>
+<p>Press the apostrophe key (&rsquo;) to open the in-game AI Debugger. There&rsquo;s a lot of information there.</p>
+<p>Press the key while looking at an AI to show the info about it&rsquo;s ai instance</p>
+<h3 id="navmesh">
+    <a href="#navmesh" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Navmesh
+</h3>
+<p>Navmesh: The navmesh provides data on where the AI is allowed to move.</p>
+<h3 id="aicontroller">
+    <a href="#aicontroller" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    AIController
+</h3>
+<p>When creating an AIController in C++ it still needs a blueprint that inherits from it.</p>
+<h3 id="blackboard-component">
+    <a href="#blackboard-component" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Blackboard Component
+</h3>
+<p>You can get the blackboard component in AIController with the function GetBlackboardComponent</p>
+<p>To change a value in a blackboard component, use the function:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">BlackboardComponent</span><span class="o">-&gt;</span><span class="n">SetValueAs</span><span class="p">...(...)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="btservices">
+    <a href="#btservices" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    BTServices
+</h3>
+<p>To create BTServices in C++ you need to inherit from &ldquo;BTService&rdquo;, if
+you are creating them from Blueprints, inherit from
+&ldquo;BTService_BlueprintBase&rdquo;.</p>
+<p>In order to not hardcode blackboard keys as test in C++, you can create a variable like the following and set the key on the editor.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">FBlackboardKeySelector</span> <span class="n">MyKey</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>To run a Service each frame, add the frame to the rootnode of the Behavior Tree.</p>
+<h3 id="bttasks">
+    <a href="#bttasks" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    BTTasks
+</h3>
+<p>To create a BTTask node in C++, inherit ftrom BTTaskNode. To create
+one in blueprints, inherit from BTTask_BlueprintBase.</p>
+<p>Marking values with UPROPERTY specifiers, make these variables
+editable inside the behaviour tree when selecting the corresponding
+node.</p>
+<h3 id="decorators">
+    <a href="#decorators" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Decorators
+</h3>
+<p>Decorators have a vew flow control capabilities inside the details
+window of a decorator. Let&rsquo;s say we have a decorator that depends on a
+bool. To instantly stop execution on that subtree when this bool
+changes, set NotifyObserver to: &ldquo;OnResultChange&rdquo; and ObserverAborts
+to: Self.</p>
+<p>If you click on a decorator, unreal engine will apply color to
+different nodes. For example, unreal will color light blue those nodes
+that are aborted by low priority mode. Green those that are aborted by
+mode Self. Unreal always colors the nodes that are affected from what
+we have currently selected.</p>
+<h3 id="eqs">
+    <a href="#eqs" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    EQS
+</h3>
+<p>EQS Queries can be run from behaviour trees.</p>
+<p>The &ldquo;Querier&rdquo; is the class that is running the query. If we run it
+from a BT, the querier is the AI running that BT. Queries can also be
+called from other classes such as game mode.</p>
+<p>When running an EQS from a BT, remember to set the key for the output
+value. For example, if running a query that will return a location,
+remember to set the output location key.</p>
+<p>In the AI Visual debugger (&rsquo;) key, press numpad 3 to enable EQS
+visualization for the selected AI. Blue means it failed, green
+succeeded. Each sphere is a queried location/point.</p>
 
     </div>
 </div>
