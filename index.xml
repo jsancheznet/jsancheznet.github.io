@@ -21,107 +21,23 @@ notes mainly consist of things i did not know or understand at the
 time and things i did not want to forget. This is mainly for myself,
 but I hope someone else will find the useful.&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#about-unreal-engine&#34;&gt;About Unreal Engine&lt;/a&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#coordinate-system&#34;&gt;Coordinate System&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#transforms&#34;&gt;Transforms&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#control-rotation&#34;&gt;Control Rotation&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#naming-conventions&#34;&gt;Naming Conventions&lt;/a&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#unreal-engine-prefixes&#34;&gt;Unreal Engine&amp;rsquo;s Prefixes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#source-files&#34;&gt;Source Files&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#editor-tips&#34;&gt;Editor Tips&lt;/a&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#resetting-variables-to-their-default-state&#34;&gt;Resetting variables to default state&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#c-tips&#34;&gt;C++ Tips&lt;/a&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#whenever-possible-forward-declare&#34;&gt;Forward declare&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#order-your-code&#34;&gt;Order your code&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#stepping-into-engine-code&#34;&gt;Stepping into engine code&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#casting&#34;&gt;Casting&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#static-class&#34;&gt;Static Class&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#asserts&#34;&gt;Asserts&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#aactorpostinitializecomponents&#34;&gt;AActor::PostInitializeComponents&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#const-ufunction&#34;&gt;Const UFUNCTION&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#blueprint-tips&#34;&gt;Blueprint Tips&lt;/a&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#how-to-know-what-classnamespace-does-a-node-belong-to&#34;&gt;How to know what class/namespace does a node belong to&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#variables-or-functions-not-appearing-in-the-editor&#34;&gt;Variables or Functions not appearing in the editor&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#get-default-values-of-a-class&#34;&gt;Get default values of a class&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#development-tips&#34;&gt;Development Tips&lt;/a&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#use-debug-shapes&#34;&gt;Use Debug Shapes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#get-component-by-class&#34;&gt;Get Component By Class&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#teleporting-actors&#34;&gt;Teleporting Actors&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#math-tips&#34;&gt;Math Tips&lt;/a&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#how-to-find-a-point-in-space-where-we-are-looking&#34;&gt;How to find a point in space where we are looking&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#about-unreal-engine&#34;&gt;About Unreal Engine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#naming-conventions&#34;&gt;Naming Conventions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#editor-tips&#34;&gt;Editor Tips&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#c&#34;&gt;C++&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#blueprint-tips&#34;&gt;Blueprint Tips&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#development-tips&#34;&gt;Development Tips&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#math-tips&#34;&gt;Math Tips&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#interfaces&#34;&gt;Interfaces&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#umg&#34;&gt;UMG&lt;/a&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#umg-tips&#34;&gt;UMG Tips&lt;/a&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#add-widget-to-another-widget&#34;&gt;Add widget to another widget&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#add-boxes-as-parent-to-align-them&#34;&gt;Add Boxes as parent to align them&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#bind&#34;&gt;Bind&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#get-players-character-from-umg&#34;&gt;Get Player Pawn&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#constructbeginplay&#34;&gt;Construct/BeginPlay&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#dont-call-widget-functions-from-outside&#34;&gt;Don&amp;rsquo;t call widget functions from outside&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#use-preconstruct-to-set-values&#34;&gt;Use PreConstruct to set values&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#make-a-widget-have-input-parameters-on-creation&#34;&gt;Make a widget have input parameters on creation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#world-position-to-screen-coordinates&#34;&gt;World position to Screen Coordinates&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#removing-a-widget-from-screen&#34;&gt;Removing a widget from screen&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#materials&#34;&gt;Materials&lt;/a&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#material-instances&#34;&gt;Material Instances&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#material-functions&#34;&gt;Material Functions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#builtin-functions&#34;&gt;Builtin Functions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#debuggingvisualizing-scalar-values&#34;&gt;Debugging/Visualizing Scalar Values&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#using-materials-in-umg&#34;&gt;Using Materials in UMG&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#sound&#34;&gt;Sound&lt;/a&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#sound-cues&#34;&gt;Sound Cues&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#shortcuts&#34;&gt;Shortcuts&lt;/a&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#asset-searching&#34;&gt;Asset Searching&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#move-around-in-pie-without-stopping-the-simulation&#34;&gt;Move in PIE without stopping the simulation&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#multiplayer&#34;&gt;Multiplayer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#umg&#34;&gt;UMG&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#materials&#34;&gt;Materials&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#sound&#34;&gt;Sound&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#shortcuts&#34;&gt;Shortcuts&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#anim-blueprints&#34;&gt;Anim Blueprints&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#ai&#34;&gt;AI&lt;/a&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#debugging-tips&#34;&gt;Debugging Tips&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#navmesh&#34;&gt;Navmesh&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#aicontroller&#34;&gt;AIController&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#blackboard-component&#34;&gt;Blackboard Component&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#btservices&#34;&gt;BTServices&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#bttasks&#34;&gt;BTTasks&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#decorators&#34;&gt;Decorators&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#eqs&#34;&gt;EQS&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ai&#34;&gt;AI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#curves&#34;&gt;Curves&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#commands-and-cheats&#34;&gt;Commands and Cheats&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;about-unreal-engine&#34;&gt;
     &lt;a href=&#34;#about-unreal-engine&#34; class=&#34;anchor&#34;&gt;
@@ -133,7 +49,7 @@ but I hope someone else will find the useful.&lt;/p&gt;
     &lt;/a&gt;
     About Unreal Engine
 &lt;/h2&gt;
-&lt;h3 id=&#34;coordinate-system&#34;&gt;
+&lt;h4 id=&#34;coordinate-system&#34;&gt;
     &lt;a href=&#34;#coordinate-system&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -142,11 +58,11 @@ but I hope someone else will find the useful.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Coordinate System
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;X is Forward&lt;br&gt;
 Y is Right&lt;br&gt;
 Z is Up&lt;/p&gt;
-&lt;h3 id=&#34;transforms&#34;&gt;
+&lt;h4 id=&#34;transforms&#34;&gt;
     &lt;a href=&#34;#transforms&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -155,9 +71,9 @@ Z is Up&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Transforms
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;A transform holds &lt;strong&gt;Location, Rotation &amp;amp; Scale&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&#34;control-rotation&#34;&gt;
+&lt;h4 id=&#34;control-rotation&#34;&gt;
     &lt;a href=&#34;#control-rotation&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -166,13 +82,26 @@ Z is Up&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Control Rotation
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;Control rotation refers to the rotation of the player controller. The
 controller rotation has priority over the pawn it is
 controlling. Setting the pawn rotation will do nothing if it is being
 controlled by a controller. You will need to set the controller
 rotation instead. So if your pawn is having problems rotating, it
 might be that the controller is overwriting it.&lt;/p&gt;
+&lt;h4 id=&#34;components&#34;&gt;
+    &lt;a href=&#34;#components&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Components
+&lt;/h4&gt;
+&lt;p&gt;Components that derive from USceneComponent have a transform (relative
+to its parent). So, remember to attach them to their correct parent.&lt;/p&gt;
+&lt;p&gt;Components that derive from UActorComponent don&amp;rsquo;t have a transform.&lt;/p&gt;
 &lt;h2 id=&#34;naming-conventions&#34;&gt;
     &lt;a href=&#34;#naming-conventions&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
@@ -183,7 +112,7 @@ might be that the controller is overwriting it.&lt;/p&gt;
     &lt;/a&gt;
     Naming Conventions
 &lt;/h2&gt;
-&lt;h3 id=&#34;unreal-engine-prefixes&#34;&gt;
+&lt;h4 id=&#34;unreal-engine-prefixes&#34;&gt;
     &lt;a href=&#34;#unreal-engine-prefixes&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -192,7 +121,7 @@ might be that the controller is overwriting it.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Unreal Engine Prefixes
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;Unreal uses prefixes when naming their classes, these are the most common ones.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -224,7 +153,7 @@ might be that the controller is overwriting it.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id=&#34;source-files&#34;&gt;
+&lt;h4 id=&#34;source-files&#34;&gt;
     &lt;a href=&#34;#source-files&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -233,7 +162,7 @@ might be that the controller is overwriting it.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Source Files
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;It is customary to add a prefix to all your source code files. This
 makes files easily distinguishable from engine files and other
 projects.&lt;/p&gt;
@@ -249,7 +178,7 @@ files should be &amp;ldquo;RPGMyCharacter.h/cpp&amp;rdquo;.&lt;/p&gt;
     &lt;/a&gt;
     Editor Tips
 &lt;/h2&gt;
-&lt;h3 id=&#34;resetting-variables-to-their-default-state&#34;&gt;
+&lt;h4 id=&#34;resetting-variables-to-their-default-state&#34;&gt;
     &lt;a href=&#34;#resetting-variables-to-their-default-state&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -258,19 +187,31 @@ files should be &amp;ldquo;RPGMyCharacter.h/cpp&amp;rdquo;.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Resetting variables to their default state
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;There&amp;rsquo;s a little arrow next to variables, clicking reset&amp;rsquo;s the value to it&amp;rsquo;s default state&lt;/p&gt;
-&lt;h2 id=&#34;c-tips&#34;&gt;
-    &lt;a href=&#34;#c-tips&#34; class=&#34;anchor&#34;&gt;
+&lt;h4 id=&#34;slomo&#34;&gt;
+    &lt;a href=&#34;#slomo&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
                 d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
             &lt;/path&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
-    C&amp;#43;&amp;#43; Tips
+    Slomo
+&lt;/h4&gt;
+&lt;p&gt;The &amp;ldquo;slomo&amp;rdquo; command, slow or accelerates simulation time. 1 is the
+default value. Between 0 and 1, it becomes slower. 1+ is faster.&lt;/p&gt;
+&lt;h2 id=&#34;c&#34;&gt;
+    &lt;a href=&#34;#c&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    C&amp;#43;&amp;#43;
 &lt;/h2&gt;
-&lt;h3 id=&#34;whenever-possible-forward-declare&#34;&gt;
+&lt;h4 id=&#34;whenever-possible-forward-declare&#34;&gt;
     &lt;a href=&#34;#whenever-possible-forward-declare&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -279,11 +220,11 @@ files should be &amp;ldquo;RPGMyCharacter.h/cpp&amp;rdquo;.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Whenever possible, forward declare
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;Try to not include headers in C++ class definitions. It is better to
 forward declare them for faster compilation times. Including headers
 will result in huge translation units.&lt;/p&gt;
-&lt;h3 id=&#34;order-your-code&#34;&gt;
+&lt;h4 id=&#34;order-your-code&#34;&gt;
     &lt;a href=&#34;#order-your-code&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -292,12 +233,12 @@ will result in huge translation units.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Order your code
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;It&amp;rsquo;s a good idea to order your C++ implementations in the order they
 are executed. Example, constructor should be near the top, BeginPlay
 should be after the constructor and PostInitializeComponents should be
 before BeginPlay. This will make your code easier to navigate.&lt;/p&gt;
-&lt;h3 id=&#34;stepping-into-engine-code&#34;&gt;
+&lt;h4 id=&#34;stepping-into-engine-code&#34;&gt;
     &lt;a href=&#34;#stepping-into-engine-code&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -306,9 +247,9 @@ before BeginPlay. This will make your code easier to navigate.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Stepping into engine code
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;To use the debugger with Unreal&amp;rsquo;s engine code, you need to download the editor symbols for debugging. This can be done from Epic Game&amp;rsquo;s Launcher.&lt;/p&gt;
-&lt;h3 id=&#34;casting&#34;&gt;
+&lt;h4 id=&#34;casting&#34;&gt;
     &lt;a href=&#34;#casting&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -317,7 +258,7 @@ before BeginPlay. This will make your code easier to navigate.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Casting
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;Unreal has it&amp;rsquo;s own template for casting, it&amp;rsquo;s recommended to use this instead of regular C style casting.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -327,7 +268,7 @@ before BeginPlay. This will make your code easier to navigate.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ClassToCastTo&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MyPtr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Cast&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ClassToCastTo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Pointer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;static-class&#34;&gt;
+&lt;/div&gt;&lt;h4 id=&#34;static-class&#34;&gt;
     &lt;a href=&#34;#static-class&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -336,7 +277,7 @@ before BeginPlay. This will make your code easier to navigate.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Static Class
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;When you need a variable to hold a class type, the following returns the class type.
 It&amp;rsquo;s used in functions like: GetComponentByClass&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -347,7 +288,7 @@ It&amp;rsquo;s used in functions like: GetComponentByClass&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ClassName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;StaticClass&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;asserts&#34;&gt;
+&lt;/div&gt;&lt;h4 id=&#34;asserts&#34;&gt;
     &lt;a href=&#34;#asserts&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -356,10 +297,14 @@ It&amp;rsquo;s used in functions like: GetComponentByClass&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Asserts
-&lt;/h3&gt;
-&lt;p&gt;&amp;ldquo;Ensure&amp;rdquo; will assert but continue the game after. By default it will only halt execution once. &amp;ldquo;ensureAlways&amp;rdquo; is another flavor of ensure, but this one will always halt execution.&lt;/p&gt;
+&lt;/h4&gt;
+&lt;p&gt;&amp;ldquo;Ensure&amp;rdquo; will assert but continue the game after. By default it will
+only halt execution once. &amp;ldquo;ensureAlways&amp;rdquo; is another flavor of ensure,
+but this one will always halt execution.&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;check&amp;rdquo; will halt execution when it&amp;rsquo;s evaluation is false.&lt;/p&gt;
-&lt;h3 id=&#34;aactorpostinitializecomponents&#34;&gt;
+&lt;p&gt;&amp;ldquo;ensureMsgf&amp;rdquo; not only triggers the debugger when failing, but it also
+logs a message. This message is red on the unreal editor.&lt;/p&gt;
+&lt;h4 id=&#34;aactorpostinitializecomponents&#34;&gt;
     &lt;a href=&#34;#aactorpostinitializecomponents&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -368,9 +313,9 @@ It&amp;rsquo;s used in functions like: GetComponentByClass&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     AActor::PostInitializeComponents
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;This function runs before BeginPlay. It&amp;rsquo;s a good place to bind to component events, like: &amp;ldquo;OnComponentHit&amp;rdquo;.&lt;/p&gt;
-&lt;h3 id=&#34;const-ufunction&#34;&gt;
+&lt;h4 id=&#34;const-ufunction&#34;&gt;
     &lt;a href=&#34;#const-ufunction&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -379,9 +324,364 @@ It&amp;rsquo;s used in functions like: GetComponentByClass&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Const UFUNCTION
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;Setting a UFUNCTION to const will make it appear as a green node with no execution pin inside blueprints.&lt;/p&gt;
-&lt;h2 id=&#34;blueprint-tips&#34;&gt;
+&lt;h4 id=&#34;performance&#34;&gt;
+    &lt;a href=&#34;#performance&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Performance
+&lt;/h4&gt;
+&lt;p&gt;Don&amp;rsquo;t call &amp;ldquo;GetAllActorsOfClass&amp;rdquo;, it iterates through every actor on
+the world to find them.&lt;/p&gt;
+&lt;h4 id=&#34;looping-over-all-actors-in-the-world&#34;&gt;
+    &lt;a href=&#34;#looping-over-all-actors-in-the-world&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Looping over all actors in the world
+&lt;/h4&gt;
+&lt;p&gt;To loop over all the classes in the world, we can use the class &amp;ldquo;TActorIterator&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s what &amp;ldquo;GetAllActorsOfClass&amp;rdquo; uses behind the curtain.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TActorIterator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SMyClass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;It&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;It&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GetWorld&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;It&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;SMyClass&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Ptr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;It&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;c1&#34;&gt;// Do stuff
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;destroy-actor-in-x-seconds&#34;&gt;
+    &lt;a href=&#34;#destroy-actor-in-x-seconds&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Destroy Actor in X Seconds
+&lt;/h4&gt;
+&lt;p&gt;The following function will set an actor to be destroyed in X seconds&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Actor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SetLifeSpan&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Seconds&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;enable-ragdoll&#34;&gt;
+    &lt;a href=&#34;#enable-ragdoll&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Enable Ragdoll
+&lt;/h4&gt;
+&lt;p&gt;To enable ragdoll behaviour in C++, call:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;GetMesh&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SetAllBodiesSimulatePhysics&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;GetMesh&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SetCollisionProfileName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Ragdoll&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;creating-a-reusable-function-library&#34;&gt;
+    &lt;a href=&#34;#creating-a-reusable-function-library&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Creating a reusable function library
+&lt;/h4&gt;
+&lt;p&gt;To create a reusable function library, create a class that inherits
+from &amp;ldquo;UBlueprintFunctionLibrary&amp;rdquo;. Make all the functions static, and
+expose them to Blueprints. An example of this is &amp;ldquo;UGameplayStatics&amp;rdquo;.&lt;/p&gt;
+&lt;h4 id=&#34;static-member-functions&#34;&gt;
+    &lt;a href=&#34;#static-member-functions&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Static member functions
+&lt;/h4&gt;
+&lt;p&gt;Static member functions are accessed by the class&amp;rsquo;s name as namespace.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;MyClass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MyStaticFunction&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;timers-with-parameters&#34;&gt;
+    &lt;a href=&#34;#timers-with-parameters&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Timers with parameters
+&lt;/h4&gt;
+&lt;p&gt;You can create a timer that executes a function with parameters.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FTimerHandle&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Handle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FTimerDelegate&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Delegate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Delegate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BindUFunction&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;FunctionName&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FirstParameter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;GetWorldTimerManager&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SetTimer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Handle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Delegate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This will run FunctionName with parameters first Parameter in Time seconds&lt;/p&gt;
+&lt;h4 id=&#34;unposses-a-pawncharacter&#34;&gt;
+    &lt;a href=&#34;#unposses-a-pawncharacter&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Unposses a Pawn/Character
+&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;MyController&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Unposses&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;creating-cvars-console-variables&#34;&gt;
+    &lt;a href=&#34;#creating-cvars-console-variables&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Creating CVars (console variables)
+&lt;/h4&gt;
+&lt;p&gt;To create a Cvar, go the .cpp file and at the top of the file declare the CVar.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TAutoConsoleVariable&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CVarVariableName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TEXT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;My.Variable&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defaultvalue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TEXT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Help text that says what this variable is for&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ECVF_Cheat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// To get the value
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CVarVariableName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GetValueOnGameThread&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;instantiating-new-objects&#34;&gt;
+    &lt;a href=&#34;#instantiating-new-objects&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Instantiating new objects
+&lt;/h4&gt;
+&lt;p&gt;The function NewObject&lt;ObjectType&gt;(&amp;hellip;) is used to instantiate new
+objecs. The paramater &amp;ldquo;Outer&amp;rdquo; is who owns this object.&lt;/p&gt;
+&lt;h4 id=&#34;creating-blueprints-from-uobject-derived-classes&#34;&gt;
+    &lt;a href=&#34;#creating-blueprints-from-uobject-derived-classes&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Creating blueprints from UObject derived classes
+&lt;/h4&gt;
+&lt;p&gt;Whenever you need to create a blueprint from a UObject derived class, you need to mark the class as Blueprintable&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;UCLASS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Blueprintable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;c-functions-marked-as-blueprintnativeevent&#34;&gt;
+    &lt;a href=&#34;#c-functions-marked-as-blueprintnativeevent&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    C&amp;#43;&amp;#43; Functions marked as BlueprintNativeEvent
+&lt;/h4&gt;
+&lt;p&gt;When marking UFUNCTIONS as BlueprintNativeEvent, the C++ implementation name must append &amp;ldquo;_Implementation(&amp;hellip;)&amp;rdquo; to it&amp;rsquo;s definition.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// Header
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;UFUNCTION&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BlueprintNativeEvent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MyFunction&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// Implementation
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MyClass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MyFunction_Implementation&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// Code
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;accessing-uworld-from-blueprint-classes-derived-from-uobject&#34;&gt;
+    &lt;a href=&#34;#accessing-uworld-from-blueprint-classes-derived-from-uobject&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Accessing UWorld from blueprint classes derived from UObject
+&lt;/h4&gt;
+&lt;p&gt;Classes that are derived from UObject don&amp;rsquo;t have access to UWorld when
+used in blueprints. This severely limits what can be donde in
+blueprints. To fix this, override the GetWorld function.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;UWorld&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;GetWorld&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;override&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;gameplaytags-in-c&#34;&gt;
+    &lt;a href=&#34;#gameplaytags-in-c&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    GameplayTags in C&amp;#43;&amp;#43;
+&lt;/h4&gt;
+&lt;p&gt;We cannot create GameplayTags in C++. They must be added using the unreal editor.&lt;/p&gt;
+&lt;p&gt;But we can request and access gameplay tags from C++.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// Request a GameplayTag to the engine
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;FGameplayTag&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MyTag&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FGameplayTag&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RequestGameplayTag&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Tag.MyTag&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;functions-not-appearing-in-blueprints&#34;&gt;
+    &lt;a href=&#34;#functions-not-appearing-in-blueprints&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Functions not appearing in blueprints
+&lt;/h4&gt;
+&lt;p&gt;If a functioon cannot be called on blueprints, it&amp;rsquo;s probably missing a UFUNCTION specifier. Try adding &amp;ldquo;BlueprintCallable&amp;rdquo;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;UFUNCTION&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BlueprintCallable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;MyFunction&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;ecollisionchannel-variables-in-c&#34;&gt;
+    &lt;a href=&#34;#ecollisionchannel-variables-in-c&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    ECollisionChannel Variables in C&amp;#43;&amp;#43;
+&lt;/h4&gt;
+&lt;p&gt;Creating a variable of type &amp;ldquo;ECollisionChannel&amp;rdquo; does not compile. You need to do it in the following way:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;TEnumAsByte&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ECollisionChannel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Channel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;gameplaytags-container-in-c&#34;&gt;
+    &lt;a href=&#34;#gameplaytags-container-in-c&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    GameplayTags Container in C&amp;#43;&amp;#43;
+&lt;/h4&gt;
+&lt;p&gt;When we need a container of gameplaytags, it&amp;rsquo;s a good idea to use
+FGameplayTagContainer. It&amp;rsquo;s an array fo gameplay tags with a bunch of
+helper functions implemented.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FGameplayTagContainer&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MyContainer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;blueprint-tips&#34;&gt;
     &lt;a href=&#34;#blueprint-tips&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -391,7 +691,7 @@ It&amp;rsquo;s used in functions like: GetComponentByClass&lt;/p&gt;
     &lt;/a&gt;
     Blueprint Tips
 &lt;/h2&gt;
-&lt;h3 id=&#34;how-to-know-what-classnamespace-does-a-node-belong-to&#34;&gt;
+&lt;h4 id=&#34;how-to-know-what-classnamespace-does-a-node-belong-to&#34;&gt;
     &lt;a href=&#34;#how-to-know-what-classnamespace-does-a-node-belong-to&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -400,10 +700,10 @@ It&amp;rsquo;s used in functions like: GetComponentByClass&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     How to know what class/namespace does a node belong to
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;A good way to know what class/namespace a blueprint node belongs to i
 to mouse over it and looking at it&amp;rsquo;s target.&lt;/p&gt;
-&lt;h3 id=&#34;variables-or-functions-not-appearing-in-the-editor&#34;&gt;
+&lt;h4 id=&#34;variables-or-functions-not-appearing-in-the-editor&#34;&gt;
     &lt;a href=&#34;#variables-or-functions-not-appearing-in-the-editor&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -412,9 +712,9 @@ to mouse over it and looking at it&amp;rsquo;s target.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Variables or Functions not appearing in the editor
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;Sometimes variables or functions won&amp;rsquo;t appear in the blueprint editor, most likely you forgot to add a property specifier. Check your C++ code.&lt;/p&gt;
-&lt;h3 id=&#34;get-default-values-of-a-class&#34;&gt;
+&lt;h4 id=&#34;get-default-values-of-a-class&#34;&gt;
     &lt;a href=&#34;#get-default-values-of-a-class&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -423,7 +723,7 @@ to mouse over it and looking at it&amp;rsquo;s target.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Get Default Values of a Class
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;To get a class default values, you can use the node &amp;ldquo;GetClassDefaults&amp;rdquo;&lt;/p&gt;
 &lt;h2 id=&#34;development-tips&#34;&gt;
     &lt;a href=&#34;#development-tips&#34; class=&#34;anchor&#34;&gt;
@@ -435,7 +735,7 @@ to mouse over it and looking at it&amp;rsquo;s target.&lt;/p&gt;
     &lt;/a&gt;
     Development Tips
 &lt;/h2&gt;
-&lt;h3 id=&#34;use-debug-shapes&#34;&gt;
+&lt;h4 id=&#34;use-debug-shapes&#34;&gt;
     &lt;a href=&#34;#use-debug-shapes&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -444,7 +744,7 @@ to mouse over it and looking at it&amp;rsquo;s target.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Use Debug Shapes
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;Unreal has a bunch of debug shapes ready to be used, they are really useful when developing and debugging features. These are a few of them.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -470,7 +770,7 @@ to mouse over it and looking at it&amp;rsquo;s target.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;DrawDebugCrosshairs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(...);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;get-component-by-class&#34;&gt;
+&lt;/div&gt;&lt;h4 id=&#34;get-component-by-class&#34;&gt;
     &lt;a href=&#34;#get-component-by-class&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -479,11 +779,11 @@ to mouse over it and looking at it&amp;rsquo;s target.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Get Component By Class
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;Use GetComponentByClass to find a specific component. This is faster
 than casting to player and accessing the component from player. This
 also has less error of invalid pointer, casting might fail.&lt;/p&gt;
-&lt;h3 id=&#34;teleporting-actors&#34;&gt;
+&lt;h4 id=&#34;teleporting-actors&#34;&gt;
     &lt;a href=&#34;#teleporting-actors&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -492,7 +792,7 @@ also has less error of invalid pointer, casting might fail.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Teleporting Actors
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;Always use the actor builtin function TeleportTo when teleporting
 actors. It covers a lot of edge cases when teleporting an actor, such
 as collision detection &amp;amp; resolution.&lt;/p&gt;
@@ -506,7 +806,7 @@ as collision detection &amp;amp; resolution.&lt;/p&gt;
     &lt;/a&gt;
     Math Tips
 &lt;/h2&gt;
-&lt;h3 id=&#34;how-to-find-a-point-in-space-where-we-are-looking&#34;&gt;
+&lt;h4 id=&#34;how-to-find-a-point-in-space-where-we-are-looking&#34;&gt;
     &lt;a href=&#34;#how-to-find-a-point-in-space-where-we-are-looking&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -515,7 +815,7 @@ as collision detection &amp;amp; resolution.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     How to find a point in space where we are looking
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;In order to find a point in space where we are looking, or where a rotator is pointing.&lt;/p&gt;
 &lt;p&gt;You need to get it&amp;rsquo;s rotator, transform it to a vector, add the actor&amp;rsquo;s location and scale the rotation vector.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -583,7 +883,89 @@ as collision detection &amp;amp; resolution.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Execute_MyInterfaceFunction&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;umg&#34;&gt;
+&lt;/div&gt;&lt;h2 id=&#34;multiplayer&#34;&gt;
+    &lt;a href=&#34;#multiplayer&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Multiplayer
+&lt;/h2&gt;
+&lt;h4 id=&#34;updatingreplicating-actors&#34;&gt;
+    &lt;a href=&#34;#updatingreplicating-actors&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Updating/Replicating Actors
+&lt;/h4&gt;
+&lt;p&gt;Actors are updated in 2 ways:
+1- Property Updates (Automatically send updated variables from server to clients)
+2- RPC&amp;rsquo;s (Execute functions on the other machin)&lt;/p&gt;
+&lt;p&gt;Variables are synced from server to client, always!&lt;/p&gt;
+&lt;h4 id=&#34;types-of-remote-procedure-calls-rpcs&#34;&gt;
+    &lt;a href=&#34;#types-of-remote-procedure-calls-rpcs&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Types of Remote Procedure Calls (RPC&amp;#39;s)
+&lt;/h4&gt;
+&lt;p&gt;There are a couple of types of RPC&amp;rsquo;s&lt;/p&gt;
+&lt;h5 id=&#34;server-rpcs&#34;&gt;
+    &lt;a href=&#34;#server-rpcs&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Server RPC&amp;#39;s
+&lt;/h5&gt;
+&lt;p&gt;When called from a client, requests the server to execute a this function.&lt;/p&gt;
+&lt;p&gt;When called from the server, only the server runs the function.&lt;/p&gt;
+&lt;h5 id=&#34;client-rpcs&#34;&gt;
+    &lt;a href=&#34;#client-rpcs&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Client RPC&amp;#39;s
+&lt;/h5&gt;
+&lt;p&gt;Client RPC&amp;rsquo;s are called by the server to run on a &lt;em&gt;specific&lt;/em&gt; client.&lt;/p&gt;
+&lt;h5 id=&#34;netmulticast&#34;&gt;
+    &lt;a href=&#34;#netmulticast&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    NetMulticast
+&lt;/h5&gt;
+&lt;p&gt;These are called by the server to run a function on all clients.&lt;/p&gt;
+&lt;h4 id=&#34;playerstate&#34;&gt;
+    &lt;a href=&#34;#playerstate&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    PlayerState
+&lt;/h4&gt;
+&lt;p&gt;Every player has a &amp;ldquo;player state&amp;rdquo;. It&amp;rsquo;s a class which is automatically
+replicated to all clients and server. This is a good place to store
+variables that need to persist such as NumberOfKills.&lt;/p&gt;
+&lt;h2 id=&#34;umg&#34;&gt;
     &lt;a href=&#34;#umg&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -593,16 +975,106 @@ as collision detection &amp;amp; resolution.&lt;/p&gt;
     &lt;/a&gt;
     UMG
 &lt;/h2&gt;
-&lt;h3 id=&#34;umg-tips&#34;&gt;
-    &lt;a href=&#34;#umg-tips&#34; class=&#34;anchor&#34;&gt;
+&lt;h4 id=&#34;creating-a-widget-in-c&#34;&gt;
+    &lt;a href=&#34;#creating-a-widget-in-c&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
                 d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
             &lt;/path&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
-    UMG Tips
-&lt;/h3&gt;
+    Creating a widget in C&amp;#43;&amp;#43;
+&lt;/h4&gt;
+&lt;p&gt;To create a C++ Widget class, inherit from &amp;ldquo;UserWidget&amp;rdquo;.&lt;/p&gt;
+&lt;h4 id=&#34;instancing-a-widget-in-c&#34;&gt;
+    &lt;a href=&#34;#instancing-a-widget-in-c&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Instancing a widget in C&amp;#43;&amp;#43;
+&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;MyWidget&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CreateWidget&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MyWidgetClass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Owner&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Class&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;MyWidget&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AddToViewport&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;removing-a-widget&#34;&gt;
+    &lt;a href=&#34;#removing-a-widget&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Removing a widget
+&lt;/h4&gt;
+&lt;p&gt;To remove a widget, call the function:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Widget&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RemoveFromParent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;accesing-widget-variables-such-as-textboxes-from-c&#34;&gt;
+    &lt;a href=&#34;#accesing-widget-variables-such-as-textboxes-from-c&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Accesing Widget variables such as textboxes from C&amp;#43;&amp;#43;
+&lt;/h4&gt;
+&lt;p&gt;To access a UMG widget in C++, do the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create a C++ class that inherits from &amp;ldquo;UserWidget&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Add a class member variable that represents the variable/widget&lt;/li&gt;
+&lt;li&gt;Mark it with UPROPERTY(meta=BindWidget)&lt;/li&gt;
+&lt;li&gt;Create the widget with the same type and name&lt;/li&gt;
+&lt;li&gt;You can now access it from C++&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// Remember to create the same variable with the same name and type in the UMG Blueprint
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;UPROPERTY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meta&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BindWidget&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;UTextBlock&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MyTextBlock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;UPROPERTY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meta&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BindWidget&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;UImage&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MyImage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;tick-function-in-widget&#34;&gt;
+    &lt;a href=&#34;#tick-function-in-widget&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Tick function in widget
+&lt;/h4&gt;
+&lt;p&gt;The tick function in widget&amp;rsquo;s is called &amp;ldquo;NativeTick&amp;rdquo;, override this
+function when needed.&lt;/p&gt;
 &lt;h4 id=&#34;add-widget-to-another-widget&#34;&gt;
     &lt;a href=&#34;#add-widget-to-another-widget&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
@@ -695,7 +1167,7 @@ call widgets functions from outside.&lt;/p&gt;
     Use PreConstruct to set values
 &lt;/h4&gt;
 &lt;p&gt;Set things such as colors and values in the pre construct event.&lt;/p&gt;
-&lt;h3 id=&#34;make-a-widget-have-input-parameters-on-creation&#34;&gt;
+&lt;h4 id=&#34;make-a-widget-have-input-parameters-on-creation&#34;&gt;
     &lt;a href=&#34;#make-a-widget-have-input-parameters-on-creation&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -704,11 +1176,11 @@ call widgets functions from outside.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Make a widget have input parameters on creation
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;Checking &amp;ldquo;Expose on spawn&amp;rdquo; to a variable makes that variable be an
 input to the CreateWidget node. This way we can set variables when a
 widget is being created.&lt;/p&gt;
-&lt;h3 id=&#34;world-position-to-screen-position&#34;&gt;
+&lt;h4 id=&#34;world-position-to-screen-position&#34;&gt;
     &lt;a href=&#34;#world-position-to-screen-position&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -717,10 +1189,10 @@ widget is being created.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     World Position to Screen Position
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;The node &amp;ldquo;ProjectWorldToScreen&amp;rdquo; transforms a position in world coordinates to screen coordinates.&lt;/p&gt;
 &lt;p&gt;If the screen coordinate seems weirdly off, try dividing ScreenPosition/GetViewPortScale.&lt;/p&gt;
-&lt;h3 id=&#34;removing-a-widget-from-screen&#34;&gt;
+&lt;h4 id=&#34;removing-a-widget-from-screen&#34;&gt;
     &lt;a href=&#34;#removing-a-widget-from-screen&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -729,7 +1201,7 @@ widget is being created.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Removing a widget from screen
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;To remove a widget from screen we need to call the function &amp;ldquo;RemoveFromParent&amp;rdquo;.&lt;/p&gt;
 &lt;h2 id=&#34;materials&#34;&gt;
     &lt;a href=&#34;#materials&#34; class=&#34;anchor&#34;&gt;
@@ -746,7 +1218,7 @@ instead of glsl/hlsl. Materials are the blueprint/classes and material
 instances are the instances of materials.&lt;/p&gt;
 &lt;p&gt;Such as with glsl uniform variables, you can set input and parameters
 to a material.&lt;/p&gt;
-&lt;h3 id=&#34;material-instances&#34;&gt;
+&lt;h4 id=&#34;material-instances&#34;&gt;
     &lt;a href=&#34;#material-instances&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -755,10 +1227,10 @@ to a material.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Material Instances
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;Material instances cannot add/edit behaviours. Only variables exposed
 by a material are editable.&lt;/p&gt;
-&lt;h3 id=&#34;material-functions&#34;&gt;
+&lt;h4 id=&#34;material-functions&#34;&gt;
     &lt;a href=&#34;#material-functions&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -767,7 +1239,7 @@ by a material are editable.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Material Functions
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;You can create material functions. These functions are able to be
 reutilized inside other materials.&lt;/p&gt;
 &lt;p&gt;Material functions can have Input, search for the input node.&lt;/p&gt;
@@ -775,7 +1247,7 @@ reutilized inside other materials.&lt;/p&gt;
 library&amp;rdquo; checkbox. If you don&amp;rsquo;t do this, the function won&amp;rsquo;t appear in
 the material function list.&lt;/p&gt;
 &lt;p&gt;Material Functions can have multiple outputs!&lt;/p&gt;
-&lt;h3 id=&#34;builtin-functions&#34;&gt;
+&lt;h4 id=&#34;builtin-functions&#34;&gt;
     &lt;a href=&#34;#builtin-functions&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -784,13 +1256,13 @@ the material function list.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Builtin Functions
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;There are a lot of complex functions already implemented for you in
 the material editor. I recommend having a look at them before
 implementing something inside a material, there&amp;rsquo;s a chance that what
 you want is already implemented and the solution might be to add a
 single node.&lt;/p&gt;
-&lt;h3 id=&#34;debuggingvisualizing-scalar-values&#34;&gt;
+&lt;h4 id=&#34;debuggingvisualizing-scalar-values&#34;&gt;
     &lt;a href=&#34;#debuggingvisualizing-scalar-values&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -799,12 +1271,12 @@ single node.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Debugging/Visualizing Scalar Values
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;One way of visualizing scalar values is to use the node
 &amp;ldquo;DebugScalarValues&amp;rdquo;. It prints a scalar value onto the mesh active in
 the material. It&amp;rsquo;s a good way of debugging values inside a
 shader/material.&lt;/p&gt;
-&lt;h3 id=&#34;using-materials-in-umg&#34;&gt;
+&lt;h4 id=&#34;using-materials-in-umg&#34;&gt;
     &lt;a href=&#34;#using-materials-in-umg&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -813,7 +1285,7 @@ shader/material.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Using Materials in UMG
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;In order to use a material in UMG/User Interfaces, we need to set the Material Domain to &amp;ldquo;User Interace&amp;rdquo;&lt;/p&gt;
 &lt;h2 id=&#34;sound&#34;&gt;
     &lt;a href=&#34;#sound&#34; class=&#34;anchor&#34;&gt;
@@ -825,7 +1297,7 @@ shader/material.&lt;/p&gt;
     &lt;/a&gt;
     Sound
 &lt;/h2&gt;
-&lt;h3 id=&#34;sound-cues&#34;&gt;
+&lt;h4 id=&#34;sound-cues&#34;&gt;
     &lt;a href=&#34;#sound-cues&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -834,7 +1306,7 @@ shader/material.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Sound Cues
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;Sound Cues are the programmable audio assets. As with all thing in
 unreal you can program the sound using it&amp;rsquo;s specific nodes. Maybe add
 a reverb or something else&amp;hellip;&lt;/p&gt;
@@ -848,7 +1320,7 @@ a reverb or something else&amp;hellip;&lt;/p&gt;
     &lt;/a&gt;
     Shortcuts
 &lt;/h2&gt;
-&lt;h3 id=&#34;asset-searching&#34;&gt;
+&lt;h4 id=&#34;asset-searching&#34;&gt;
     &lt;a href=&#34;#asset-searching&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -857,10 +1329,10 @@ a reverb or something else&amp;hellip;&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Asset Searching
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;Ctrl+P opens a window to search for assets. It&amp;rsquo;s really fast since as
 soon as you press the shortcut you can start typing.&lt;/p&gt;
-&lt;h3 id=&#34;move-around-in-pie-without-stopping-the-simulation&#34;&gt;
+&lt;h4 id=&#34;move-around-in-pie-without-stopping-the-simulation&#34;&gt;
     &lt;a href=&#34;#move-around-in-pie-without-stopping-the-simulation&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -869,7 +1341,7 @@ soon as you press the shortcut you can start typing.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Move around in PIE without stopping the simulation
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;Press F8 while playing in editor to be able to move around without
 stopping the simulation. Press F8 again to go back to your camera
 view.&lt;/p&gt;
@@ -888,17 +1360,17 @@ Blueprint Update Animation&amp;rdquo; runs every frame.&lt;/p&gt;
 &lt;p&gt;The event graph inside an animation blueprint is able to set variables
 which are to be used inside the animation graphs to set the correct
 pose.&lt;/p&gt;
-&lt;h2 id=&#34;ai-tips&#34;&gt;
-    &lt;a href=&#34;#ai-tips&#34; class=&#34;anchor&#34;&gt;
+&lt;h2 id=&#34;ai&#34;&gt;
+    &lt;a href=&#34;#ai&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
                 d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
             &lt;/path&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
-    AI Tips
+    AI
 &lt;/h2&gt;
-&lt;h3 id=&#34;debugging-tips&#34;&gt;
+&lt;h4 id=&#34;debugging-tips&#34;&gt;
     &lt;a href=&#34;#debugging-tips&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -907,10 +1379,35 @@ pose.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Debugging Tips
-&lt;/h3&gt;
-&lt;p&gt;Press the apostrophe key (&amp;rsquo;) to open the in-game AI Debugger. There&amp;rsquo;s a lot of information there.&lt;/p&gt;
-&lt;p&gt;Press the key while looking at an AI to show the info about it&amp;rsquo;s ai instance&lt;/p&gt;
-&lt;h3 id=&#34;navmesh&#34;&gt;
+&lt;/h4&gt;
+&lt;p&gt;Press the apostrophe key (&amp;rsquo;) to open the in-game AI Debugger. There&amp;rsquo;s
+a lot of information there. Press the key while looking at an AI to
+show the info about it&amp;rsquo;s ai instance&lt;/p&gt;
+&lt;p&gt;Debugging Tip -&amp;gt; We can use the &amp;ldquo;visual logger&amp;rdquo; to record gameplay and
+then see what was happening at different points of the playthrough. It
+can record a lot of events, suchs as EQS, BT&amp;rsquo;s, Pathfinding and
+more. It&amp;rsquo;s also good to note that the visual logger has a lot more
+features than AI debugging tools.&lt;/p&gt;
+&lt;h4 id=&#34;behaviour-trees&#34;&gt;
+    &lt;a href=&#34;#behaviour-trees&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Behaviour Trees
+&lt;/h4&gt;
+&lt;p&gt;To get the behaviour tree from C++, call the function:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;AIController&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GetBrainComponent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;navmesh&#34;&gt;
     &lt;a href=&#34;#navmesh&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -919,9 +1416,13 @@ pose.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Navmesh
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;Navmesh: The navmesh provides data on where the AI is allowed to move.&lt;/p&gt;
-&lt;h3 id=&#34;aicontroller&#34;&gt;
+&lt;p&gt;The navmesh might create valid sections inside big meshes. This might
+generate bugs, such as EQS generating points inside meshes. To fix
+this, create &amp;ldquo;Nav Modifier Volumes&amp;rdquo; and place them to delete the
+invalid navmesh sections.&lt;/p&gt;
+&lt;h4 id=&#34;aicontroller&#34;&gt;
     &lt;a href=&#34;#aicontroller&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -930,9 +1431,9 @@ pose.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     AIController
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;When creating an AIController in C++ it still needs a blueprint that inherits from it.&lt;/p&gt;
-&lt;h3 id=&#34;blackboard-component&#34;&gt;
+&lt;h4 id=&#34;blackboard-component&#34;&gt;
     &lt;a href=&#34;#blackboard-component&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -941,7 +1442,7 @@ pose.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Blackboard Component
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;You can get the blackboard component in AIController with the function GetBlackboardComponent&lt;/p&gt;
 &lt;p&gt;To change a value in a blackboard component, use the function:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -952,7 +1453,7 @@ pose.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;BlackboardComponent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SetValueAs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...(...)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;btservices&#34;&gt;
+&lt;/div&gt;&lt;h4 id=&#34;btservices&#34;&gt;
     &lt;a href=&#34;#btservices&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -961,7 +1462,7 @@ pose.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     BTServices
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;To create BTServices in C++ you need to inherit from &amp;ldquo;BTService&amp;rdquo;, if
 you are creating them from Blueprints, inherit from
 &amp;ldquo;BTService_BlueprintBase&amp;rdquo;.&lt;/p&gt;
@@ -977,7 +1478,7 @@ you are creating them from Blueprints, inherit from
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;To run a Service each frame, add the frame to the rootnode of the Behavior Tree.&lt;/p&gt;
-&lt;h3 id=&#34;bttasks&#34;&gt;
+&lt;h4 id=&#34;bttasks&#34;&gt;
     &lt;a href=&#34;#bttasks&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -986,13 +1487,13 @@ you are creating them from Blueprints, inherit from
         &lt;/svg&gt;
     &lt;/a&gt;
     BTTasks
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;To create a BTTask node in C++, inherit ftrom BTTaskNode. To create
 one in blueprints, inherit from BTTask_BlueprintBase.&lt;/p&gt;
 &lt;p&gt;Marking values with UPROPERTY specifiers, make these variables
 editable inside the behaviour tree when selecting the corresponding
 node.&lt;/p&gt;
-&lt;h3 id=&#34;decorators&#34;&gt;
+&lt;h4 id=&#34;decorators&#34;&gt;
     &lt;a href=&#34;#decorators&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -1001,7 +1502,7 @@ node.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     Decorators
-&lt;/h3&gt;
+&lt;/h4&gt;
 &lt;p&gt;Decorators have a vew flow control capabilities inside the details
 window of a decorator. Let&amp;rsquo;s say we have a decorator that depends on a
 bool. To instantly stop execution on that subtree when this bool
@@ -1012,7 +1513,7 @@ different nodes. For example, unreal will color light blue those nodes
 that are aborted by low priority mode. Green those that are aborted by
 mode Self. Unreal always colors the nodes that are affected from what
 we have currently selected.&lt;/p&gt;
-&lt;h3 id=&#34;eqs&#34;&gt;
+&lt;h4 id=&#34;eqs&#34;&gt;
     &lt;a href=&#34;#eqs&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -1021,8 +1522,26 @@ we have currently selected.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     EQS
-&lt;/h3&gt;
+&lt;/h4&gt;
+&lt;p&gt;The purpose of EQS tests are not clearly defined by their names, they
+might do a couple of different things that you would not imagine just
+by seeing it&amp;rsquo;s name. For example, &amp;ldquo;Pathfinding&amp;rdquo; test can do multiple
+things by changing it&amp;rsquo;s test mode. Such as &amp;ldquo;PathExist&amp;rdquo;, &amp;ldquo;PathCost&amp;rdquo;,
+&amp;ldquo;Path Length&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;To run an EQS Query from C++, call:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;UEnvQueryManager&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RunEQSQuery&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(...);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;EQS Queries might take multiple frames to complete. Remember to bind
+to &amp;ldquo;GetOnQueryFinishedEvent&amp;rdquo; to handle the query results.&lt;/p&gt;
 &lt;p&gt;EQS Queries can be run from behaviour trees.&lt;/p&gt;
+&lt;p&gt;Setting the scoring factor to a negative number makes the test wigh
+more in score.&lt;/p&gt;
 &lt;p&gt;The &amp;ldquo;Querier&amp;rdquo; is the class that is running the query. If we run it
 from a BT, the querier is the AI running that BT. Queries can also be
 called from other classes such as game mode.&lt;/p&gt;
@@ -1032,6 +1551,117 @@ remember to set the output location key.&lt;/p&gt;
 &lt;p&gt;In the AI Visual debugger (&amp;rsquo;) key, press numpad 3 to enable EQS
 visualization for the selected AI. Blue means it failed, green
 succeeded. Each sphere is a queried location/point.&lt;/p&gt;
+&lt;p&gt;We can run the query from another &amp;ldquo;center&amp;rdquo;, meaning a non existant
+EnvQueryContext. To do this we need to create a QueryContesxt. It&amp;rsquo;s a
+blueprint or C++ class that inherits from
+EnvQueryContext_BlueprintBase or the C++ one. Then, override one of
+the four functions and provide the possible actors/locations from
+which the query can be made.&lt;/p&gt;
+&lt;p&gt;An EQS query can have multiple tests and the results of the multiple
+tests can be combined. Remember to test your things correctly and
+debug them to make sure they are working as intended.&lt;/p&gt;
+&lt;p&gt;You can create a special actor to visualize EQS queries in the
+editor. First create a blueprint that inherits from &amp;ldquo;EQSTestingPawn&amp;rdquo;,
+drop it in the world. Set the EQS query you want to visualize and,
+move the actor around to try and &amp;ldquo;refresh&amp;rdquo; it. If it all went well you
+should see the differentes EQS spheres and their results.&lt;/p&gt;
+&lt;p&gt;EQS by default will generate points inside invalid mesh navigation. If
+your EQS is to be run on an AI to search for a valid location, this
+will generate a bug since it might not be able to reach the winning
+location. To fix this, add the &amp;ldquo;PathfindingTest&amp;rdquo; to check for a valid
+path.&lt;/p&gt;
+&lt;p&gt;If the navmesh is not carefully created and cleaned, EQS might
+generate points on invalid areas, such as inside big meshes.&lt;/p&gt;
+&lt;h4 id=&#34;senses&#34;&gt;
+    &lt;a href=&#34;#senses&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Senses
+&lt;/h4&gt;
+&lt;p&gt;AI&amp;rsquo;s can have what unreal calls &amp;ldquo;senses&amp;rdquo;, such as seeing, listening
+for sounds and more. In the course we mainly used the
+&amp;ldquo;PawnSensingComponent&amp;rdquo; but there&amp;rsquo;s a new API called &amp;ldquo;AI
+Perception&amp;rdquo;. This new API should be used.&lt;/p&gt;
+&lt;p&gt;In the details pane of the &amp;ldquo;PawnSensingComponent&amp;rdquo; you can edit some
+values for the senses. Such as peripheral vision angle, which is a
+cone that represents the AI vision.&lt;/p&gt;
+&lt;h2 id=&#34;curves&#34;&gt;
+    &lt;a href=&#34;#curves&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Curves
+&lt;/h2&gt;
+&lt;p&gt;Unreal has an easy way to create curves for various purposes. To
+create a curve open the right click menu, and under &amp;ldquo;Misc&amp;rdquo; select and
+create a Curve. Set a few points to create the desired curve. You can access the curve from C++ by creating a variable:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;UCurveFloat&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MyCurve&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;commands-and-cheats&#34;&gt;
+    &lt;a href=&#34;#commands-and-cheats&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Commands and Cheats
+&lt;/h2&gt;
+&lt;h4 id=&#34;exec&#34;&gt;
+    &lt;a href=&#34;#exec&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Exec
+&lt;/h4&gt;
+&lt;p&gt;Marking a function as Exec allows it to be called as a command in the
+game console.&lt;/p&gt;
+&lt;p&gt;This will work automatically as long as the function is in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PlayerController&lt;/li&gt;
+&lt;li&gt;Character you are playing with&lt;/li&gt;
+&lt;li&gt;GameMode&lt;/li&gt;
+&lt;li&gt;CheatManager&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;cheat-manager&#34;&gt;
+    &lt;a href=&#34;#cheat-manager&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Cheat Manager
+&lt;/h4&gt;
+&lt;p&gt;Derive a class from UCheatManager and you can add the cheats there.&lt;/p&gt;
+&lt;h4 id=&#34;show-collisions&#34;&gt;
+    &lt;a href=&#34;#show-collisions&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Show collisions
+&lt;/h4&gt;
+&lt;p&gt;The command &amp;ldquo;showcollision&amp;rdquo; enables a visualization of the colission
+primitives in the map.&lt;/p&gt;
 
     </description>
     </item>
