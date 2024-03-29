@@ -67,7 +67,7 @@ if (!doNotTrack) {
     },
     "datePublished": "2024-03-20",
     "description": "",
-    "wordCount":  3375 ,
+    "wordCount":  5377 ,
     "mainEntityOfPage": "True",
     "dateModified": "2024-03-20",
     "publisher": {
@@ -178,7 +178,7 @@ if (!doNotTrack) {
                               
                             
                             By jsanchez | <time>March 20, 2024</time>
-                            | 16 minutes
+                            | 26 minutes
                         </div>
                         <div class="tags">
                             
@@ -190,8 +190,7 @@ if (!doNotTrack) {
     </article>
 
     <div class="article-post">
-    <pre tabindex="0"><code>THIS IS A WORK IN PROGRESS, I&#39;M TRANSCRIBING NOTES
-</code></pre><p>These are my notes for Tom Looman&rsquo;s course <a href="https://courses.tomlooman.com/p/unrealengine-cpp?coupon_code=COMMUNITY15">Professional Game
+    <p>These are my notes for Tom Looman&rsquo;s course <a href="https://courses.tomlooman.com/p/unrealengine-cpp?coupon_code=COMMUNITY15">Professional Game
 Development in C++ and Unreal
 Engine</a>. These
 notes mainly consist of things i did not know or understand at the
@@ -215,6 +214,9 @@ but I hope someone else will find the useful.</p>
 <li><a href="#ai">AI</a></li>
 <li><a href="#curves">Curves</a></li>
 <li><a href="#commands-and-cheats">Commands and Cheats</a></li>
+<li><a href="#savegame-system">Savegame System</a></li>
+<li><a href="#data-tables">Data Tables</a></li>
+<li><a href="#data-assets">Data Assets</a></li>
 </ol>
 <h2 id="about-unreal-engine">
     <a href="#about-unreal-engine" class="anchor">
@@ -426,7 +428,40 @@ before BeginPlay. This will make your code easier to navigate.</p>
     Stepping into engine code
 </h4>
 <p>To use the debugger with Unreal&rsquo;s engine code, you need to download the editor symbols for debugging. This can be done from Epic Game&rsquo;s Launcher.</p>
-<h4 id="casting">
+<h4 id="structs">
+    <a href="#structs" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Structs
+</h4>
+<p>Declarding a struct in unreal looks something like this:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">USTRUCT</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">FMyStruct</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">GENERATED_BODY</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">UPROPERTY</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">MyVar</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="casting">
     <a href="#casting" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
@@ -515,15 +550,15 @@ logs a message. This message is red on the unreal editor.</p>
 </h4>
 <p>Don&rsquo;t call &ldquo;GetAllActorsOfClass&rdquo;, it iterates through every actor on
 the world to find them.</p>
-<h4 id="looping-over-all-actors-in-the-world">
-    <a href="#looping-over-all-actors-in-the-world" class="anchor">
+<h4 id="iterating-through-all-actors-in-a-world">
+    <a href="#iterating-through-all-actors-in-a-world" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
             </path>
         </svg>
     </a>
-    Looping over all actors in the world
+    Iterating through all actors in a world
 </h4>
 <p>To loop over all the classes in the world, we can use the class &ldquo;TActorIterator&rdquo;.</p>
 <p>It&rsquo;s what &ldquo;GetAllActorsOfClass&rdquo; uses behind the curtain.</p>
@@ -1070,7 +1105,86 @@ as collision detection &amp; resolution.</p>
     </a>
     Multiplayer
 </h2>
-<h4 id="updatingreplicating-actors">
+<h4 id="multiplayer-gameplay-classes">
+    <a href="#multiplayer-gameplay-classes" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Multiplayer Gameplay Classes
+</h4>
+<p><strong>PlayerController</strong> - Exists on the server and local client. Not in the other clients.</p>
+<p><strong>PlayerState</strong> - Exists on the server and on all the clients.</p>
+<p><strong>GameMode</strong> - Only exists on the server.</p>
+<p><strong>GameStateBase</strong> - Exists on the server and on all the clients. This class is usually used to share GameMode data to all the clients and server</p>
+<p><strong>Pawn</strong> - Every pawn exists on the server and also all the clients.</p>
+<p><strong>AIController</strong> - Exists only on the server.</p>
+<h4 id="how-to-know-if-a-variable-is-being-replicated-in-blueprints">
+    <a href="#how-to-know-if-a-variable-is-being-replicated-in-blueprints" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    How to know if a variable is being replicated in blueprints
+</h4>
+<p>If a variable is being replicated, the node will have an icon that looks like two cotton balls.</p>
+<h4 id="how-to-check-if-we-are-the-server">
+    <a href="#how-to-check-if-we-are-the-server" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    How to check if we are the server
+</h4>
+<p>The function &ldquo;HasAuthority&rdquo; returns true if we are the server</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">bServer</span> <span class="o">=</span> <span class="n">HasAuthority</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="how-to-check-what-type-of-client-we-are">
+    <a href="#how-to-check-what-type-of-client-we-are" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    How to check what type of client we are
+</h4>
+<p>There&rsquo;s a function call IsNetMode that returns what type of
+client/server we are. It has more return types that just client or
+server.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="c1">// Examples Modes
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - NM_Client
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - NM_DedicatedServer
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - NM_ListenServer
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - NM_MAX
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - NM_Standalone
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">World</span><span class="o">-&gt;</span><span class="n">IsNetMode</span><span class="p">(</span><span class="n">ENetMode</span> <span class="n">Mode</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="updatingreplicating-actors">
     <a href="#updatingreplicating-actors" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
@@ -1080,10 +1194,161 @@ as collision detection &amp; resolution.</p>
     </a>
     Updating/Replicating Actors
 </h4>
-<p>Actors are updated in 2 ways:
-1- Property Updates (Automatically send updated variables from server to clients)
-2- RPC&rsquo;s (Execute functions on the other machin)</p>
+<p>Actors are updated in 2 ways:</p>
+<ol>
+<li>Property Updates (Automatically send updated variables from server to clients)</li>
+<li>RPC&rsquo;s (Execute functions on the other machin)</li>
+</ol>
 <p>Variables are synced from server to client, always!</p>
+<h4 id="marking-an-actor-to-replicate-in-c">
+    <a href="#marking-an-actor-to-replicate-in-c" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Marking an actor to replicate in C&#43;&#43;
+</h4>
+<p>In order to mark an actor to replicate, you need to set
+&ldquo;SetReplicated(true)&rdquo; to true, in it&rsquo;s constructor.</p>
+<pre tabindex="0"><code class="language-C+" data-lang="C+">// In Constructor, prefer this over calling SetReplicates directly
+bReplicates = true;
+
+// To set replicate at runtime
+SetReplicates(true);
+</code></pre><p>This sets wether this actor replicates to network clients. When this
+actor is spawned on the server, it will be sent to all clients as
+well. This tells Unreal to replicate the marked variables on this
+class.</p>
+<h4 id="replicating-actor-components">
+    <a href="#replicating-actor-components" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Replicating Actor Components
+</h4>
+<p>To set an ActorComponent to replicate, call &ldquo;SetIsReplicatedByDefault(true)&rdquo; in it&rsquo;s constructor.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="c1">// Constructor
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">SetIsReplicatedByDefault</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="setting-up-properties-for-replication">
+    <a href="#setting-up-properties-for-replication" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Setting up properties for replication
+</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="c1">// Header File
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Mark a variable with the Replicated Property
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">Replicated</span><span class="p">,</span> <span class="n">Reliable</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">MyReplicatedVariable</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Implementation File
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Constructor
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">bReplicates</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span> <span class="c1">// Remember to set this in the constructor
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// In the same class, implement the following function and place DOREPLIFETIME macro&#39;s with replication configuration for each variable
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="n">AActor</span><span class="o">::</span><span class="n">GetLifetimeReplicatedProps</span><span class="p">(</span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FLifetimeProperty</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">OutLifetimeProps</span><span class="p">)</span> <span class="k">const</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DOREPLIFETIME</span><span class="p">(</span><span class="n">MyClass</span><span class="p">,</span> <span class="n">MyReplicatedVariable</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now, the member variable MyReplicatedVariable will be synchronized to
+all connected clients for every copy of this actor type.</p>
+<p>There is not need to declare GetLifetimeReplicatedProps in the header
+file. This is because once we mark a variable as replicated, the
+unreal header tool will automatically generate the definition for us.</p>
+<h4 id="conditional-replication-of-a-variable">
+    <a href="#conditional-replication-of-a-variable" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Conditional replication of a variable
+</h4>
+<p>There&rsquo;s another macro you can use in &ldquo;GetLifetimeReplicatedProps&rdquo; function to configure replication. This is the <strong>DOREPLIFETIME_CONDITION()</strong> macro.</p>
+<p>This is mostly used to save bandwith and cpu time. The less data sent,
+the better. There are a lot of different conditions so be sure to
+check the official documentation.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="c1">// Be sure to check the different COND_ macros for different conditions
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">DOREPLIFETIME_CONDITION</span><span class="p">(</span><span class="n">Class</span><span class="p">,</span> <span class="n">Variable</span><span class="p">,</span> <span class="n">COND_</span><span class="p">...);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="running-a-function-everytime-a-variable-is-replicated-onrep">
+    <a href="#running-a-function-everytime-a-variable-is-replicated-onrep" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Running a function everytime a variable is replicated, OnRep
+</h4>
+<p>Replicated variables can also run a function everytime they
+change. For this we need to mark the variable with &ldquo;ReplicatedUsing=&rdquo;
+property.</p>
+<p>In Blueprints, This is called &ldquo;RepNotify&rdquo;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">ReplicatedUsing</span><span class="o">=</span><span class="s">&#34;OnRep_LidOpened&#34;</span><span class="p">,</span> <span class="n">BlueprintReadOnly</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">bLidOpened</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">UFUNCTION</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">OnRep_LidOpened</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The convention is to prepend the function name with &ldquo;OnRep_&rdquo;</p>
+<p>OnRep and RepNotify functions are only called automatically on
+clients. <strong>They are not called on the server</strong>. If you need this
+function to be called on the server you must call it manually.</p>
 <h4 id="types-of-remote-procedure-calls-rpcs">
     <a href="#types-of-remote-procedure-calls-rpcs" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -1095,7 +1360,12 @@ as collision detection &amp; resolution.</p>
     Types of Remote Procedure Calls (RPC&#39;s)
 </h4>
 <p>There are a couple of types of RPC&rsquo;s</p>
-<h5 id="server-rpcs">
+<ul>
+<li>Server RPC's</li>
+<li>Client RPC's</li>
+<li>NetMulticast</li>
+</ul>
+<h4 id="server-rpcs">
     <a href="#server-rpcs" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
@@ -1104,10 +1374,21 @@ as collision detection &amp; resolution.</p>
         </svg>
     </a>
     Server RPC&#39;s
-</h5>
+</h4>
 <p>When called from a client, requests the server to execute a this function.</p>
 <p>When called from the server, only the server runs the function.</p>
-<h5 id="client-rpcs">
+<p>This is the only way to go from Client to Server.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">Server</span><span class="p">,</span> <span class="n">Reliable</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">MyFunction</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="client-rpcs">
     <a href="#client-rpcs" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
@@ -1116,9 +1397,9 @@ as collision detection &amp; resolution.</p>
         </svg>
     </a>
     Client RPC&#39;s
-</h5>
+</h4>
 <p>Client RPC&rsquo;s are called by the server to run on a <em>specific</em> client.</p>
-<h5 id="netmulticast">
+<h4 id="netmulticast">
     <a href="#netmulticast" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
@@ -1127,8 +1408,158 @@ as collision detection &amp; resolution.</p>
         </svg>
     </a>
     NetMulticast
-</h5>
+</h4>
 <p>These are called by the server to run a function on all clients.</p>
+<p>These are mostly used for transient things such as a barrel explosion. They might not be good for replicating state.</p>
+<p>A new player that enters the server after the multicast was executed, will not receive this explosion event.</p>
+<h3 id="rpcs-example-declaration-and-implementation">
+    <a href="#rpcs-example-declaration-and-implementation" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    RPC&#39;s Example Declaration and Implementation
+</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="c1">// Header
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">Server</span><span class="p">,</span> <span class="n">Reliable</span><span class="p">,</span> <span class="n">WithValidation</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">MyFunctyion</span><span class="p">(</span><span class="kt">int</span> <span class="n">AParamenter</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Implementation File
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="n">AExampleClass</span><span class="o">::</span><span class="n">MyFunction_Implementation</span><span class="p">(</span><span class="kt">int</span> <span class="n">AParameter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Stuff
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Be aware that the implementation of the function appends
+&ldquo;_Implementation&rdquo; to the function name.</p>
+<p><strong>Remember to replicate as little data as possible, this includes RPC function parameters!</strong></p>
+<h4 id="creating-rpcs-in-blueprints">
+    <a href="#creating-rpcs-in-blueprints" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Creating RPC&#39;s in Blueprints
+</h4>
+<ul>
+<li>Create a new custom event</li>
+<li>Click on it, and select the RPC type on the details panel</li>
+<li>Select Reliable/Unreliable</li>
+</ul>
+<h4 id="reliable--unreliable">
+    <a href="#reliable--unreliable" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Reliable / Unreliable
+</h4>
+<p>You can add a UPROPERTY/UFUNCTION specifier to functions and variables.</p>
+<p><strong>Reliable</strong> - This will make the variable guaranteed to update. If a packed is lost, it will be resent until acknowledgement is received.</p>
+<p><strong>Unreliable</strong> - Not guaranteed, packet can get lost and it won&rsquo;t be resent.</p>
+<p>If a packet marked as reliable fails to arrive, the player might
+experience a lag spike, since new packets will be kept on a queue
+unprocessed until this reliable packed is received.</p>
+<p><strong>Use Unrealiable as much as you can!</strong></p>
+<h4 id="where-is-my-code-being-executed">
+    <a href="#where-is-my-code-being-executed" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Where is my code being executed?
+</h4>
+<p>Add a ton of logging with a variable that shows whether it is running
+on the client or server.</p>
+<h4 id="where-should-my-code-be-executed">
+    <a href="#where-should-my-code-be-executed" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Where should my code be executed?
+</h4>
+<p>Changing Gamestate? Execute on server.</p>
+<p>Cosmetic? Execute on client.</p>
+<p>They are often mixed to predict game state and reduce latency for clients.</p>
+<h4 id="checking-if-a-playercontroller-is-being-controlled-locally">
+    <a href="#checking-if-a-playercontroller-is-being-controlled-locally" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Checking if a PlayerController is being controlled locally
+</h4>
+<p>There are two functions to check if a controller is being controlled locally.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">APlayerController</span><span class="o">-&gt;</span><span class="n">IsLocalController</span><span class="p">();</span> <span class="c1">// Also works for AI
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">AController</span><span class="o">-&gt;</span><span class="n">IsLocalPlayerController</span><span class="p">();</span> <span class="c1">// Only works on players
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="pawn-islocallycontrolled">
+    <a href="#pawn-islocallycontrolled" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Pawn-&amp;gt;IsLocallyControlled()
+</h4>
+<p>This function returns true if it&rsquo;s controlled locally. It&rsquo;s useful for
+running code only locally.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">Pawn</span><span class="o">-&gt;</span><span class="n">IsLocallyControlled</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="blueprint-print-node">
+    <a href="#blueprint-print-node" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Blueprint Print Node
+</h3>
+<p>Printing a string in blueprints while on a multiplayer session will
+prepend where that node is running on a client or server. Printing
+&ldquo;Hello World&rdquo; will show up as &ldquo;Client/Server: Hello World&rdquo;</p>
 <h4 id="playerstate">
     <a href="#playerstate" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -1142,6 +1573,90 @@ as collision detection &amp; resolution.</p>
 <p>Every player has a &ldquo;player state&rdquo;. It&rsquo;s a class which is automatically
 replicated to all clients and server. This is a good place to store
 variables that need to persist such as NumberOfKills.</p>
+<h4 id="gamestatebase">
+    <a href="#gamestatebase" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    GameStateBase
+</h4>
+<p>This class is usually used to share GameMode data to all the clients
+and server.</p>
+<h4 id="using-several-replicated-variables-at-the-same-time">
+    <a href="#using-several-replicated-variables-at-the-same-time" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Using several replicated variables at the same time
+</h4>
+<p>If you need more than one replicated variable at the same time, you
+can wrap these in a struct and replicate the struct.</p>
+<h4 id="network-relevancy">
+    <a href="#network-relevancy" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Network Relevancy
+</h4>
+<p>Unreal has a concept in networking called &ldquo;Relevancy&rdquo;. It&rsquo;s mainly
+used to select which clients receive what data. For example, two
+players in fortnite really far away from each other do not need to be
+updated of each other since they are not near enough for this data to
+be relevant.</p>
+<p>Sadly, this was not covered in the course.</p>
+<h4 id="replicating-uobjects">
+    <a href="#replicating-uobjects" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Replicating UObjects
+</h4>
+<p>UObjects don&rsquo;t have any built-in replication code. So in order to
+replicate UObjects you need to override the function
+&ldquo;IsSupportedForNetworking&rdquo; and just return true from it.</p>
+<p>Also override the function &ldquo;ReplicateSubObjects&rdquo; and inside it call &ldquo;ReplicateSubObject&rdquo;.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">Channel</span><span class="o">-&gt;</span><span class="n">ReplicatedSubObject</span><span class="p">(</span><span class="n">MyObject</span><span class="p">,</span> <span class="o">*</span><span class="n">Bunch</span><span class="p">,</span> <span class="o">*</span><span class="n">RepFlags</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="gotchas">
+    <a href="#gotchas" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Gotcha&#39;s
+</h4>
+<ol>
+<li>
+<p>Be careful when destroying actors, if the actor sent an RPC it might
+get destroyed before it ever sends it.</p>
+</li>
+<li>
+<p>Be careful when modifying local variables marked as RepNotifies. If
+we locally modify a variable, the next time the server updates the
+value, our OnRep function might not run. Unreal checks for differences
+in value to choose wether the function runs or not.</p>
+</li>
+</ol>
 <h2 id="umg">
     <a href="#umg" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -1380,6 +1895,45 @@ widget is being created.</p>
     Removing a widget from screen
 </h4>
 <p>To remove a widget from screen we need to call the function &ldquo;RemoveFromParent&rdquo;.</p>
+<h4 id="a-button-does-not-need-a-canvas">
+    <a href="#a-button-does-not-need-a-canvas" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    A button does not need a canvas
+</h4>
+<p>Creating a widget blueprint that is just a button does not need a
+canvas panel. Setting it to &ldquo;Desired On Screen&rdquo; instead of
+&ldquo;FillScreen&rdquo; is the way to go for buttons.</p>
+<h4 id="edit-multiple-things-at-the-same-time">
+    <a href="#edit-multiple-things-at-the-same-time" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Edit multiple things at the same time
+</h4>
+<p>You can select multiple things and sedit their appereance at the same time.</p>
+<h4 id="instantiate-widgets-by-adding-them-to-another-widget">
+    <a href="#instantiate-widgets-by-adding-them-to-another-widget" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Instantiate Widgets by adding them to another widget
+</h4>
+<p>We can instantiate widgets by adding them to another widget instead of
+the viewport.</p>
+<p>Let&rsquo;s suppose we have a vertical box inside a widget and we want to
+add a widget inside this vertical box.</p>
+<p>We can call <strong>VerticalBox-&gt;AddChild</strong> and remove it with <strong>VerticalBox-&gt;ClearChildren</strong>.</p>
 <h2 id="materials">
     <a href="#materials" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -1839,6 +2393,353 @@ game console.</p>
 </h4>
 <p>The command &ldquo;showcollision&rdquo; enables a visualization of the colission
 primitives in the map.</p>
+<h2 id="savegame-system">
+    <a href="#savegame-system" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Savegame System
+</h2>
+<h4 id="location-of-saved-game-files">
+    <a href="#location-of-saved-game-files" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Location of saved game files
+</h4>
+<p>Save files are stored in: <strong>&ldquo;ProjectName/Saved/SaveGames&rdquo;</strong></p>
+<h4 id="overview-of-savegame-implemented-in-the-course">
+    <a href="#overview-of-savegame-implemented-in-the-course" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Overview of SaveGame implemented in the course
+</h4>
+<p>In the course we started by creating a new class that inherited from <em>SaveGame</em>.</p>
+<p>Then we created a new variable and marked it with UPROPERTY so unreal can find it later.</p>
+<p>We created two functions inside GameMode</p>
+<ol>
+<li>WriteSaveGame();</li>
+<li>LoadSaveGame();</li>
+</ol>
+<h5 id="loading-savegame">
+    <a href="#loading-savegame" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Loading SaveGame
+</h5>
+<p>In GameMode we called our LoadGame function inside StartPlay.</p>
+<h4 id="savegame-uobject">
+    <a href="#savegame-uobject" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    SaveGame UObject
+</h4>
+<p>It&rsquo;s a container to store cariables like &ldquo;Earned Credits&rdquo;, unlocked abilities, player level, etc&hellip;</p>
+<h4 id="saving-on-c">
+    <a href="#saving-on-c" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Saving on C&#43;&#43;
+</h4>
+<p>This will be an example of saving and loading a single variable called &ldquo;Credits&rdquo;</p>
+<ol>
+<li>Create SaveGame UObject Instance</li>
+<li>Copy Creditos from PlayerState into SaveGame</li>
+<li>Call UGameplayStatics::SaveGameToSlot();</li>
+<li>Done!</li>
+</ol>
+<h4 id="loading-on-c">
+    <a href="#loading-on-c" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Loading on C&#43;&#43;
+</h4>
+<ol>
+<li>Check if SaveGame file exists</li>
+<li>UGameplayStatics::LoadGameToSlot();</li>
+<li>Copy Loaded credits of SaveGame into PlayerState</li>
+<li>Done!</li>
+</ol>
+<h4 id="savegame-functions-in-gameplaystatics">
+    <a href="#savegame-functions-in-gameplaystatics" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    SaveGame Functions in GameplayStatics
+</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">SaveGameToSlot</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">LoadGameFromSlot</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">DoesSaveGameExist</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">CreateSaveGameObject</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="savingloading-actor-state">
+    <a href="#savingloading-actor-state" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Saving/Loading Actor State
+</h4>
+<ol>
+<li>Mark desired variables to save with the <strong>SaveGame</strong> UPROPERTY</li>
+</ol>
+<h5 id="saving">
+    <a href="#saving" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Saving
+</h5>
+<ol>
+<li>Iterate through all actors in the world.</li>
+<li>Find relevant actors based on Interface, Class, Tags, etc..</li>
+<li><em>Actor-&gt;Serialize(EmptyArchive)</em>, this will convert all variables marked with <em>SaveGame</em> into an FArchive(Binary)</li>
+<li>Add resulting binary data containing serialized Actor Data into a SaveGame UObject</li>
+</ol>
+<h5 id="loading">
+    <a href="#loading" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Loading
+</h5>
+<ol>
+<li>Get binary data from SaveGame object.</li>
+<li>Iterate Actors in world.</li>
+<li>Find matching actors by name from available SaveGame Data.</li>
+<li><em>Actor-&gt;Serialize(FilledArchive)</em> This will convert binary data into actor&rsquo;s variables.</li>
+</ol>
+<h4 id="savingloading-moved-actors">
+    <a href="#savingloading-moved-actors" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Saving/Loading moved actors
+</h4>
+<h5 id="saving-1">
+    <a href="#saving-1" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Saving
+</h5>
+<ol>
+<li>Iterate over actors in the world.</li>
+<li>Find relevant actors, maybe by if they implement an interface, the type of class, if they have some tags. This is your choice.</li>
+<li>Create a struct to hold the actor&rsquo;s Name and Transform. If the actors were moved we need to save their new location.</li>
+<li>Add struct into SaveGame Object</li>
+</ol>
+<h5 id="loading-1">
+    <a href="#loading-1" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Loading
+</h5>
+<ol>
+<li>Load Actor data (the array with names and transforms).</li>
+<li>Iterate actors in the world.</li>
+<li>Find matching Actors by Name in our SaveGame data.</li>
+<li>Move each Actor to it&rsquo;s saved Location. <em>Actor-&gt;SetActorTransform(LoadedTransform)</em>.</li>
+</ol>
+<h4 id="serialize-save-data">
+    <a href="#serialize-save-data" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Serialize Save Data
+</h4>
+<p>In order to serialize and store an actor&rsquo;s variables marked as
+SaveGame. We need to create an array of bytes in SaveGame where the
+binary data will be stored.</p>
+<p>Serializing and storing API is not particularly clear, you need to do
+something that looks like the following:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="c1">// Pass the array to fill
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">FMemoryWriter</span><span class="p">(</span><span class="n">ActorData</span><span class="p">.</span><span class="n">ByteArray</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">FObjectAndNameAsStringProxyArchive</span> <span class="nf">Archive</span><span class="p">(</span><span class="n">MemWriter</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Find only variables with UPROPERTY(SaveGame)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Archive</span><span class="p">.</span><span class="n">ArIsSaveGame</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Converts actor savegame properties into Binary Array
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Actor</span><span class="o">-&gt;</span><span class="n">Serialize</span><span class="p">(</span><span class="n">Archive</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="load-serialized-actor-data">
+    <a href="#load-serialized-actor-data" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Load Serialized Actor Data
+</h4>
+<p>It&rsquo;s similar to save serialized data, but we use a memory reader instead of a writer.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">FMemoryReader</span> <span class="nf">MemReader</span><span class="p">(</span><span class="n">ActorData</span><span class="p">.</span><span class="n">ByteArray</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// This will load saved variables onto Actor
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">FObjectAndNameAsStringProxyArchive</span> <span class="nf">Ar</span><span class="p">(</span><span class="n">MemReader</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Ar</span><span class="p">.</span><span class="n">ArIsSaveGame</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">Actor</span><span class="o">-&gt;</span><span class="n">Serialize</span><span class="p">(</span><span class="n">Ar</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>After loading variables be sure to run the procedures that put all the remaining state back.</p>
+<p>Example: If the actor has a bIsOpen variable, remember to update it&rsquo;s
+state. Set the door open.</p>
+<p><strong>It might be a good idea to create a Save/Load interface for
+actors. Call OnSave when saving, OnLoad when loading.</strong></p>
+<h4 id="saving-player-settings">
+    <a href="#saving-player-settings" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Saving Player Settings
+</h4>
+<p>Player settings should not be saved in SaveGame class, there is a separate class for this!</p>
+<h2 id="data-tables">
+    <a href="#data-tables" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Data Tables
+</h2>
+<p>Data tables are basically a spreadsheet with data. It can be created
+and filled inside the editor ot it can be populated by a CSV import.</p>
+<p><strong>They cannot be modified at runtime</strong></p>
+<p><strong>The can be accesed in C++ by UDataTable</strong>*</p>
+<h4 id="datatables-in-c">
+    <a href="#datatables-in-c" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Datatables in C&#43;&#43;
+</h4>
+<p>In order to use data tables in C++, we also need to create a struct
+that represents a single data table row with all of its variables.</p>
+<p>This struct must inherit from <em>FTableRowBase</em>.</p>
+<p>Later, we can create a datatable in the editor and make it of the type
+struct we defined.</p>
+<h2 id="data-assets">
+    <a href="#data-assets" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Data Assets
+</h2>
+<p>Data assets and data tables are a good to store separate data from code.</p>
+<p>We can create a data asset for each monster and hold all of it&rsquo;s
+variables there, like health and anything else.</p>
+<p>Later, when we want to edit one of those values, it&rsquo;s all contained
+there and we won&rsquo;t need to go through code to change things.</p>
+<h4 id="data-asset-in-c">
+    <a href="#data-asset-in-c" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Data Asset in C&#43;&#43;
+</h4>
+<p>Create a C++ class that inherits from PrimaryDataAsset. Inheriting
+from PrimaryDataAsset will let us use the AssetManager with this data
+asset.</p>
 
     </div>
 </div>
