@@ -34,6 +34,7 @@ time, and things i did not want to forget. This is mainly for myself.&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#34;#sound&#34;&gt;Sound&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#anim-blueprints&#34;&gt;Anim Blueprints&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#ai&#34;&gt;AI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#eqs&#34;&gt;EQS&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#curves&#34;&gt;Curves&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#commands-and-cheats&#34;&gt;Commands and Cheats&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#savegame-system&#34;&gt;Savegame System&lt;/a&gt;&lt;/li&gt;
@@ -2163,7 +2164,7 @@ different nodes. For example, unreal will color light blue those nodes
 that are aborted by low priority mode. Green those that are aborted by
 mode Self. Unreal always colors the nodes that are affected from what
 we have currently selected.&lt;/p&gt;
-&lt;h4 id=&#34;eqs&#34;&gt;
+&lt;h2 id=&#34;eqs&#34;&gt;
     &lt;a href=&#34;#eqs&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
             &lt;path fill-rule=&#34;evenodd&#34;
@@ -2172,7 +2173,7 @@ we have currently selected.&lt;/p&gt;
         &lt;/svg&gt;
     &lt;/a&gt;
     EQS
-&lt;/h4&gt;
+&lt;/h2&gt;
 &lt;h4 id=&#34;running-an-eqs-query-from-c&#34;&gt;
     &lt;a href=&#34;#running-an-eqs-query-from-c&#34; class=&#34;anchor&#34;&gt;
         &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
