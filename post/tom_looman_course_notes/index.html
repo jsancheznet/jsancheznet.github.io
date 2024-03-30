@@ -67,7 +67,7 @@ if (!doNotTrack) {
     },
     "datePublished": "2024-03-20",
     "description": "",
-    "wordCount":  5377 ,
+    "wordCount":  6496 ,
     "mainEntityOfPage": "True",
     "dateModified": "2024-03-20",
     "publisher": {
@@ -178,7 +178,7 @@ if (!doNotTrack) {
                               
                             
                             By jsanchez | <time>March 20, 2024</time>
-                            | 26 minutes
+                            | 31 minutes
                         </div>
                         <div class="tags">
                             
@@ -194,11 +194,10 @@ if (!doNotTrack) {
 Development in C++ and Unreal
 Engine</a>. These
 notes mainly consist of things i did not know or understand at the
-time and things i did not want to forget. This is mainly for myself,
-but I hope someone else will find the useful.</p>
+time, and things i did not want to forget. This is mainly for myself.</p>
 <ol>
 <li><a href="#about-unreal-engine">About Unreal Engine</a></li>
-<li><a href="#naming-conventions">Naming Conventions</a></li>
+<li><a href="#naming-and-conventions">Naming and Conventions</a></li>
 <li><a href="#editor-tips">Editor Tips</a></li>
 <li><a href="#c">C++</a></li>
 <li><a href="#blueprint-tips">Blueprint Tips</a></li>
@@ -206,10 +205,10 @@ but I hope someone else will find the useful.</p>
 <li><a href="#math-tips">Math Tips</a></li>
 <li><a href="#interfaces">Interfaces</a></li>
 <li><a href="#multiplayer">Multiplayer</a></li>
+<li><a href="#collision">Collision</a></li>
 <li><a href="#umg">UMG</a></li>
 <li><a href="#materials">Materials</a></li>
 <li><a href="#sound">Sound</a></li>
-<li><a href="#shortcuts">Shortcuts</a></li>
 <li><a href="#anim-blueprints">Anim Blueprints</a></li>
 <li><a href="#ai">AI</a></li>
 <li><a href="#curves">Curves</a></li>
@@ -217,6 +216,10 @@ but I hope someone else will find the useful.</p>
 <li><a href="#savegame-system">Savegame System</a></li>
 <li><a href="#data-tables">Data Tables</a></li>
 <li><a href="#data-assets">Data Assets</a></li>
+<li><a href="#soft-and-hard-references">Soft and Hard References</a></li>
+<li><a href="#profiling">Profiling</a></li>
+<li><a href="#cookingpackaging">Cooking/Packaging</a></li>
+<li><a href="#performance-tips">Performance Tips</a></li>
 </ol>
 <h2 id="about-unreal-engine">
     <a href="#about-unreal-engine" class="anchor">
@@ -262,34 +265,31 @@ Z is Up</p>
     </a>
     Control Rotation
 </h4>
-<p>Control rotation refers to the rotation of the player controller. The
-controller rotation has priority over the pawn it is
-controlling. Setting the pawn rotation will do nothing if it is being
-controlled by a controller. You will need to set the controller
-rotation instead. So if your pawn is having problems rotating, it
-might be that the controller is overwriting it.</p>
-<h4 id="components">
-    <a href="#components" class="anchor">
+<p>Control rotation refers to <strong>the rotation of the player controller</strong>. The controller&rsquo;s rotation has priority over the pawn it
+is controlling. Setting the pawn rotation will do nothing if it is being controlled by a controller. You will need to
+set the controller rotation instead. So if your pawn is having problems rotating, it might be that the controller is
+overwriting it.</p>
+<h4 id="components-and-transforms">
+    <a href="#components-and-transforms" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
             </path>
         </svg>
     </a>
-    Components
+    Components and transforms
 </h4>
-<p>Components that derive from USceneComponent have a transform (relative
-to its parent). So, remember to attach them to their correct parent.</p>
-<p>Components that derive from UActorComponent don&rsquo;t have a transform.</p>
-<h2 id="naming-conventions">
-    <a href="#naming-conventions" class="anchor">
+<p>Components that derive from <strong>USceneComponent have a transform</strong> (relative to its parent). So, remember to attach them to their correct parent.</p>
+<p>Components that derive from <strong>UActorComponent don&rsquo;t have a transform</strong>.</p>
+<h2 id="naming-and-conventions">
+    <a href="#naming-and-conventions" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
             </path>
         </svg>
     </a>
-    Naming Conventions
+    Naming and Conventions
 </h2>
 <h4 id="unreal-engine-prefixes">
     <a href="#unreal-engine-prefixes" class="anchor">
@@ -342,11 +342,10 @@ to its parent). So, remember to attach them to their correct parent.</p>
     </a>
     Source Files
 </h4>
-<p>It is customary to add a prefix to all your source code files. This
-makes files easily distinguishable from engine files and other
-projects.</p>
+<p>It is customary to add a prefix to all your source code files. This makes files easily distinguishable from engine files
+and other projects.</p>
 <p>For example we could choose the prefix &lsquo;RPG&rsquo; for a project and our source
-files should be &ldquo;RPGMyCharacter.h/cpp&rdquo;.</p>
+files could be &ldquo;RPGMyCharacter.h/cpp&rdquo;.</p>
 <h2 id="editor-tips">
     <a href="#editor-tips" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -367,19 +366,69 @@ files should be &ldquo;RPGMyCharacter.h/cpp&rdquo;.</p>
     </a>
     Resetting variables to their default state
 </h4>
-<p>There&rsquo;s a little arrow next to variables, clicking reset&rsquo;s the value to it&rsquo;s default state</p>
-<h4 id="slomo">
-    <a href="#slomo" class="anchor">
+<p>In the editor, there&rsquo;s a little arrow next to variables, clicking reset&rsquo;s the value to it&rsquo;s default state.</p>
+<h4 id="slomo-command">
+    <a href="#slomo-command" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
             </path>
         </svg>
     </a>
-    Slomo
+    Slomo Command
 </h4>
-<p>The &ldquo;slomo&rdquo; command, slow or accelerates simulation time. 1 is the
-default value. Between 0 and 1, it becomes slower. 1+ is faster.</p>
+<p>The &ldquo;slomo&rdquo; command will slow or accelerates simulation time. 1 is the default value. Between 0 and 1, it becomes
+slower. 1+ is faster.</p>
+<h4 id="make-warnings-more-prominent">
+    <a href="#make-warnings-more-prominent" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Make warnings more prominent
+</h4>
+<p>It&rsquo;s a good idea to make warnings easier to see and in your face. Turn
+on &ldquo;Promote Output Log Warnings During PIE&rdquo;.</p>
+<h4 id="asset-searching-shortcut">
+    <a href="#asset-searching-shortcut" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Asset Searching Shortcut
+</h4>
+<p>Ctrl+P opens a window to search for assets. It&rsquo;s really fast since as
+soon as you press the shortcut you can start typing.</p>
+<h4 id="move-around-in-pie-without-stopping-the-simulation">
+    <a href="#move-around-in-pie-without-stopping-the-simulation" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Move around in PIE without stopping the simulation
+</h4>
+<p>Press F8 while playing in editor to be able to move around without
+stopping the simulation. Press F8 again to go back to your camera
+view.</p>
+<h4 id="something-should-be-working-but-its-not">
+    <a href="#something-should-be-working-but-its-not" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Something should be working but its not?
+</h4>
+<p>The unreal editor is good but not perfect. Sometimes weird things happen that make no sense. Maybe a file is not
+appearing on a dropdown or something that you think should be there/working is not.</p>
+<p>Try restarting the editor, recompiling, re-saving the filess, hell maybe even restart your computer.</p>
 <h2 id="c">
     <a href="#c" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -413,10 +462,9 @@ will result in huge translation units.</p>
     </a>
     Order your code
 </h4>
-<p>It&rsquo;s a good idea to order your C++ implementations in the order they
-are executed. Example, constructor should be near the top, BeginPlay
-should be after the constructor and PostInitializeComponents should be
-before BeginPlay. This will make your code easier to navigate.</p>
+<p>It&rsquo;s a good idea to order your functions in the order they might get executed. For example, the constructor of a class
+should be near the top of the file. BeginPlay should also be near the top of the file. Mantaining a consistency like
+this will make finding functions faster and easier.</p>
 <h4 id="stepping-into-engine-code">
     <a href="#stepping-into-engine-code" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -438,7 +486,9 @@ before BeginPlay. This will make your code easier to navigate.</p>
     </a>
     Structs
 </h4>
-<p>Declarding a struct in unreal looks something like this:</p>
+<p>When declaring structs in unreal, remember to prefix them with &lsquo;F&rsquo; and add the required macro&rsquo;s for unreal&rsquo;s header
+tool.</p>
+<p>Example:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -457,7 +507,7 @@ before BeginPlay. This will make your code easier to navigate.</p>
 </span></span><span class="line"><span class="cl">    <span class="n">GENERATED_BODY</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">UPROPERTY</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">MyVar</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">MyVar</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -471,7 +521,8 @@ before BeginPlay. This will make your code easier to navigate.</p>
     </a>
     Casting
 </h4>
-<p>Unreal has it&rsquo;s own template for casting, it&rsquo;s recommended to use this instead of regular C style casting.</p>
+<p>Using regular C-style casting is not recommended. Unreal has it&rsquo;s own way of casting and it&rsquo;s done using an existing
+template.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -490,8 +541,8 @@ before BeginPlay. This will make your code easier to navigate.</p>
     </a>
     Static Class
 </h4>
-<p>When you need a variable to hold a class type, the following returns the class type.
-It&rsquo;s used in functions like: GetComponentByClass</p>
+<p>Sometimes you need a variable that does not need to point to a instance of a class, but to a class type. In order to get
+the class type we can call a method called StaticClass().</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -510,12 +561,12 @@ It&rsquo;s used in functions like: GetComponentByClass</p>
     </a>
     Asserts
 </h4>
-<p>&ldquo;Ensure&rdquo; will assert but continue the game after. By default it will
-only halt execution once. &ldquo;ensureAlways&rdquo; is another flavor of ensure,
-but this one will always halt execution.</p>
-<p>&ldquo;check&rdquo; will halt execution when it&rsquo;s evaluation is false.</p>
-<p>&ldquo;ensureMsgf&rdquo; not only triggers the debugger when failing, but it also
-logs a message. This message is red on the unreal editor.</p>
+<p>&ldquo;<strong>ensure</strong>&rdquo; will assert but continue the game after. By default it will
+only halt execution once.</p>
+<p>&ldquo;<strong>ensureAlways</strong>&rdquo; is another flavor of ensure, but this one will always halt execution.</p>
+<p>&ldquo;<strong>check</strong>&rdquo; will halt execution when it&rsquo;s evaluation is false.</p>
+<p>&ldquo;<strong>ensureMsgf</strong>&rdquo; not only triggers the debugger when failing, but it also
+logs a message. This message appears in a red color inside the editor.</p>
 <h4 id="aactorpostinitializecomponents">
     <a href="#aactorpostinitializecomponents" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -548,8 +599,7 @@ logs a message. This message is red on the unreal editor.</p>
     </a>
     Performance
 </h4>
-<p>Don&rsquo;t call &ldquo;GetAllActorsOfClass&rdquo;, it iterates through every actor on
-the world to find them.</p>
+<p>Don&rsquo;t call &ldquo;GetAllActorsOfClass&rdquo;. It iterates through every actor on the world to find them.</p>
 <h4 id="iterating-through-all-actors-in-a-world">
     <a href="#iterating-through-all-actors-in-a-world" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -842,7 +892,7 @@ blueprints. To fix this, override the GetWorld function.</p>
     </a>
     Functions not appearing in blueprints
 </h4>
-<p>If a functioon cannot be called on blueprints, it&rsquo;s probably missing a UFUNCTION specifier. Try adding &ldquo;BlueprintCallable&rdquo;.</p>
+<p>If a function is not showing up in the blueprint function list, it&rsquo;s probably missing a UFUNCTION specifier. Try adding &ldquo;BlueprintCallable&rdquo;.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -913,8 +963,7 @@ helper functions implemented.</p>
     </a>
     How to know what class/namespace does a node belong to
 </h4>
-<p>A good way to know what class/namespace a blueprint node belongs to i
-to mouse over it and looking at it&rsquo;s target.</p>
+<p>A good way to know what class/namespace a blueprint node belongs to is to mouse over it and looking at it&rsquo;s target.</p>
 <h4 id="variables-or-functions-not-appearing-in-the-editor">
     <a href="#variables-or-functions-not-appearing-in-the-editor" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -936,7 +985,19 @@ to mouse over it and looking at it&rsquo;s target.</p>
     </a>
     Get Default Values of a Class
 </h4>
-<p>To get a class default values, you can use the node &ldquo;GetClassDefaults&rdquo;</p>
+<p>To get a class default variable values and settings, you can use the node &ldquo;<strong>GetClassDefaults</strong>&rdquo;.</p>
+<h4 id="blueprint-performance-tips">
+    <a href="#blueprint-performance-tips" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Blueprint Performance Tips
+</h4>
+<p>In project settings, you can disable tick in blueprints by default. Setting this makes using the tick function a conscious decision.</p>
+<p><strong>&ldquo;Project Settings -&gt; Blueprints -&gt; Can blueprints tick by default&rdquo;</strong>.</p>
 <h2 id="development-tips">
     <a href="#development-tips" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -957,7 +1018,7 @@ to mouse over it and looking at it&rsquo;s target.</p>
     </a>
     Use Debug Shapes
 </h4>
-<p>Unreal has a bunch of debug shapes ready to be used, they are really useful when developing and debugging features. These are a few of them.</p>
+<p>Sometimes drawing things in-game can be useful for debugging. Unreal has a bunch of easy to use functions to draw things such as boxed, spheres, lines&hellip;</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -992,7 +1053,7 @@ to mouse over it and looking at it&rsquo;s target.</p>
     </a>
     Get Component By Class
 </h4>
-<p>Use GetComponentByClass to find a specific component. This is faster
+<p>Use <strong>GetComponentByClass</strong> to find a specific component. This is faster
 than casting to player and accessing the component from player. This
 also has less error of invalid pointer, casting might fail.</p>
 <h4 id="teleporting-actors">
@@ -1005,10 +1066,17 @@ also has less error of invalid pointer, casting might fail.</p>
     </a>
     Teleporting Actors
 </h4>
-<p>Always use the actor builtin function TeleportTo when teleporting
-actors. It covers a lot of edge cases when teleporting an actor, such
-as collision detection &amp; resolution.</p>
-<h2 id="math-tips">
+<p>When you need to teleport an actor somewhere, it&rsquo;s a good idea to use the built-in function &ldquo;<strong>TeleportTo</strong>&rdquo;. It handles
+a lot of edge cases when teleporting something. Such as checking for collision, valid location and more edge cases.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">Actor</span><span class="o">-&gt;</span><span class="n">TeleportTo</span><span class="p">(...);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="math-tips">
     <a href="#math-tips" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
@@ -1018,18 +1086,17 @@ as collision detection &amp; resolution.</p>
     </a>
     Math Tips
 </h2>
-<h4 id="how-to-find-a-point-in-space-where-we-are-looking">
-    <a href="#how-to-find-a-point-in-space-where-we-are-looking" class="anchor">
+<h4 id="finding-a-point-in-space-where-player-is-looking">
+    <a href="#finding-a-point-in-space-where-player-is-looking" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
             </path>
         </svg>
     </a>
-    How to find a point in space where we are looking
+    Finding a point in space where player is looking
 </h4>
-<p>In order to find a point in space where we are looking, or where a rotator is pointing.</p>
-<p>You need to get it&rsquo;s rotator, transform it to a vector, add the actor&rsquo;s location and scale the rotation vector.</p>
+<p>In order to find a point in space where the player is looking, you need to get it&rsquo;s rotator transform it to a vector, add the actor&rsquo;s location and scale the rotation vector.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1050,8 +1117,13 @@ as collision detection &amp; resolution.</p>
     </a>
     Interfaces
 </h2>
-<p>Interfaces are useful to create a standardized API that different actors or object might implement.</p>
-<p>When an Interface function is marked as <em>BlueprintNativeEvent</em>, the function definition must append &ldquo;_Implementation&rdquo; to it&rsquo;s name.</p>
+<p>Interfaces are useful to create a standardized API that different actors or object might implement. For example, you
+might want to create an interface that implements two different member functions, such as &ldquo;SaveActor&rdquo; or
+&ldquo;LoadActor&rdquo;. Making you are actors inherit this interface will make it easier to implement saving and loading of actors.</p>
+<p>Actors can also be searched by interface. For example, you might do a search for all actors that implement the
+&ldquo;Saving/Loading&rdquo; interface.</p>
+<p>When an Interface function is marked as <em>BlueprintNativeEvent</em>, the function definition must append &ldquo;_Implementation&rdquo; to
+it&rsquo;s name.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1095,7 +1167,56 @@ as collision detection &amp; resolution.</p>
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Execute_MyInterfaceFunction</span><span class="p">();</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="multiplayer">
+</div><h2 id="collision">
+    <a href="#collision" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Collision
+</h2>
+<h4 id="collision-settings">
+    <a href="#collision-settings" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Collision Settings
+</h4>
+<ul>
+<li>Try to disable overlaps until required. <strong>&ldquo;bGenerateOverlaps = false&rdquo;</strong>.</li>
+<li>Make sure &ldquo;Collision Profiles&rdquo; only react to necessary channels or even better, disable collision entirely.</li>
+<li>Set &ldquo;Collision Enabled&rdquo; settings to &ldquo;Query Only&rdquo;, unless physics simulation is required.</li>
+<li>Avoid Hard References wherever possible.</li>
+</ul>
+<h4 id="object-channels">
+    <a href="#object-channels" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Object Channels
+</h4>
+<p>We can create new collision channels such as WorldStatic or WorldDynamic.</p>
+<p>Go to &ldquo;ProjectSettings-&gt;ObjectChannels-&gt;New&rdquo;.</p>
+<h4 id="show-collisions">
+    <a href="#show-collisions" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Show Collisions
+</h4>
+<p>The command &ldquo;<strong>showcollision</strong>&rdquo; enables a visualization of the collision primitives in game.</p>
+<h2 id="multiplayer">
     <a href="#multiplayer" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
@@ -1115,12 +1236,40 @@ as collision detection &amp; resolution.</p>
     </a>
     Multiplayer Gameplay Classes
 </h4>
-<p><strong>PlayerController</strong> - Exists on the server and local client. Not in the other clients.</p>
-<p><strong>PlayerState</strong> - Exists on the server and on all the clients.</p>
-<p><strong>GameMode</strong> - Only exists on the server.</p>
-<p><strong>GameStateBase</strong> - Exists on the server and on all the clients. This class is usually used to share GameMode data to all the clients and server</p>
-<p><strong>Pawn</strong> - Every pawn exists on the server and also all the clients.</p>
-<p><strong>AIController</strong> - Exists only on the server.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Class</th>
+<th style="text-align:left">Where does it exist?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">PlayerController</td>
+<td style="text-align:left">Exists on the server and on the local client.</td>
+</tr>
+<tr>
+<td style="text-align:left">PlayerState</td>
+<td style="text-align:left">Exists on the server and on <strong>all</strong> the clients</td>
+</tr>
+<tr>
+<td style="text-align:left">GameMode</td>
+<td style="text-align:left">Only exists on the server</td>
+</tr>
+<tr>
+<td style="text-align:left">GameStateBase</td>
+<td style="text-align:left">Exists on the server and on all the clients. This class is usually used to share GameMode data to all the clients and server</td>
+</tr>
+<tr>
+<td style="text-align:left">Pawn</td>
+<td style="text-align:left">Every Pawn exists on the server and on all the clients also.</td>
+</tr>
+<tr>
+<td style="text-align:left">AIController</td>
+<td style="text-align:left">Exists only on the server</td>
+</tr>
+</tbody>
+</table>
 <h4 id="how-to-know-if-a-variable-is-being-replicated-in-blueprints">
     <a href="#how-to-know-if-a-variable-is-being-replicated-in-blueprints" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -1132,15 +1281,15 @@ as collision detection &amp; resolution.</p>
     How to know if a variable is being replicated in blueprints
 </h4>
 <p>If a variable is being replicated, the node will have an icon that looks like two cotton balls.</p>
-<h4 id="how-to-check-if-we-are-the-server">
-    <a href="#how-to-check-if-we-are-the-server" class="anchor">
+<h4 id="how-to-check-if-the-code-is-running-on-the-server">
+    <a href="#how-to-check-if-the-code-is-running-on-the-server" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
             </path>
         </svg>
     </a>
-    How to check if we are the server
+    How to check if the code is running on the server
 </h4>
 <p>The function &ldquo;HasAuthority&rdquo; returns true if we are the server</p>
 <div class="highlight"><div class="chroma">
@@ -1151,19 +1300,18 @@ as collision detection &amp; resolution.</p>
 <pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">bServer</span> <span class="o">=</span> <span class="n">HasAuthority</span><span class="p">();</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="how-to-check-what-type-of-client-we-are">
-    <a href="#how-to-check-what-type-of-client-we-are" class="anchor">
+</div><h4 id="checking-what-type-of-clientserver-we-are">
+    <a href="#checking-what-type-of-clientserver-we-are" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
             </path>
         </svg>
     </a>
-    How to check what type of client we are
+    Checking what type of client/server we are
 </h4>
-<p>There&rsquo;s a function call IsNetMode that returns what type of
-client/server we are. It has more return types that just client or
-server.</p>
+<p>There&rsquo;s a function call <strong>IsNetMode</strong> that returns what type of client/server we are. It has more return types that just
+client or server.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1210,18 +1358,14 @@ server.</p>
     </a>
     Marking an actor to replicate in C&#43;&#43;
 </h4>
-<p>In order to mark an actor to replicate, you need to set
-&ldquo;SetReplicated(true)&rdquo; to true, in it&rsquo;s constructor.</p>
+<p>In order to mark an actor for replication, set it&rsquo;s variable &ldquo;<strong>bReplicates</strong>&rdquo; to true in it&rsquo;s constructor. If you need
+to dynamically mark an actor as replicated you can use the &ldquo;<strong>SetReplicates</strong>&rdquo; function.</p>
 <pre tabindex="0"><code class="language-C+" data-lang="C+">// In Constructor, prefer this over calling SetReplicates directly
 bReplicates = true;
 
 // To set replicate at runtime
 SetReplicates(true);
-</code></pre><p>This sets wether this actor replicates to network clients. When this
-actor is spawned on the server, it will be sent to all clients as
-well. This tells Unreal to replicate the marked variables on this
-class.</p>
-<h4 id="replicating-actor-components">
+</code></pre><h4 id="replicating-actor-components">
     <a href="#replicating-actor-components" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
@@ -1231,7 +1375,7 @@ class.</p>
     </a>
     Replicating Actor Components
 </h4>
-<p>To set an ActorComponent to replicate, call &ldquo;SetIsReplicatedByDefault(true)&rdquo; in it&rsquo;s constructor.</p>
+<p>To set an ActorComponent to replicate, call &ldquo;<strong>SetIsReplicatedByDefault(true)</strong>&rdquo; in it&rsquo;s constructor.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1242,15 +1386,15 @@ class.</p>
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">SetIsReplicatedByDefault</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="setting-up-properties-for-replication">
-    <a href="#setting-up-properties-for-replication" class="anchor">
+</div><h4 id="how-to-setup-variables-for-replication">
+    <a href="#how-to-setup-variables-for-replication" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
             </path>
         </svg>
     </a>
-    Setting up properties for replication
+    How to setup variables for replication
 </h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1288,9 +1432,8 @@ class.</p>
 </div>
 </div><p>Now, the member variable MyReplicatedVariable will be synchronized to
 all connected clients for every copy of this actor type.</p>
-<p>There is not need to declare GetLifetimeReplicatedProps in the header
-file. This is because once we mark a variable as replicated, the
-unreal header tool will automatically generate the definition for us.</p>
+<p><strong>There is no need to declare GetLifetimeReplicatedProps in the header file</strong>. This is because once we mark a variable
+as replicated, the unreal header tool will automatically generate the definition for us.</p>
 <h4 id="conditional-replication-of-a-variable">
     <a href="#conditional-replication-of-a-variable" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -1326,9 +1469,9 @@ check the official documentation.</p>
     Running a function everytime a variable is replicated, OnRep
 </h4>
 <p>Replicated variables can also run a function everytime they
-change. For this we need to mark the variable with &ldquo;ReplicatedUsing=&rdquo;
+change. For this we need to mark the variable with &ldquo;<strong>ReplicatedUsing</strong>&rdquo;
 property.</p>
-<p>In Blueprints, This is called &ldquo;RepNotify&rdquo;</p>
+<p>In Blueprints, This is called &ldquo;<strong>RepNotify</strong>&rdquo;</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1359,11 +1502,11 @@ function to be called on the server you must call it manually.</p>
     </a>
     Types of Remote Procedure Calls (RPC&#39;s)
 </h4>
-<p>There are a couple of types of RPC&rsquo;s</p>
+<p>There are three types of RPC&rsquo;s</p>
 <ul>
-<li>Server RPC's</li>
-<li>Client RPC's</li>
-<li>NetMulticast</li>
+<li><strong>Server RPC's</strong></li>
+<li><strong>Client RPC's</strong></li>
+<li><strong>NetMulticast</strong></li>
 </ul>
 <h4 id="server-rpcs">
     <a href="#server-rpcs" class="anchor">
@@ -1375,9 +1518,9 @@ function to be called on the server you must call it manually.</p>
     </a>
     Server RPC&#39;s
 </h4>
-<p>When called from a client, requests the server to execute a this function.</p>
+<p>Functions marked as Server RPC are functions that are designed to be called on the server.</p>
+<p>When called from a client, it requests the server to execute a function.</p>
 <p>When called from the server, only the server runs the function.</p>
-<p>This is the only way to go from Client to Server.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1436,8 +1579,8 @@ function to be called on the server you must call it manually.</p>
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="c1">// Header
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">Server</span><span class="p">,</span> <span class="n">Reliable</span><span class="p">,</span> <span class="n">WithValidation</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">MyFunctyion</span><span class="p">(</span><span class="kt">int</span> <span class="n">AParamenter</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">Server</span><span class="p">,</span> <span class="n">Reliable</span><span class="p">,</span> <span class="n">WithValidation</span><span class="p">)</span> <span class="c1">// Create a reliable server RPC
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="n">MyFunctyion</span><span class="p">(</span><span class="kt">int</span> <span class="n">AParamenter</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Implementation File
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="n">AExampleClass</span><span class="o">::</span><span class="n">MyFunction_Implementation</span><span class="p">(</span><span class="kt">int</span> <span class="n">AParameter</span><span class="p">)</span>
@@ -1475,11 +1618,10 @@ function to be called on the server you must call it manually.</p>
     Reliable / Unreliable
 </h4>
 <p>You can add a UPROPERTY/UFUNCTION specifier to functions and variables.</p>
-<p><strong>Reliable</strong> - This will make the variable guaranteed to update. If a packed is lost, it will be resent until acknowledgement is received.</p>
+<p><strong>Reliable</strong> - This will make the variable guaranteed to update on all clients. If a network packet is lost, it will be
+resent until acknowledgement is received. Be aware that if a reliable packet fails to arrive, the engine will not
+process new packets until this one has arrived. The player might experience a lag spike.</p>
 <p><strong>Unreliable</strong> - Not guaranteed, packet can get lost and it won&rsquo;t be resent.</p>
-<p>If a packet marked as reliable fails to arrive, the player might
-experience a lag spike, since new packets will be kept on a queue
-unprocessed until this reliable packed is received.</p>
 <p><strong>Use Unrealiable as much as you can!</strong></p>
 <h4 id="where-is-my-code-being-executed">
     <a href="#where-is-my-code-being-executed" class="anchor">
@@ -1527,17 +1669,17 @@ on the client or server.</p>
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">AController</span><span class="o">-&gt;</span><span class="n">IsLocalPlayerController</span><span class="p">();</span> <span class="c1">// Only works on players
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="pawn-islocallycontrolled">
-    <a href="#pawn-islocallycontrolled" class="anchor">
+</div><h4 id="islocallycontrolled">
+    <a href="#islocallycontrolled" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
             </path>
         </svg>
     </a>
-    Pawn-&amp;gt;IsLocallyControlled()
+    IsLocallyControlled()
 </h4>
-<p>This function returns true if it&rsquo;s controlled locally. It&rsquo;s useful for
+<p>This function returns true if the pawn is controlled locally. It&rsquo;s useful for
 running code only locally.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1547,7 +1689,7 @@ running code only locally.</p>
 <pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">Pawn</span><span class="o">-&gt;</span><span class="n">IsLocallyControlled</span><span class="p">();</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="blueprint-print-node">
+</div><h4 id="blueprint-print-node">
     <a href="#blueprint-print-node" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
@@ -1556,7 +1698,7 @@ running code only locally.</p>
         </svg>
     </a>
     Blueprint Print Node
-</h3>
+</h4>
 <p>Printing a string in blueprints while on a multiplayer session will
 prepend where that node is running on a client or server. Printing
 &ldquo;Hello World&rdquo; will show up as &ldquo;Client/Server: Hello World&rdquo;</p>
@@ -1732,7 +1874,7 @@ in value to choose wether the function runs or not.</p>
 <li>Create a C++ class that inherits from &ldquo;UserWidget&rdquo;</li>
 <li>Add a class member variable that represents the variable/widget</li>
 <li>Mark it with UPROPERTY(meta=BindWidget)</li>
-<li>Create the widget with the same type and name</li>
+<li>In the editor create a widget of the same type and name</li>
 <li>You can now access it from C++</li>
 </ul>
 <div class="highlight"><div class="chroma">
@@ -1802,7 +1944,7 @@ things and make blueprints more modular.</p>
     Bind
 </h4>
 <p>You can click on bind button to add a function that runs every frame
-and updates the value of something. This is not recommended since
+and updates the value of something. <strong>This is not recommended</strong> since
 running everyfame is very expensive. Prefer using delegates to update
 values on change/update.</p>
 <h4 id="get-players-character-from-umg">
@@ -1843,7 +1985,7 @@ values on change/update.</p>
             </path>
         </svg>
     </a>
-    Don&amp;rsquo;t call widget functions from outside
+    Don&#39;t call widget functions from outside
 </h4>
 <p>Don&rsquo;t create functions inside widgets and call them from actors. Make
 the UI separate from game code to avoid mantainance nightmares. Never
@@ -1869,7 +2011,7 @@ call widgets functions from outside.</p>
     </a>
     Make a widget have input parameters on creation
 </h4>
-<p>Checking &ldquo;Expose on spawn&rdquo; to a variable makes that variable be an
+<p>Checking &ldquo;<strong>Expose on spawn</strong>&rdquo; to a variable makes that variable be an
 input to the CreateWidget node. This way we can set variables when a
 widget is being created.</p>
 <h4 id="world-position-to-screen-position">
@@ -1884,26 +2026,15 @@ widget is being created.</p>
 </h4>
 <p>The node &ldquo;ProjectWorldToScreen&rdquo; transforms a position in world coordinates to screen coordinates.</p>
 <p>If the screen coordinate seems weirdly off, try dividing ScreenPosition/GetViewPortScale.</p>
-<h4 id="removing-a-widget-from-screen">
-    <a href="#removing-a-widget-from-screen" class="anchor">
+<h4 id="buttons-do-not-need-canvas">
+    <a href="#buttons-do-not-need-canvas" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
             </path>
         </svg>
     </a>
-    Removing a widget from screen
-</h4>
-<p>To remove a widget from screen we need to call the function &ldquo;RemoveFromParent&rdquo;.</p>
-<h4 id="a-button-does-not-need-a-canvas">
-    <a href="#a-button-does-not-need-a-canvas" class="anchor">
-        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
-            <path fill-rule="evenodd"
-                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
-            </path>
-        </svg>
-    </a>
-    A button does not need a canvas
+    Buttons do not need canvas
 </h4>
 <p>Creating a widget blueprint that is just a button does not need a
 canvas panel. Setting it to &ldquo;Desired On Screen&rdquo; instead of
@@ -1918,7 +2049,7 @@ canvas panel. Setting it to &ldquo;Desired On Screen&rdquo; instead of
     </a>
     Edit multiple things at the same time
 </h4>
-<p>You can select multiple things and sedit their appereance at the same time.</p>
+<p>You can select multiple things and edit their appereance at the same time.</p>
 <h4 id="instantiate-widgets-by-adding-them-to-another-widget">
     <a href="#instantiate-widgets-by-adding-them-to-another-widget" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -2004,7 +2135,7 @@ single node.</p>
     Debugging/Visualizing Scalar Values
 </h4>
 <p>One way of visualizing scalar values is to use the node
-&ldquo;DebugScalarValues&rdquo;. It prints a scalar value onto the mesh active in
+&ldquo;<strong>DebugScalarValues</strong>&rdquo;. It prints a scalar value onto the mesh active in
 the material. It&rsquo;s a good way of debugging values inside a
 shader/material.</p>
 <h4 id="using-materials-in-umg">
@@ -2017,7 +2148,7 @@ shader/material.</p>
     </a>
     Using Materials in UMG
 </h4>
-<p>In order to use a material in UMG/User Interfaces, we need to set the Material Domain to &ldquo;User Interace&rdquo;</p>
+<p>In order to use a material in UMG/User Interfaces, we need to set the Material Domain to &ldquo;User Interface&rdquo;</p>
 <h2 id="sound">
     <a href="#sound" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -2041,41 +2172,6 @@ shader/material.</p>
 <p>Sound Cues are the programmable audio assets. As with all thing in
 unreal you can program the sound using it&rsquo;s specific nodes. Maybe add
 a reverb or something else&hellip;</p>
-<h2 id="shortcuts">
-    <a href="#shortcuts" class="anchor">
-        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
-            <path fill-rule="evenodd"
-                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
-            </path>
-        </svg>
-    </a>
-    Shortcuts
-</h2>
-<h4 id="asset-searching">
-    <a href="#asset-searching" class="anchor">
-        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
-            <path fill-rule="evenodd"
-                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
-            </path>
-        </svg>
-    </a>
-    Asset Searching
-</h4>
-<p>Ctrl+P opens a window to search for assets. It&rsquo;s really fast since as
-soon as you press the shortcut you can start typing.</p>
-<h4 id="move-around-in-pie-without-stopping-the-simulation">
-    <a href="#move-around-in-pie-without-stopping-the-simulation" class="anchor">
-        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
-            <path fill-rule="evenodd"
-                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
-            </path>
-        </svg>
-    </a>
-    Move around in PIE without stopping the simulation
-</h4>
-<p>Press F8 while playing in editor to be able to move around without
-stopping the simulation. Press F8 again to go back to your camera
-view.</p>
 <h2 id="anim-blueprints">
     <a href="#anim-blueprints" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -2254,11 +2350,16 @@ we have currently selected.</p>
     </a>
     EQS
 </h4>
-<p>The purpose of EQS tests are not clearly defined by their names, they
-might do a couple of different things that you would not imagine just
-by seeing it&rsquo;s name. For example, &ldquo;Pathfinding&rdquo; test can do multiple
-things by changing it&rsquo;s test mode. Such as &ldquo;PathExist&rdquo;, &ldquo;PathCost&rdquo;,
-&ldquo;Path Length&rdquo;.</p>
+<h4 id="running-an-eqs-query-from-c">
+    <a href="#running-an-eqs-query-from-c" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Running an EQS Query from C&#43;&#43;
+</h4>
 <p>To run an EQS Query from C++, call:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2270,37 +2371,88 @@ things by changing it&rsquo;s test mode. Such as &ldquo;PathExist&rdquo;, &ldquo
 </div>
 </div><p>EQS Queries might take multiple frames to complete. Remember to bind
 to &ldquo;GetOnQueryFinishedEvent&rdquo; to handle the query results.</p>
-<p>EQS Queries can be run from behaviour trees.</p>
-<p>Setting the scoring factor to a negative number makes the test wigh
-more in score.</p>
-<p>The &ldquo;Querier&rdquo; is the class that is running the query. If we run it
-from a BT, the querier is the AI running that BT. Queries can also be
-called from other classes such as game mode.</p>
+<h4 id="eqs-from-bts">
+    <a href="#eqs-from-bts" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    EQS From BT&#39;s
+</h4>
 <p>When running an EQS from a BT, remember to set the key for the output
 value. For example, if running a query that will return a location,
 remember to set the output location key.</p>
-<p>In the AI Visual debugger (&rsquo;) key, press numpad 3 to enable EQS
-visualization for the selected AI. Blue means it failed, green
-succeeded. Each sphere is a queried location/point.</p>
+<h4 id="eqs-scoring-factor">
+    <a href="#eqs-scoring-factor" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    EQS Scoring Factor
+</h4>
+<p>Setting the scoring factor to a negative number makes the test weigh
+more in score.</p>
+<h4 id="eqs-querier">
+    <a href="#eqs-querier" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    EQS Querier
+</h4>
+<p>The &ldquo;Querier&rdquo; is the class that is running the query. If we run it
+from a BT, the querier is the AI running that BT. Queries can also be
+called from other classes such as game mode.</p>
+<h4 id="running-a-query-from-a-non-ai-actor">
+    <a href="#running-a-query-from-a-non-ai-actor" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Running a Query from a non AI actor
+</h4>
 <p>We can run the query from another &ldquo;center&rdquo;, meaning a non existant
 EnvQueryContext. To do this we need to create a QueryContesxt. It&rsquo;s a
 blueprint or C++ class that inherits from
 EnvQueryContext_BlueprintBase or the C++ one. Then, override one of
 the four functions and provide the possible actors/locations from
 which the query can be made.</p>
-<p>An EQS query can have multiple tests and the results of the multiple
-tests can be combined. Remember to test your things correctly and
-debug them to make sure they are working as intended.</p>
+<h4 id="debugging-tips-1">
+    <a href="#debugging-tips-1" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Debugging Tips
+</h4>
 <p>You can create a special actor to visualize EQS queries in the
 editor. First create a blueprint that inherits from &ldquo;EQSTestingPawn&rdquo;,
 drop it in the world. Set the EQS query you want to visualize and,
 move the actor around to try and &ldquo;refresh&rdquo; it. If it all went well you
 should see the differentes EQS spheres and their results.</p>
-<p>EQS by default will generate points inside invalid mesh navigation. If
-your EQS is to be run on an AI to search for a valid location, this
-will generate a bug since it might not be able to reach the winning
-location. To fix this, add the &ldquo;PathfindingTest&rdquo; to check for a valid
-path.</p>
+<p>In the AI Visual debugger (&rsquo;) key, press numpad 3 to enable EQS
+visualization for the selected AI. Blue means it failed, green
+succeeded. Each sphere is a queried location/point.</p>
+<h4 id="eqs-gotchas">
+    <a href="#eqs-gotchas" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    EQS Gotcha&#39;s
+</h4>
 <p>If the navmesh is not carefully created and cleaned, EQS might
 generate points on invalid areas, such as inside big meshes.</p>
 <h4 id="senses">
@@ -2381,18 +2533,26 @@ game console.</p>
     Cheat Manager
 </h4>
 <p>Derive a class from UCheatManager and you can add the cheats there.</p>
-<h4 id="show-collisions">
-    <a href="#show-collisions" class="anchor">
+<h3 id="stat-commands">
+    <a href="#stat-commands" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
             <path fill-rule="evenodd"
                 d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
             </path>
         </svg>
     </a>
-    Show collisions
-</h4>
-<p>The command &ldquo;showcollision&rdquo; enables a visualization of the colission
-primitives in the map.</p>
+    Stat Commands
+</h3>
+<p>There a lot of stat commands, type &ldquo;stat&rdquo; in the console to see a list
+of them.</p>
+<p>Some useful stat commands:</p>
+<ul>
+<li>stat unit</li>
+<li>stat graph</li>
+<li>stat uobjects (Shows number of instances of objects. Useful to find memory leaks / objects that are not being destroyed).</li>
+</ul>
+<p>You can also create your own stat commands.</p>
+<p>Tom Looman has a nice <a href="https://www.tomlooman.com/unreal-engine-profiling-stat-commands/">article</a> explaining how to do custom stat traces &amp; commands.</p>
 <h2 id="savegame-system">
     <a href="#savegame-system" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -2452,7 +2612,7 @@ primitives in the map.</p>
     </a>
     SaveGame UObject
 </h4>
-<p>It&rsquo;s a container to store cariables like &ldquo;Earned Credits&rdquo;, unlocked abilities, player level, etc&hellip;</p>
+<p>It&rsquo;s a container to store variables like &ldquo;Earned Credits&rdquo;, unlocked abilities, player level, etc&hellip;</p>
 <h4 id="saving-on-c">
     <a href="#saving-on-c" class="anchor">
         <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
@@ -2694,7 +2854,7 @@ actors. Call OnSave when saving, OnLoad when loading.</strong></p>
     Data Tables
 </h2>
 <p>Data tables are basically a spreadsheet with data. It can be created
-and filled inside the editor ot it can be populated by a CSV import.</p>
+and filled inside the editor or it can be populated with a CSV import.</p>
 <p><strong>They cannot be modified at runtime</strong></p>
 <p><strong>The can be accesed in C++ by UDataTable</strong>*</p>
 <h4 id="datatables-in-c">
@@ -2740,6 +2900,390 @@ there and we won&rsquo;t need to go through code to change things.</p>
 <p>Create a C++ class that inherits from PrimaryDataAsset. Inheriting
 from PrimaryDataAsset will let us use the AssetManager with this data
 asset.</p>
+<h2 id="soft-and-hard-references">
+    <a href="#soft-and-hard-references" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Soft and Hard References
+</h2>
+<h4 id="hard-references">
+    <a href="#hard-references" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Hard References
+</h4>
+<p>Hard references are always loaded synchronously when they are referenced by another object. This means that when trying
+to load a single &ldquo;stone&rdquo; actor we might load everything instead.</p>
+<p>This can quickly make the game slow to load, and make the development
+experience also slow.</p>
+<p>Examples of hard references:</p>
+<ul>
+<li>TSubClassOf<T></li>
+<li>Pointers to assets</li>
+<li>Casting to certain classes are also hard references</li>
+</ul>
+<h4 id="soft-references">
+    <a href="#soft-references" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Soft References
+</h4>
+<p>Soft references are not loaded automatically, they need to be loaded manually.</p>
+<ul>
+<li>They require management of loading in code.</li>
+<li>They load in the background and avoid game freezes.</li>
+<li>They reduce load screens and memory use by loading data on the fly.</li>
+</ul>
+<h4 id="tools-to-see-reference-status-in-your-project">
+    <a href="#tools-to-see-reference-status-in-your-project" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Tools to see reference status in your project
+</h4>
+<p><strong>Size Map</strong> - This tool shows all the hard references of an object/actor. It will let you quickly see if that stone is
+in fact loading everything because of hard references.</p>
+<p><strong>Reference Viewer</strong> - View asset references, oftean reveal
+unnecessary Cast<T> or references to other content.</p>
+<h4 id="soft-references-in-c">
+    <a href="#soft-references-in-c" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Soft references in C&#43;&#43;
+</h4>
+<p>To turn a UTexture2D hard reference into a soft ptr, do:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="c1">// Replace
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">UTexture2D</span> <span class="o">*</span><span class="n">Img</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// With this
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">UTexture2D</span><span class="o">&gt;</span> <span class="n">Img</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In UE5+, when converting a C++ hard reference to soft. When we compile, the engine will add a new node where the hard
+reference was used. This new node automatically returns null if the object is not already loaded in memory. It will not
+load it. We still have to manually load it. Be sure to check and correct everything when changin from hard to soft.</p>
+<p>Remember, you will need to manually load this asset in code.</p>
+<h4 id="loading-soft-references-in-blueprints">
+    <a href="#loading-soft-references-in-blueprints" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Loading soft references in blueprints
+</h4>
+<p>Use the node &ldquo;<strong>Async Load Asset</strong>&rdquo;.</p>
+<h4 id="soft-references-tips">
+    <a href="#soft-references-tips" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Soft references tips
+</h4>
+<p>Don&rsquo;t make everything a soft reference. It will become hell to manage.</p>
+<p>Make smart and tactical decisions of which objects should be soft pointers.</p>
+<p>Data Assets and Data Tables are a good example.</p>
+<p>They are just data containers, but they are also hard referencing things. What looks like a small data asset might
+really be a lot of Megabytes when loaded into memory.</p>
+<h4 id="soft-pointers-in-c">
+    <a href="#soft-pointers-in-c" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Soft pointers in C&#43;&#43;
+</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="c1">// Used for references of content such as UTexture2D, UParticleSystem, etc..
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">MyObjectPtr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Used to hold classes
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">TSoftClassPtr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">MyClassPtr</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="async-loading-of-individual-assets">
+    <a href="#async-loading-of-individual-assets" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Async Loading of individual assets
+</h4>
+<p><strong>FStreamableManager</strong> (C++) or Blueprint nodes such as <strong>AsyncLoadAsset</strong>. These two load base content such as
+textures, particle systems, etc&hellip;</p>
+<h4 id="asset-manager">
+    <a href="#asset-manager" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Asset Manager
+</h4>
+<p>The Asset manager is mainly used to load Data Assets. In order to load those data assets you need to provide an
+<strong>FPrimaryAssetId</strong>. It will use this Id to identify what to load.</p>
+<p>The asset manager needs to be configured in the project settings. Inside the &ldquo;Game-&gt;AssetManager&rdquo; we need to add a new &ldquo;Primary Asset Types to Scan&rdquo;.</p>
+<p>Example:
+Primary Asset Type: &ldquo;Monsters&rdquo;.
+Asset Base Class: &ldquo;SMonsterData&rdquo; (This a data asset type).
+Directories: Add directory where to search</p>
+<p>Loads PrimaryDataAsset asynchronously by providing FPrimaryAssetID of an asset.</p>
+<p>Loads a DataAsset that can contain a bunch of different content to load all at once.It&rsquo;s a wrapper around
+FStreamableManager, it&rsquo;s specific to loading/unloading DataAssets.</p>
+<p>To find a Data Asset with the asset manager, we need to override a function in our data asset C++ implementation.</p>
+<p>Example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">FPrimaryAssetId</span> <span class="nf">GetPrimaryAssetId</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">FPrimaryAssetId</span><span class="p">(</span><span class="s">&#34;Monsters&#34;</span><span class="p">,</span> <span class="n">GetName</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now, instead of a pointer to a data asset, we change it to a FPrimaryId, and use this id to load it.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="c1">// Change this
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">USMonsterData</span> <span class="o">*</span><span class="n">MyDataAsset</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// To this
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">FPrimaryAssetId</span> <span class="n">MyDataAssetId</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="accessing-the-asset-manager-from-c">
+    <a href="#accessing-the-asset-manager-from-c" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Accessing the asset manager from C&#43;&#43;
+</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">UAssetManager</span> <span class="o">*</span><span class="n">Manager</span> <span class="o">=</span> <span class="n">UAssetManager</span><span class="o">::</span><span class="n">GetIfInitialized</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="loading-an-asset">
+    <a href="#loading-an-asset" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Loading an asset
+</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">UAssetManager</span> <span class="o">*</span><span class="n">Manager</span> <span class="o">=</span> <span class="n">UAssetManager</span><span class="o">::</span><span class="n">GetIfInitialized</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// The delegate and the function it triggers can have parameters if you need them
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">FStreamableDelegate</span> <span class="n">Delegate</span> <span class="o">=</span> <span class="n">FStreamableDelegate</span><span class="o">::</span><span class="n">CreateUObject</span><span class="p">(</span><span class="n">This</span><span class="p">,</span> <span class="n">MyFunction</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FName</span><span class="o">&gt;</span> <span class="n">Bundles</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Manager</span><span class="o">-&gt;</span><span class="n">LoadPrimaryDataAsset</span><span class="p">(</span><span class="n">AssetId</span><span class="p">,</span> <span class="n">Bundles</span><span class="p">,</span> <span class="n">Delegate</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// The Delegate function will be triggered once the action has been loaded.
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="getting-a-reference-to-the-actual-data">
+    <a href="#getting-a-reference-to-the-actual-data" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Getting a reference to the actual data
+</h5>
+<p>Once the asset has finished loading and the delegate function is triggered, we can now get a pointer to the data once
+again using the asset manager.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">UMyData</span> <span class="o">*</span><span class="n">MyData</span> <span class="o">=</span> <span class="n">Cast</span><span class="o">&lt;</span><span class="n">UMyData</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Manager</span><span class="o">-&gt;</span><span class="n">GetPrimaryAssetObject</span><span class="p">(</span><span class="n">MyId</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="asset-manager-bundles">
+    <a href="#asset-manager-bundles" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Asset Manager Bundles
+</h5>
+<p>Bundles are a way to select what to load inside a data asset. If we only need one section of the data asset, we can load
+that part by using bundles.</p>
+<h5 id="fprimaryassetid">
+    <a href="#fprimaryassetid" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    FPrimaryAssetId
+</h5>
+<p>The id is basically an FName and we can set variables to be of this type.</p>
+<h2 id="profiling">
+    <a href="#profiling" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Profiling
+</h2>
+<p>Always cook before profiling. Packaging and cooking may resutl in better performance.</p>
+<h4 id="unreal-insights">
+    <a href="#unreal-insights" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Unreal Insights
+</h4>
+<p>You can add &ldquo;Bookmarks to your code and make the section of the code you marked, appear in insights by name&rdquo;.</p>
+<h2 id="cookingpackaging">
+    <a href="#cookingpackaging" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Cooking/Packaging
+</h2>
+<h4 id="add-levels-to-be-packaged">
+    <a href="#add-levels-to-be-packaged" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Add levels to be packaged
+</h4>
+<p>In order to package the project correctly, we need to add the specific levels we want to package. By adding these levels
+everything reference by them will be automatically cooked and packaged.</p>
+<p>Go to Packaging settings and add the desired levels to: <strong>&ldquo;List of maps to include in a packaged build&rdquo;</strong>.</p>
+<h4 id="something-not-working-in-a-packaged-build">
+    <a href="#something-not-working-in-a-packaged-build" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Something not working in a packaged build?
+</h4>
+<p>Maybe some things related to the asset manager might not be working in the packaged build. Try settings the cooking rule
+for that type of asset to <strong>&ldquo;Always Cook&rdquo;</strong>.</p>
+<p><strong>&ldquo;Game-&gt;AssetManager-&gt;Primary Type Asset To Scan-&gt;Rules-&gt;CookRule&rdquo;</strong>.</p>
+<h2 id="performance-tips">
+    <a href="#performance-tips" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Performance Tips
+</h2>
+<h4 id="avoid-ticking-of-actors-and-components">
+    <a href="#avoid-ticking-of-actors-and-components" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Avoid Ticking of Actors and Components
+</h4>
+<p>Most logic can be done through events or timers with lower frequency than ticks.</p>
 
     </div>
 </div>

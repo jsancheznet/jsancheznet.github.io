@@ -13,7 +13,7 @@
       <link>https://jsanchez.net/post/tom_looman_course_notes/</link>
       <pubDate>Wed, 20 Mar 2024 14:43:42 -0300</pubDate>
       <guid>https://jsanchez.net/post/tom_looman_course_notes/</guid>
-      <description>These are my notes for Tom Looman&amp;rsquo;s course Professional Game Development in C++ and Unreal Engine. These notes mainly consist of things i did not know or understand at the time and things i did not want to forget. This is mainly for myself, but I hope someone else will find the useful.&#xA;About Unreal Engine Naming Conventions Editor Tips C++ Blueprint Tips Development Tips Math Tips Interfaces Multiplayer UMG Materials Sound Shortcuts Anim Blueprints AI Curves Commands and Cheats Savegame System Data Tables Data Assets About Unreal Engine&#xD;Coordinate System&#xD;X is Forward</description>
+      <description>These are my notes for Tom Looman&amp;rsquo;s course Professional Game Development in C++ and Unreal Engine. These notes mainly consist of things i did not know or understand at the time, and things i did not want to forget. This is mainly for myself.&#xA;About Unreal Engine Naming and Conventions Editor Tips C++ Blueprint Tips Development Tips Math Tips Interfaces Multiplayer Collision UMG Materials Sound Anim Blueprints AI Curves Commands and Cheats Savegame System Data Tables Data Assets Soft and Hard References Profiling Cooking/Packaging Performance Tips About Unreal Engine&#xD;Coordinate System&#xD;X is Forward</description>
     </item>
     <item>
       <title>Collision Detection: Circle vs Circle</title>
