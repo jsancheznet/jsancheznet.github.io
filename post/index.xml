@@ -6,15 +6,8 @@
     <description>Recent content in Posts on Jorge Sánchez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Mar 2024 14:43:42 -0300</lastBuildDate>
+    <lastBuildDate>Tue, 05 Apr 2022 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://jsanchez.net/post/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Notes from Professional Game Development in C&#43;&#43; and Unreal Engine</title>
-      <link>https://jsanchez.net/post/tom_looman_course_notes/</link>
-      <pubDate>Wed, 20 Mar 2024 14:43:42 -0300</pubDate>
-      <guid>https://jsanchez.net/post/tom_looman_course_notes/</guid>
-      <description>These are my notes for Tom Looman&amp;rsquo;s course Professional Game Development in C++ and Unreal Engine. These notes mainly consist of things i did not know or understand at the time, and things i did not want to forget. This is mainly for myself.&#xA;About Unreal Engine Naming and Conventions Editor Tips C++ Blueprint Tips Development Tips Math Tips Interfaces Multiplayer Collision UMG Materials Sound Anim Blueprints AI EQS Curves Commands and Cheats Savegame System Data Tables Data Assets Soft and Hard References Profiling Cooking/Packaging Performance Tips About Unreal Engine&#xD;Coordinate System&#xD;X is Forward</description>
-    </item>
     <item>
       <title>Collision Detection: Circle vs Circle</title>
       <link>https://jsanchez.net/post/collision_circle_circle/</link>
@@ -30,25 +23,11 @@
       <description>Dear Imgui is an awesome C/C++ immediate mode graphical user interface (GUI) made by ocornut. It provides just about every widget you might need, buttons, color pickers, plots and many, many more. It&amp;rsquo;s also fast and super easy to use.&#xA;Here&amp;rsquo;s a screenshot of someone&amp;rsquo;s game using Dear ImGui.&#xA;Cool uh?. It&amp;rsquo;s easy to integrate into your project. The official documentation says integration should take you less than 3 hours. That&amp;rsquo;s a lot of features and awesomeness for such a short amount of time.</description>
     </item>
     <item>
-      <title>Avoiding double allocation for structs and data</title>
-      <link>https://jsanchez.net/post/avoiding-double-allocation-for-structs-and-data/</link>
-      <pubDate>Fri, 26 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>https://jsanchez.net/post/avoiding-double-allocation-for-structs-and-data/</guid>
-      <description>Let&amp;rsquo;s say you want to allocate a struct that contains a pointer to other data that also needs allocation. The natural way to do it is calling malloc twice, one for the container and one for the data.&#xA;1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 /* The natural way to allocate a struct and its data */ struct sample_type { float A; uint32_t B; uint8_t C; bool D; bool E; bool F; bool G; }; struct sample_struct { uint32_t Count; sample_type *Data; }; uint32_t Count = 5; sample_struct *Container = (sample_struct*)malloc(sizeof(sample_struct)); Container-&amp;gt;Count = Count; Container-&amp;gt;Data = (sample_type*)malloc(sizof(sample_type) * Count); // Do something to the data for(int i = 0; i &amp;lt; Container-&amp;gt;Count; i++) { Container-&amp;gt;Data[i] = {}; } Something doesn&amp;rsquo;t feel right, these two allocations are going to be used together, one after the other but there is no guarantee they will be contiguous in memory, a cache miss is likely to happen everytime you access the data.</description>
-    </item>
-    <item>
       <title>Multiple OpenGL shaders in a single file</title>
       <link>https://jsanchez.net/post/multiple-shaders-in-one-file/</link>
       <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
       <guid>https://jsanchez.net/post/multiple-shaders-in-one-file/</guid>
       <description>If you have been using OpenGL for a while, you probably have a lot of shader files, maybe one for each programmable stage of the pipeline. At some point during development the directory that contains the shaders becomes a mess, managing and opening shader files in your editor becomes tedious. Luckily there&amp;rsquo;s a way to cram all the programmable shader stages in a single file, reducing the number of files at least by half and calm the neat freak inside.</description>
-    </item>
-    <item>
-      <title>Gists/Snippets</title>
-      <link>https://jsanchez.net/post/glsl-gists/</link>
-      <pubDate>Sat, 07 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>https://jsanchez.net/post/glsl-gists/</guid>
-      <description>1 2 3 4 5 6 7 8 9 10 11 // Normalize an input value to 0,1 range. f32 Normalize(f32 Input, f32 Minimum, f32 Maximum) { return (Input - Minimum) / (Maximum - Minimum); } // Map one range onto another. Ex: Map Value Between 0-1800 to -20, 20. f32 Remap(f32 Input, f32 InputStart, f32 InputEnd, f32 OutputStart, f32 OutputEnd) { return (Input - InputStart) / (InputEnd - InputStart) * (OutputEnd - OutputStart) + OutputStart; } GLSL&#xD;1 2 3 4 5 6 7 8 // Grayscale FragmentColor = texture(SampledTexture, UV); float Average = (0.</description>
     </item>
     <item>
       <title>Handling Hybrid GPU&#39;s in Windows</title>
