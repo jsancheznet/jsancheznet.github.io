@@ -2,6 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://jsanchez.net/projects/sdf_text_rendering/</loc>
+  </url><url>
     <loc>https://jsanchez.net/projects/glow/</loc>
   </url><url>
     <loc>https://jsanchez.net/projects/action_roguelike/</loc>
@@ -10,13 +12,13 @@
     <loc>https://jsanchez.net/projects/nito/</loc>
     <lastmod>2020-11-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jsanchez.net/projects/pong/</loc>
-    <lastmod>2020-11-26T00:00:00+00:00</lastmod>
+    <loc>https://jsanchez.net/projects/jsanchez_math/</loc>
+    <lastmod>2021-12-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jsanchez.net/projects/gold_diggers/</loc>
   </url><url>
-    <loc>https://jsanchez.net/projects/jsanchez_math/</loc>
-    <lastmod>2021-12-12T00:00:00+00:00</lastmod>
+    <loc>https://jsanchez.net/projects/pong/</loc>
+    <lastmod>2020-11-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jsanchez.net/</loc>
     <lastmod>2023-11-06T00:00:00+00:00</lastmod>
