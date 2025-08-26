@@ -6,15 +6,8 @@
     <description>Recent content in Posts on Jorge Sánchez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 05 Apr 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 Feb 2022 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://jsanchez.net/post/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Collision Detection: Circle vs Circle</title>
-      <link>https://jsanchez.net/post/collision_circle_circle/</link>
-      <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>https://jsanchez.net/post/collision_circle_circle/</guid>
-      <description>What is collision detection?&#xD;Wikipedia defines collision detection as &amp;ldquo;the computational problem of detecting the intersection of two or more objects&amp;rdquo;. In real life you cannot go through objects but in a computer simulation objects can overlap and go through each other. In order to resemble reality we need a way to detect when objects are overlapping.&#xA;Imagine two billiard balls, one of them is moving towards the other. In the real world they collide and each ball goes in a different direction.</description>
-    </item>
     <item>
       <title>Integrating Dear ImGui in unity builds</title>
       <link>https://jsanchez.net/post/integrating_imgui_in_unity_builds/</link>
@@ -42,6 +35,13 @@
       <pubDate>Sat, 22 Jun 2019 00:00:00 +0000</pubDate>
       <guid>https://jsanchez.net/post/multi-line-function-macro/</guid>
       <description>When you need a muli-line macro to have its own scope and behave as a regular function would, the naive way is to simply wrap the macro statements inside curly brackets. Now, time has passed and suddenly program compilation is failing, and as usual the compiler output is not helping. The naive macro implementation has come back to bite you.&#xA;Here&amp;rsquo;s the naive implementation, let&amp;rsquo;s see how to fix it.</description>
+    </item>
+    <item>
+      <title>Collision Detection: Circle vs Circle</title>
+      <link>https://jsanchez.net/post/collision_circle_circle/</link>
+      <pubDate>Thu, 05 Apr 2018 00:00:00 +0000</pubDate>
+      <guid>https://jsanchez.net/post/collision_circle_circle/</guid>
+      <description>What is collision detection?&#xD;Wikipedia defines collision detection as &amp;ldquo;the computational problem of detecting the intersection of two or more objects&amp;rdquo;. In real life you cannot go through objects but in a computer simulation objects can overlap and go through each other. In order to resemble reality we need a way to detect when objects are overlapping.&#xA;Imagine two billiard balls, one of them is moving towards the other. In the real world they collide and each ball goes in a different direction.</description>
     </item>
   </channel>
 </rss>
