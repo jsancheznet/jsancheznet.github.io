@@ -10,29 +10,20 @@
     <title>Making multi-line macros behave as a functions | Jorge Sánchez</title>
 
     
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GW6Q2Z6045"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-GW6Q2Z6045', { 'anonymize_ip': false });
-}
-</script>
-
-    
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'G-GW6Q2Z6045', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-GW6Q2Z6045"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-GW6Q2Z6045');
+        }
+      </script>
 
     <meta property="og:site_name" content="jsanchez.net" />
     <meta property="og:title" content="Making multi-line macros behave as a functions | Jorge Sánchez"/>
@@ -86,7 +77,7 @@ if (!doNotTrack) {
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%90%B5%3C%2Ftext%3E%3C%2Fsvg%3E" type="image/svg+xml">
     
-    <link rel="stylesheet" href="/sass/main.min.bb6b9126dbda8ddca349719a1e21251f4e5c98f1fadf4fc589ac5870a2617a03.css">
+    <link rel="stylesheet" href="/sass/main.min.fb13cbd87f41a810b89316b9d93dbebd3fb36849b2f8788952a576454bef3324.css">
     
 
 
@@ -102,17 +93,20 @@ if (!doNotTrack) {
     </script>
 
     
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GW6Q2Z6045"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-GW6Q2Z6045', { 'anonymize_ip': false });
-}
-</script>
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-GW6Q2Z6045"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-GW6Q2Z6045');
+        }
+      </script>
 </head>
 
     
@@ -219,11 +213,11 @@ not helping. The naive macro implementation has come back to bite you.</p>
 </span></span></span><span class="line"><span class="cl"><span class="cp">    DoMoreStuff;                  \
 </span></span></span><span class="line"><span class="cl"><span class="cp">}                                 \
 </span></span></span><span class="line"><span class="cl"><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+</span></span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="n">MyMultipleLineMacro</span><span class="p">(</span><span class="n">Input</span><span class="p">);</span> <span class="c1">// Fails to compile!
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">else</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">else</span>
 </span></span><span class="line"><span class="cl">        <span class="n">SomeOtherOperation</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
@@ -250,7 +244,7 @@ not helping. The naive macro implementation has come back to bite you.</p>
 </span></span><span class="line"><span class="cl">            <span class="n">DoStuffRightHere</span><span class="p">(</span><span class="n">Input</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">            <span class="n">DoMoreStuff</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="p">};</span> <span class="c1">// Fails to compile!
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">else</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">else</span>
 </span></span><span class="line"><span class="cl">        <span class="n">SomeOtherOperation</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
@@ -284,10 +278,10 @@ not helping. The naive macro implementation has come back to bite you.</p>
 </span></span></span><span class="line"><span class="cl"><span class="cp">        DoMoreStuff;              \
 </span></span></span><span class="line"><span class="cl"><span class="cp">    }while(0)                     \
 </span></span></span><span class="line"><span class="cl"><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+</span></span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">// Now the macro expands to valid C/C++.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">do</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">        <span class="k">do</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	    <span class="n">DoStuffRightHere</span><span class="p">(</span><span class="n">Input</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	    <span class="n">DoMoreStuff</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span><span class="k">while</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
@@ -344,8 +338,9 @@ not helping. The naive macro implementation has come back to bite you.</p>
         (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	
 </div>
 
 <script>
