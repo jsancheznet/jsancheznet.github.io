@@ -10,29 +10,20 @@
     <title>Avoiding double allocation for structs and data | Jorge Sánchez</title>
 
     
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GW6Q2Z6045"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-GW6Q2Z6045', { 'anonymize_ip': false });
-}
-</script>
-
-    
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'G-GW6Q2Z6045', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-GW6Q2Z6045"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-GW6Q2Z6045');
+        }
+      </script>
 
     <meta property="og:site_name" content="jsanchez.net" />
     <meta property="og:title" content="Avoiding double allocation for structs and data | Jorge Sánchez"/>
@@ -40,10 +31,10 @@ if (!doNotTrack) {
     <meta name="twitter:title" content="Avoiding double allocation for structs and data | Jorge Sánchez" />
     <meta name="application-name" content="Avoiding double allocation for structs and data | Jorge Sánchez" /><meta name="twitter:card" content="summary"/>
 
-    <meta name="description" content="Jorge Sánchez, Programmer, Gamedev, Sysadmin" />
-    <meta name="twitter:description" content="Jorge Sánchez, Programmer, Gamedev, Sysadmin"/>
-    <meta itemprop="description" content="Jorge Sánchez, Programmer, Gamedev, Sysadmin"/>
-    <meta property="og:description" content="Jorge Sánchez, Programmer, Gamedev, Sysadmin" />
+    <meta name="description" content="Jorge Sánchez, Programmer, Game Developer, Sysadmin" />
+    <meta name="twitter:description" content="Jorge Sánchez, Programmer, Game Developer, Sysadmin"/>
+    <meta itemprop="description" content="Jorge Sánchez, Programmer, Game Developer, Sysadmin"/>
+    <meta property="og:description" content="Jorge Sánchez, Programmer, Game Developer, Sysadmin" />
 
     
 
@@ -71,7 +62,7 @@ if (!doNotTrack) {
     },
     "datePublished": "2020-06-26",
     "description": "",
-    "wordCount":  402 ,
+    "wordCount":  802 ,
     "mainEntityOfPage": "True",
     "dateModified": "2020-06-26",
     "publisher": {
@@ -90,7 +81,7 @@ if (!doNotTrack) {
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%90%B5%3C%2Ftext%3E%3C%2Fsvg%3E" type="image/svg+xml">
     
-    <link rel="stylesheet" href="/sass/main.min.bb6b9126dbda8ddca349719a1e21251f4e5c98f1fadf4fc589ac5870a2617a03.css">
+    <link rel="stylesheet" href="/sass/main.min.fb13cbd87f41a810b89316b9d93dbebd3fb36849b2f8788952a576454bef3324.css">
     
 
 
@@ -106,17 +97,20 @@ if (!doNotTrack) {
     </script>
 
     
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GW6Q2Z6045"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-GW6Q2Z6045', { 'anonymize_ip': false });
-}
-</script>
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-GW6Q2Z6045"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-GW6Q2Z6045');
+        }
+      </script>
 </head>
 
     
@@ -180,7 +174,7 @@ if (!doNotTrack) {
                             
                             
                             By Jsanchez | <time>June 26, 2020</time>
-                            | 2 minutes
+                            | 4 minutes
                         </div>
                         <div class="tags">
                             
@@ -225,9 +219,12 @@ calling malloc twice, one for the container and one for the data.</p>
 </span><span class="lnt">26
 </span><span class="lnt">27
 </span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="cm">/* The natural way to allocate a struct and its data */</span>
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cm">/* The natural way to allocate a struct and its data */</span>
 </span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">sample_type</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">A</span><span class="p">;</span>
@@ -248,21 +245,79 @@ calling malloc twice, one for the container and one for the data.</p>
 </span></span><span class="line"><span class="cl"><span class="kt">uint32_t</span> <span class="n">Count</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">sample_struct</span> <span class="o">*</span><span class="n">Container</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_struct</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">sample_struct</span><span class="p">));</span>
 </span></span><span class="line"><span class="cl"><span class="n">Container</span><span class="o">-&gt;</span><span class="n">Count</span> <span class="o">=</span> <span class="n">Count</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">Container</span><span class="o">-&gt;</span><span class="n">Data</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_type</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">sizof</span><span class="p">(</span><span class="n">sample_type</span><span class="p">)</span> <span class="o">*</span> <span class="n">Count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Container</span><span class="o">-&gt;</span><span class="n">Data</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_type</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">sample_type</span><span class="p">)</span> <span class="o">*</span> <span class="n">Count</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Do something to the data
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">Container</span><span class="o">-&gt;</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">for</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">Container</span><span class="o">-&gt;</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Container</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{};</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">free</span><span class="p">(</span><span class="n">Container</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">free</span><span class="p">(</span><span class="n">Container</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Something doesn&rsquo;t feel right, these two allocations are going to be
-used together, one after the other but there is no guarantee they will
-be contiguous in memory, a cache miss is likely to happen everytime
-you access the data.</p>
+</div><p>Something doesn&rsquo;t feel right. These two allocations are going to be
+used together, one after the other, but there is no guarantee they
+will be next to each other in memory. On top of that you have two
+calls to malloc that can fail, two calls to free you need to remember,
+and twice the allocator overhead.</p>
 <p>Here is one way to use just a single allocation for the container and
 its data.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cm">/* Using a single allocation */</span>
+</span></span><span class="line"><span class="cl"><span class="kt">uint32_t</span> <span class="n">Count</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sample_struct</span> <span class="o">*</span><span class="n">Container</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_struct</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">sample_struct</span><span class="p">)</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">sample_type</span><span class="p">)</span> <span class="o">*</span> <span class="n">Count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Container</span><span class="o">-&gt;</span><span class="n">Count</span> <span class="o">=</span> <span class="n">Count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">Container</span><span class="o">-&gt;</span><span class="n">Data</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_type</span><span class="o">*</span><span class="p">)(</span><span class="n">Container</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Do something to the data
+</span></span></span><span class="line"><span class="cl"><span class="k">for</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">Container</span><span class="o">-&gt;</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Container</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">free</span><span class="p">(</span><span class="n">Container</span><span class="p">);</span> <span class="c1">// Frees both the container and the data
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>If you ask me the second version is better: a single call to malloc,
+a single call to free, and things that belong together are guaranteed
+to be adjacent in memory.</p>
+<h2 id="watch-out-for-alignment">
+    <a href="#watch-out-for-alignment" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Watch out for alignment
+</h2>
+<p>There is something you <em>need</em> to be aware of while using this trick.
+<code>Container + 1</code> points to the first byte after the struct, and that
+address has to be properly aligned for <code>sample_type</code>. In this example
+it works out, <code>sizeof(sample_struct)</code> is 16 on a 64 bit machine and
+<code>sample_type</code> only needs 4 byte alignment. But if <code>sample_type</code> ever
+needs a stricter alignment than the container (a SIMD type with
+<code>alignas(16)</code> for example) you&rsquo;ll end up with a misaligned pointer and
+nobody is going to warn you about it.</p>
+<p>The safe way is to round the offset up to the alignment of the data.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -294,76 +349,73 @@ its data.</p>
 </span><span class="lnt">27
 </span><span class="lnt">28
 </span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cm">/* Using a single allocation */</span>
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cm">/* Single allocation with the data properly aligned */</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">sample_type</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">A</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">uint32_t</span> <span class="n">B</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">uint8_t</span> <span class="n">C</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">D</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">E</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">F</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">G</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// The alignment sample_type needs, in bytes. Alignments are always a
+</span></span></span><span class="line"><span class="cl"><span class="c1">// power of two (1, 2, 4, 8, 16...).
+</span></span></span><span class="line"><span class="cl"><span class="n">size_t</span> <span class="n">Align</span> <span class="o">=</span> <span class="k">alignof</span><span class="p">(</span><span class="n">sample_type</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">sample_struct</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">uint32_t</span> <span class="n">Count</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">sample_type</span> <span class="o">*</span><span class="n">Data</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Offset is where the data will start, measured from the beginning of
+</span></span></span><span class="line"><span class="cl"><span class="c1">// the allocation. It&#39;s sizeof(sample_struct) rounded up to the next
+</span></span></span><span class="line"><span class="cl"><span class="c1">// multiple of Align.
+</span></span></span><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Since Align is a power of two, Align - 1 has all the bits below it
+</span></span></span><span class="line"><span class="cl"><span class="c1">// set. For Align = 16, Align - 1 is 0b1111 and ~(Align - 1) is a mask
+</span></span></span><span class="line"><span class="cl"><span class="c1">// with those 4 low bits cleared.
+</span></span></span><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Adding Align - 1 pushes the size past the next multiple of Align
+</span></span></span><span class="line"><span class="cl"><span class="c1">// (unless it&#39;s already on one), and the &amp; with the mask clears the low
+</span></span></span><span class="line"><span class="cl"><span class="c1">// bits, rounding it back down to that multiple.
+</span></span></span><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Example with a 20 byte struct and Align = 16:
+</span></span></span><span class="line"><span class="cl"><span class="c1">//   20 + 15 = 35
+</span></span></span><span class="line"><span class="cl"><span class="c1">//   35 &amp; ~15 = 32, the first multiple of 16 that fits the struct.
+</span></span></span><span class="line"><span class="cl"><span class="n">size_t</span> <span class="n">Offset</span> <span class="o">=</span> <span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">sample_struct</span><span class="p">)</span> <span class="o">+</span> <span class="n">Align</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="p">(</span><span class="n">Align</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">uint32_t</span> <span class="n">Count</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">sample_struct</span> <span class="o">*</span><span class="n">Container</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_struct</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">sample_struct</span><span class="p">)</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">sample_type</span><span class="p">)</span> <span class="o">*</span> <span class="n">Count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// One allocation: the struct, any padding needed to reach Offset, and
+</span></span></span><span class="line"><span class="cl"><span class="c1">// then the data. uint8_t* so pointer arithmetic is in bytes.
+</span></span></span><span class="line"><span class="cl"><span class="kt">uint8_t</span> <span class="o">*</span><span class="n">Memory</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">Offset</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">sample_type</span><span class="p">)</span> <span class="o">*</span> <span class="n">Count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// The struct lives at the start of the block.
+</span></span></span><span class="line"><span class="cl"><span class="n">sample_struct</span> <span class="o">*</span><span class="n">Container</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_struct</span><span class="o">*</span><span class="p">)</span><span class="n">Memory</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">Container</span><span class="o">-&gt;</span><span class="n">Count</span> <span class="o">=</span> <span class="n">Count</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">Container</span><span class="o">-&gt;</span><span class="n">Data</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_type</span><span class="o">*</span><span class="p">)(</span><span class="n">Container</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// Do something to the data
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">Container</span><span class="o">-&gt;</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Container</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{};</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// The data starts Offset bytes in, which is guaranteed to be aligned.
+</span></span></span><span class="line"><span class="cl"><span class="n">Container</span><span class="o">-&gt;</span><span class="n">Data</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample_type</span><span class="o">*</span><span class="p">)(</span><span class="n">Memory</span> <span class="o">+</span> <span class="n">Offset</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>If you ask me the second version is better, a single call to malloc
-and things that belong together are adjacent in memory.</p>
-<p>There is something you <em>need</em> to be aware of while using this trick,
-Data should always be the last member of the struct.</p>
+</div><p>On the other hand, where <code>Data</code> sits inside the struct doesn&rsquo;t matter.
+The array always starts after the whole struct, so you can add members
+anywhere you want.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">sample_struct</span>
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">sample_struct</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">uint32_t</span> <span class="n">Count</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">sample_type</span> <span class="o">*</span><span class="n">Data</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">Other</span><span class="p">;</span> <span class="c1">// WRONG, writing to this variable will overwrite values in the Data array and vice versa.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">sample_struct</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">uint32_t</span> <span class="n">Count</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">Other</span><span class="p">;</span> <span class="c1">// CORRECT, Remember to add struct members before the Data array.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">sample_type</span> <span class="o">*</span><span class="n">Data</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">Other</span><span class="p">;</span> <span class="c1">// Fine, sizeof(sample_struct) grows and the array moves with it.
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div>
+</div><p>One last note for C++ folks: all of this works because <code>sample_type</code>
+is a trivial type. If your type has constructors or destructors you
+need to construct each element with placement new and destroy them
+yourself before calling free.</p>
+
     </div>
 </div>
 
@@ -408,8 +460,9 @@ Data should always be the last member of the struct.</p>
         (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	
 </div>
 
 <script>
